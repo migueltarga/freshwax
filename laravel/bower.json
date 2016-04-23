@@ -1,0 +1,27 @@
+{
+  "name": "freshwax",
+  "version": "0.0.0",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "authors": [
+    "jasper boyd"
+  ],
+  "license": "MIT",
+  "homepage": "freshwax.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pickadate": "~3.5.6"
+  }
+}

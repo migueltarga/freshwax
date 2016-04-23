@@ -1,0 +1,28 @@
+.center { 
+	text-align: center;
+}
+
+header { 
+	padding: 40px 0 10px;
+} 
+
+article {
+	header { 
+		padding: 20px 0 10px; 
+	} 
+}
+
+img { 
+	width: 100%; 
+}
+
+table {
+
+	margin-left: 10px; 
+ 	tr { 
+		padding: 5px 0;
+	} 
+	td, th { 
+		min-width: 100px; 
+	} 
+}
