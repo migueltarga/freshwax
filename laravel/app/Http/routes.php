@@ -13,29 +13,29 @@
 
 Route::resource('artists', 'ArtistsController');
 Route::resource('lyrics', 'LyricsController');
-Route::resource('videos', 'VideosController'); 
+Route::resource('videos', 'VideosController');
 Route::resource('albums', 'AlbumsController');
 Route::resource('tracks', 'TracksController');
 Route::resource('posts', 'PostsController');
 Route::resource('events', 'EventsController');
-Route::resource('photos', 'PhotosController'); 
-Route::resource('users', 'UsersController'); 
-Route::resource('items', 'ItemsController'); 
-Route::resource('shoppingcarts', 'ShoppingCartsController'); 
-Route::resource('wishlists', 'WishlistsController'); 
-Route::resource('orders', 'OrdersController'); 
-Route::resource('tags', 'TagsController'); 
-Route::resource('addresses', 'AddressesController', ['except'=>'create']); 
+Route::resource('photos', 'PhotosController');
+Route::resource('users', 'UsersController');
+Route::resource('items', 'ItemsController');
+Route::resource('shoppingcarts', 'ShoppingCartsController');
+Route::resource('wishlists', 'WishlistsController');
+Route::resource('orders', 'OrdersController');
+Route::resource('tags', 'TagsController');
+Route::resource('addresses', 'AddressesController', ['except'=>'create']);
 
 Route::get('/artist/{id}/makeactive', array(
-		'uses' => 'ArtistsController@makeactive', 
+		'uses' => 'ArtistsController@makeactive',
 		'as' => 'artists.makeactive'
 	));
 
 Route::get('/artist/{id}/addbanner', array(
-		'uses' => 'PhotosController@makeartistbanner', 
+		'uses' => 'PhotosController@makeartistbanner',
 		'as' => 'artists.addbanner'
-	)); 
+	));
 
 Route::get('/addresses/{orderid}/order', array(
 		'uses' => 'AddressesController@create',
@@ -43,24 +43,24 @@ Route::get('/addresses/{orderid}/order', array(
 	));
 
 Route::get('/addresses/{orderid}/order/shipping', array(
-		'uses' => 'AddressesController@createshipping', 
+		'uses' => 'AddressesController@createshipping',
 		'as' => 'addresses.createshipping'
-	)); 
+	));
 
 Route::get('/addresses/{orderid}/order/billing', array(
-		'uses' => 'AddressesController@createbilling', 
-		'as' => 'addresses.createbilling' 
-	)); 
+		'uses' => 'AddressesController@createbilling',
+		'as' => 'addresses.createbilling'
+	));
 
 Route::get('/videos/delete/{id}', array(
-		'uses' => 'VideosController@delete', 
-		'as' => 'videos.delete' 
-	)); 
+		'uses' => 'VideosController@delete',
+		'as' => 'videos.delete'
+	));
 
 Route::get('/lyrics/delete/{id}', array(
-		'uses' => 'LyricsController@delete', 
-		'as' => 'lyrics.delete' 
-	)); 
+		'uses' => 'LyricsController@delete',
+		'as' => 'lyrics.delete'
+	));
 
 Route::get('/items/delete/{id}', array(
 		'uses' => 'ItemsController@delete',
