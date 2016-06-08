@@ -140,12 +140,14 @@ return [
 		'Illuminate\Session\SessionServiceProvider',
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
-		'Illuminate\View\ViewServiceProvider',
+        'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Broadcasting\BroadcastServiceProvider',
 
 		/*
 		 * Application Service Providers...
 		 */
-		'freshwax\Providers\AppServiceProvider',
+        'freshwax\Providers\AppServiceProvider',
+        'freshwax\Providers\AuthServiceProvider',
 		'freshwax\Providers\BusServiceProvider',
 		'freshwax\Providers\ConfigServiceProvider',
 		'freshwax\Providers\EventServiceProvider',
@@ -179,6 +181,7 @@ return [
 		'Eloquent'  => 'Illuminate\Database\Eloquent\Model',
 		'Event'     => 'Illuminate\Support\Facades\Event',
 		'File'      => 'Illuminate\Support\Facades\File',
+        'Gate' => Illuminate\Support\Facades\Gate::class,
 		'Hash'      => 'Illuminate\Support\Facades\Hash',
 		'Input'     => 'Illuminate\Support\Facades\Input',
 		'Inspiring' => 'Illuminate\Foundation\Inspiring',

@@ -1,6 +1,6 @@
 <?php namespace freshwax\Http\Controllers\Auth;
 
-use freshwax\Models\User; 
+use freshwax\Models\User;
 
 use freshwax\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
@@ -29,11 +29,8 @@ class PasswordController extends Controller {
 	 * @param  \Illuminate\Contracts\Auth\PasswordBroker  $passwords
 	 * @return void
 	 */
-	public function __construct(Guard $auth, PasswordBroker $passwords)
+	public function __construct()
 	{
-		$this->auth = $auth;
-		$this->passwords = $passwords;
-
 		$this->middleware('guest');
 	}
 
