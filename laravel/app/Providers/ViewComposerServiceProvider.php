@@ -56,9 +56,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 				$activeartist = new Artist;
 				$activeartist->name='Welcome to your new site, please create your artist profile!';
 			}
-
 			$view->with('activeartist', $activeartist);
-
 		});
 	}
 

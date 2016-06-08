@@ -1,6 +1,6 @@
 <?php namespace freshwax\Http\Controllers\Auth;
 
-use freshwax\Models\User; 
+use freshwax\Models\User;
 
 use freshwax\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;

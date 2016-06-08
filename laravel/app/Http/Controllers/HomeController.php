@@ -4,10 +4,10 @@ use View;
 use Input;
 use Redirect;
 
-use freshwax\Models\Album; 
-use freshwax\Models\Track; 
-use freshwax\Models\Post; 
-use freshwax\Models\Event; 
+use freshwax\Models\Album;
+use freshwax\Models\Track;
+use freshwax\Models\Post;
+use freshwax\Models\Event;
 
 class HomeController extends Controller {
 
@@ -43,7 +43,7 @@ class HomeController extends Controller {
 	}
 
 	public function lounge()
-	{ 
+	{
 		$albums = Album::where('private', '=', 1)->get();
 		$tracks = Track::where('private', '=', 1)->get();
 		$posts = Post::where('private', '=', 1)->get();

@@ -24,9 +24,9 @@ class UserCreateFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required|unique:users', 
-			'email' => 'required', 
-			'password' => 'required|confirmed', 
+			'name' => 'required|unique:users',
+			'email' => 'required',
+			'password' => 'required|confirmed',
 			'password_confirmation' => 'required'
 		];
 	}

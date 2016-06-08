@@ -1,8 +1,8 @@
 <?php namespace freshwax\Http\Middleware;
 
 use Closure;
-use Route; 
-use Request; 
+use Route;
+use Request;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier {

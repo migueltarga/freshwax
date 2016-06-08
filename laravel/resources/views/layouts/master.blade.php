@@ -20,7 +20,8 @@
 <body>
 
 	@include('layouts.partials.header')
-	@if(Auth::check())
+
+    @if(Auth::check())
 		@include('layouts.partials.nav')
 	@endif
 	@yield('content')

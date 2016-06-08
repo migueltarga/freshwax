@@ -13,10 +13,10 @@ class ArtistCreateFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		if(Auth::check()){ 
-			return Auth::user()->isartist || Auth::user()->isadmin;
-		} else { 
-			return false; 
+		if(Auth::check()){
+			return Auth::user()->isadmin;
+		} else {
+			return true;
 		}
 	}
 
@@ -28,8 +28,8 @@ class ArtistCreateFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required', 
-			'bio' => 'required', 
+			'name' => 'required',
+			'bio' => 'required',
 			'hometown' => 'required'
 		];
 	}

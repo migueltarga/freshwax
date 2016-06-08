@@ -34,39 +34,39 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token', 'admin', 'artist'];
 
 	public static function boot()
-	{ 
-		parent::boot(); 
+	{
+		parent::boot();
 
 		User::creating(function($buyer)
 		{
-			if(Hash::needsRehash($buyer->password)){ 
+			if(Hash::needsRehash($buyer->password)){
 				$buyer->password = Hash::make($buyer->password);
 			}
-		}); 
+		});
 	}
 
-	public function artist(){ 
-		return $this->belongsTo('freshwax\Models\Artist'); 
+	public function artist(){
+		return $this->belongsTo('freshwax\Models\Artist');
 	}
 
-	public function posts(){ 
-		return $this->hasMany('freshwax\Models\Post'); 
+	public function posts(){
+		return $this->hasMany('freshwax\Models\Post');
 	}
 
-	public function addresses(){ 
-		return $this->hasMany('freshwax\Models\Address'); 
+	public function addresses(){
+		return $this->hasMany('freshwax\Models\Address');
 	}
 
-	public function orders(){ 
-		return $this->hasMany('freshwax\Models\Order'); 
+	public function orders(){
+		return $this->hasMany('freshwax\Models\Order');
 	}
 
-	public function cart(){ 
-		return $this->hasOne('freshwax\Models\ShoppingCart'); 
+	public function cart(){
+		return $this->hasOne('freshwax\Models\ShoppingCart');
 	}
 
-	public function wishlist(){ 
-		return $this->hasOne('freshwax\Models\Wishlist'); 
+	public function wishlist(){
+		return $this->hasOne('freshwax\Models\Wishlist');
 	}
 
 
