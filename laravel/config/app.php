@@ -121,7 +121,6 @@ return [
 		 * Laravel Framework Service Providers...
 		 */
 		'Illuminate\Auth\AuthServiceProvider',
-		'Illuminate\Bus\BusServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
 		'Illuminate\Cookie\CookieServiceProvider',
@@ -147,8 +146,6 @@ return [
 		 */
         'freshwax\Providers\AppServiceProvider',
         'freshwax\Providers\AuthServiceProvider',
-		'freshwax\Providers\BusServiceProvider',
-		'freshwax\Providers\ConfigServiceProvider',
 		'freshwax\Providers\EventServiceProvider',
 		'freshwax\Providers\RouteServiceProvider',
 		'freshwax\Providers\ViewComposerServiceProvider'
