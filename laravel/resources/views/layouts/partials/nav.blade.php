@@ -5,8 +5,8 @@
 @else
 	@if(Auth::user()->isadmin)
 		@include('layouts.partials.nav.admin')
-	@endif
-	{!!link_to_route('shoppingcarts.show', 'Cart' , Auth::user()->cart->id) !!}
+    @endif
+    {!!link_to_route('shoppingcarts.show', 'Cart' , Auth::user()->cart->id) !!}
 	{!!link_to_route('wishlists.show', 'Wishlist' , Auth::user()->wishlist->id) !!}
 	{!!link_to_route('logout', 'Logout')!!}
 @endif
