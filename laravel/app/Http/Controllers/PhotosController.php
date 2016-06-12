@@ -4,13 +4,13 @@ use freshwax\Http\Requests;
 use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\PhotoCreateFormRequest;
 
-use freshwax\Models\Photo;
-use freshwax\Models\Artist;
-use freshwax\Models\Album;
-use freshwax\Models\Track;
-use freshwax\Models\Post;
-use freshwax\Models\Event;
-use freshwax\Models\Item;
+use freshwax\Photo;
+use freshwax\Artist;
+use freshwax\Album;
+use freshwax\Track;
+use freshwax\Post;
+use freshwax\Event;
+use freshwax\Item;
 
 use View;
 use Input;

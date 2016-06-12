@@ -1,15 +1,17 @@
 @include('errors.partials.show')
 
+    {{ csrf_field() }}
+
 	<p>
 		{!!Form::label('name', 'Name:')!!}
 		{!!Form::text('name')!!}
-	</p> 
+	</p>
 
-	<p> 
+	<p>
 		{!!Form::label('hometown', 'Hometown:')!!}
 		{!!Form::text('hometown')!!}
-	</p> 
-	<p> 
+	</p>
+	<p>
 		{!!Form::label('bio', 'Bio:')!!}
 		{!!Form::textarea('bio')!!}
-	</p> 
+	</p>

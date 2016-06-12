@@ -5,12 +5,12 @@ use freshwax\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Request;
 
-use freshwax\Models\ShoppingCart;
+use freshwax\ShoppingCart;
 
-use View; 
+use View;
 
-use Auth; 
-use Redirect; 
+use Auth;
+use Redirect;
 use Input;
 
 class ShoppingCartsController extends Controller {
@@ -22,7 +22,7 @@ class ShoppingCartsController extends Controller {
 	 */
 	public function index()
 	{
-		$carts = Shoppingcart::all(); 
+		$carts = Shoppingcart::all();
 		return View::make('shopping_carts.index', compact('carts'));
 	}
 
@@ -38,41 +38,41 @@ class ShoppingCartsController extends Controller {
 
 	public function additem(){
 		if(Request::cookie('cart') !== null){
-			
-			$cart = Request::cookie('cart'); 
-								
 
-		} else if(!Auth::check()){ 
-		
+			$cart = Request::cookie('cart');
+
+
+		} else if(!Auth::check()){
+
 			$cart = ShoppingCart::create([]);
-		
-		} else { 
-			
+
+		} else {
+
 			if(Auth::user()->wishlist->hasItem(Input::get('item_id'))){
 				Auth::user()->wishlist->removeItem(Input::get('item_id'));
 			}
 
-			$cart = Auth::user()->cart->items()->attach(Input::get('item_id')); 
-			return Redirect::route('shoppingcarts.show', Auth::user()->cart->id); 
+			$cart = Auth::user()->cart->items()->attach(Input::get('item_id'));
+			return Redirect::route('shoppingcarts.show', Auth::user()->cart->id);
 		}
-		
-		$cart->items()->attach(Input::get('item_id')); 
-		return Redirect::route('shoppingcarts.show', $cart->id)->withCookie(cookie('cart', $cart)); 
+
+		$cart->items()->attach(Input::get('item_id'));
+		return Redirect::route('shoppingcarts.show', $cart->id)->withCookie(cookie('cart', $cart));
 	}
 
-	public function removeitem(){ 
-		
-		if(Auth::check()){ 
+	public function removeitem(){
 
-			$cart = Auth::user()->cart->items->detach(Input::get('item_id')); 
-			return Redirect::route('shoppingcarts.show', Auth::user()->cart->id); 
-		
-		} else if(Request::cookie('cart') !== null) { 
-			
-			$cart = Request::cookie('cart'); 
-			$cart->items()->detach(Input::get('item_id')); 
-			return Redirect::route('shoppingcarts.show', $cart->id);  
-		} 
+		if(Auth::check()){
+
+			$cart = Auth::user()->cart->items->detach(Input::get('item_id'));
+			return Redirect::route('shoppingcarts.show', Auth::user()->cart->id);
+
+		} else if(Request::cookie('cart') !== null) {
+
+			$cart = Request::cookie('cart');
+			$cart->items()->detach(Input::get('item_id'));
+			return Redirect::route('shoppingcarts.show', $cart->id);
+		}
 
 
 	}
@@ -95,7 +95,7 @@ class ShoppingCartsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$cart = Shoppingcart::findOrFail($id); 
+		$cart = Shoppingcart::findOrFail($id);
 		return View::make('shopping_carts.show', compact('cart'));
 	}
 

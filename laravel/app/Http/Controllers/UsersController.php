@@ -6,11 +6,11 @@ use freshwax\Http\Requests\UserCreateFormRequest;
 
 use Illuminate\Support\Facades\Request;
 
-use freshwax\Models\User;
-use freshwax\Models\Artist;
-use freshwax\Models\ShoppingCart;
-use freshwax\Models\Wishlist;
-use freshwax\Models\Order;
+use freshwax\User;
+use freshwax\Artist;
+use freshwax\ShoppingCart;
+use freshwax\Wishlist;
+use freshwax\Order;
 
 use Cookie;
 use View;
