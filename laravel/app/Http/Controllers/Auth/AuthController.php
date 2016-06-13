@@ -5,6 +5,7 @@ use freshwax\Models\User;
 use freshwax\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 //might need Validator facade and User model here
 
@@ -22,7 +23,7 @@ class AuthController extends Controller {
      */
     protected $redirectTo = '/home';
 
-    use AuthenticatesAndRegistersUsers;
+    use AuthenticatesAndRegistersUsers,ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
