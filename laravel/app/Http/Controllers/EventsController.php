@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use freshwax\Models\Event;
 
-use DateTime; 
+use DateTime;
 use View;
 use Input;
 use Redirect;
@@ -16,116 +16,121 @@ use Auth;
 
 class EventsController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		if(Auth::check() && Auth::user()->isadmin){
-			$events = Event::all(); 
-		} else { 
-			$events = Event::where('private', '=', 0)->get();
-		}
+    public function __construct()
+    {
+        $this->middleware('auth:artist');
+    }
 
-		return View::make('events.index', compact('events')); 
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        if(Auth::check() && Auth::user()->isadmin){
+            $events = Event::all();
+        } else {
+            $events = Event::where('private', '=', 0)->get();
+        }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('events.create'); 
-	}
+        return View::make('events.index', compact('events'));
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(EventCreateFormRequest $request)
-	{
-		$event = Event::create(Input::all()); 
-		$time = new DateTime(Input::get('time')); 
-		$event->time = $time->format('Y-m-d H:i:s');
-		if(!Input::has('private')){
-			$event->private = false; 
-		}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('events.create');
+    }
 
-		$event->save(); 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(EventCreateFormRequest $request)
+    {
+        $event = Event::create(Input::all());
+        $time = new DateTime(Input::get('time'));
+        $event->time = $time->format('Y-m-d H:i:s');
+        if(!Input::has('private')){
+            $event->private = false;
+        }
 
-		return Redirect::route('events.index');
-	}
+        $event->save();
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$e = Event::findOrFail($id); 
+        return Redirect::route('events.index');
+    }
 
-		return View::make('events.show', compact('e'));
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $e = Event::findOrFail($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$event = Event::findOrFail($id); 
+        return View::make('events.show', compact('e'));
+    }
 
-		return View::make('events.edit', compact('event'));
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $event = Event::findOrFail($id);
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id, EventCreateFormRequest $request)
-	{
-		$event = Event::findOrFail($id); 
+        return View::make('events.edit', compact('event'));
+    }
 
-		$event->name = Input::get('name'); 
-		$event->time = Input::get('time'); 
-		$event->location = Input::get('location'); 
-		$event->description = Input::get('description'); 
-		$event->private = Input::get('private'); 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id, EventCreateFormRequest $request)
+    {
+        $event = Event::findOrFail($id);
 
-		$event->save(); 
+        $event->name = Input::get('name');
+        $event->time = Input::get('time');
+        $event->location = Input::get('location');
+        $event->description = Input::get('description');
+        $event->private = Input::get('private');
 
-		return $this->show($id); 
-	}
+        $event->save();
 
-	public function delete($id)
-	{ 
-		$event = Event::findOrFail($id); 
+        return $this->show($id);
+    }
 
-		return View::make('events.delete', compact('event'));
-	}
+    public function delete($id)
+    {
+        $event = Event::findOrFail($id);
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$event = Event::findOrFail($id); 
-		$event->delete();
-		return $this->index(); 
-	}
+        return View::make('events.delete', compact('event'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return $this->index();
+    }
 
 }

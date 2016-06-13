@@ -6,8 +6,8 @@ use freshwax\Http\Requests\AlbumCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Models\Album; 
-use freshwax\Models\Artist; 
+use freshwax\Models\Album;
+use freshwax\Models\Artist;
 
 use View;
 use Input;
@@ -16,114 +16,119 @@ use Auth;
 
 class AlbumsController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		
-		if(Auth::check() && Auth::user()->isadmin){
-			$albums = Album::all(); 
-		} else { 
-			$albums = Album::where('private', '=', 0)->get(); 
-		}
+    public function __construct()
+    {
+        $this->middleware('auth:artist');
+    }
 
-		return View::make('albums.index', compact('albums')); 
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		$artists = Artist::all();  
-		return View::make('albums.create', compact('artists')); 
-	}
+        if(Auth::check() && Auth::user()->isadmin){
+            $albums = Album::all();
+        } else {
+            $albums = Album::where('private', '=', 0)->get();
+        }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(AlbumCreateFormRequest $request)
-	{
-		$album = Album::create(Input::all()); 
+        return View::make('albums.index', compact('albums'));
+    }
 
-		$album->artists()->attach(Input::get('artist_id'));
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $artists = Artist::all();
+        return View::make('albums.create', compact('artists'));
+    }
 
-		return Redirect::route('albums.index');
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(AlbumCreateFormRequest $request)
+    {
+        $album = Album::create(Input::all());
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$a = Album::findOrFail($id); 
+        $album->artists()->attach(Input::get('artist_id'));
 
-		return View::make('albums.show', compact('a'));
-	}
+        return Redirect::route('albums.index');
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$album = Album::findOrFail($id); 
-		$artists = Artist::all(); 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $a = Album::findOrFail($id);
 
-		return View::make('albums.edit', compact('album', 'artists'));
-	}
+        return View::make('albums.show', compact('a'));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id, AlbumCreateFormRequest $request)
-	{
-		$album = Album::findOrFail($id); 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $album = Album::findOrFail($id);
+        $artists = Artist::all();
 
-		$album->name = Input::get('name'); 
-		$album->release_date = Input::get('release_date'); 
-		$album->description = Input::get('description'); 
-		$album->personnel = Input::get('personnel'); 
-		$album->private = Input::get('private'); 
+        return View::make('albums.edit', compact('album', 'artists'));
+    }
 
-		$album->save(); 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id, AlbumCreateFormRequest $request)
+    {
+        $album = Album::findOrFail($id);
 
-		return $this->show($album->id); 
-	}
+        $album->name = Input::get('name');
+        $album->release_date = Input::get('release_date');
+        $album->description = Input::get('description');
+        $album->personnel = Input::get('personnel');
+        $album->private = Input::get('private');
 
-	public function delete($id)
-	{ 
-		$album = Album::findOrFail($id); 
+        $album->save();
 
-		return View::make('albums.delete', compact('album'));
-	}
+        return $this->show($album->id);
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$album = Album::findOrFail($id); 
-		$album->delete(); 
-		return $this->index(); 
-	}
+    public function delete($id)
+    {
+        $album = Album::findOrFail($id);
+
+        return View::make('albums.delete', compact('album'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $album = Album::findOrFail($id);
+        $album->delete();
+        return $this->index();
+    }
 
 }

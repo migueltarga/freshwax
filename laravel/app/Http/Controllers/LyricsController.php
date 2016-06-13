@@ -6,103 +6,108 @@ use freshwax\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use freshwax\Models\Lyric;
-use freshwax\Models\Track;  
+use freshwax\Models\Track;
 
 use View;
-use Redirect;  
-use Input; 
+use Redirect;
+use Input;
 
 class LyricsController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$lyrics = Lyric::all(); 
-		return View::make('lyrics.index', compact('lyrics')); 
-	}
+    public function __construct()
+    {
+        $this->middleware('auth:artist');
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		$tracks = Track::all(); 
-		
-		if($tracks->count() == 0){ 
-			return Redirect::route('tracks.create')->withErrors(['Please create a track before adding lyrics for it.']);
-		} 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $lyrics = Lyric::all();
+        return View::make('lyrics.index', compact('lyrics'));
+    }
 
-		return View::make('lyrics.create', compact('tracks'));
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $tracks = Track::all();
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(LyricsCreateFormRequest $request)
-	{
-		$lyric = Lyric::create(Input::all());
-		
-		return $this->index(); 
-	}
+        if($tracks->count() == 0){
+            return Redirect::route('tracks.create')->withErrors(['Please create a track before adding lyrics for it.']);
+        }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$lyric = Lyric::findOrFail($id); 
-		return View::make('lyrics.show', compact('lyric'));
-	}
+        return View::make('lyrics.create', compact('tracks'));
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(LyricsCreateFormRequest $request)
+    {
+        $lyric = Lyric::create(Input::all());
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+        return $this->index();
+    }
 
-	public function delete($id) 
-	{ 
-		$lyric = Lyric::findOrFail($id);
-		return View::make('lyrics.delete', compact('lyric')); 
-	} 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $lyric = Lyric::findOrFail($id);
+        return View::make('lyrics.show', compact('lyric'));
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$lyric = Lyric::findOrFail($id);
-		$lyric->delete(); 
-		return $this->index();
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    public function delete($id)
+    {
+        $lyric = Lyric::findOrFail($id);
+        return View::make('lyrics.delete', compact('lyric'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $lyric = Lyric::findOrFail($id);
+        $lyric->delete();
+        return $this->index();
+    }
 }

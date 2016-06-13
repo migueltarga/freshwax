@@ -6,7 +6,7 @@ use freshwax\Http\Requests\PostCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Models\Post; 
+use freshwax\Models\Post;
 
 use View;
 use Input;
@@ -15,111 +15,115 @@ use Auth;
 
 class PostsController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		if(Auth::check() && Auth::user()->isadmin){	
-			$posts = Post::all(); 
-		} else { 
-			$posts = Post::where('private', '=', 0)->get(); 
-		} 	
-	
-		return View::make('posts.index', compact('posts')); 
-		
-	}
+    public function __construct()
+    {
+        $this->middleware('auth:artist');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        if(Auth::check() && Auth::user()->isadmin){
+            $posts = Post::all();
+        } else {
+            $posts = Post::where('private', '=', 0)->get();
+        }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('posts.create'); 
-	}
+        return View::make('posts.index', compact('posts'));
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(PostCreateFormRequest $request)
-	{
-		$post = Post::create(Input::all()); 
+    }
 
-		if(!Input::has('private')){
-			$post->private = false; 
-		}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('posts.create');
+    }
 
-		$post->save(); 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(PostCreateFormRequest $request)
+    {
+        $post = Post::create(Input::all());
 
-		return Redirect::route('posts.index');
-	}
+        if(!Input::has('private')){
+            $post->private = false;
+        }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$p = Post::findOrFail($id); 
-		return View::make('posts.show', compact('p')); 
-	}
+        $post->save();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$post = Post::findOrFail($id); 
-		return View::make('posts.edit', compact('post')); 
-	}
+        return Redirect::route('posts.index');
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id, PostCreateFormRequest $request)
-	{
-		$post =  Post::findOrFail($id); 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $p = Post::findOrFail($id);
+        return View::make('posts.show', compact('p'));
+    }
 
-		$post->name = Input::get('name'); 
-		$post->body = Input::get('body'); 
-		$post->private = Input::get('private'); 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return View::make('posts.edit', compact('post'));
+    }
 
-		$post->save(); 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id, PostCreateFormRequest $request)
+    {
+        $post =  Post::findOrFail($id);
 
-		return $this->show($id);
-	}
+        $post->name = Input::get('name');
+        $post->body = Input::get('body');
+        $post->private = Input::get('private');
 
-	public function delete($id)
-	{ 
-		$post = Post::findOrFail($id); 
-		return View::make('posts.delete', compact('post')); 
-	}
+        $post->save();
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$post = Post::findOrFail($id); 
-		$post->delete();
-		return $this->index(); 
-	}
+        return $this->show($id);
+    }
+
+    public function delete($id)
+    {
+        $post = Post::findOrFail($id);
+        return View::make('posts.delete', compact('post'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return $this->index();
+    }
 
 }

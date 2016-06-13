@@ -17,121 +17,126 @@ use Auth;
 
 class TracksController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		if(Auth::check() && Auth::user()->isadmin){
-			$tracks = Track::all();
-		} else {
-			$tracks = Track::where('private', '=', 0)->get();
-		}
-		return View::make('tracks.index', compact('tracks'));
-	}
+    public function __construct()
+    {
+        $this->middleware('auth:artist');
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		$artists = Artist::all();
-		return View::make('tracks.create', compact('artists'));
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        if(Auth::check() && Auth::user()->isadmin){
+            $tracks = Track::all();
+        } else {
+            $tracks = Track::where('private', '=', 0)->get();
+        }
+        return View::make('tracks.index', compact('tracks'));
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(TrackCreateFormRequest $request)
-	{
-		if(Input::hasFile('track')){
-			$track = Input::file('track');
-			$track_path = public_path() . '/uploads/';
-			$track_name = Input::get('name') . '.' . $track->getClientOriginalExtension();
-			$track->move($track_path, $track_name);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $artists = Artist::all();
+        return View::make('tracks.create', compact('artists'));
+    }
 
-			$track = Track::create(Input::except('track'));
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(TrackCreateFormRequest $request)
+    {
+        if(Input::hasFile('track')){
+            $track = Input::file('track');
+            $track_path = public_path() . '/uploads/';
+            $track_name = Input::get('name') . '.' . $track->getClientOriginalExtension();
+            $track->move($track_path, $track_name);
 
-			$track->path = '/uploads/' . Input::get('name');
+            $track = Track::create(Input::except('track'));
 
-			if(!Input::has('private')){
-				$track->private = false;
-			}
+            $track->path = '/uploads/' . Input::get('name');
 
-		} else if (Input::has('soundcloud_embed')){
+            if(!Input::has('private')){
+                $track->private = false;
+            }
 
-			$track = Track::create(Input::except('track'));
+        } else if (Input::has('soundcloud_embed')){
 
-		} else {
+            $track = Track::create(Input::except('track'));
+
+        } else {
             return Redirect::back()->withErrors(['Please Supply Me Some Jams']);
-		}
+        }
 
-		$activeartist = Artist::where('active_profile', '=', 1)->first();
-		$track->save();
+        $activeartist = Artist::where('active_profile', '=', 1)->first();
+        $track->save();
 
-		$track->artists()->attach($activeartist->id);
+        $track->artists()->attach($activeartist->id);
 
 
-		return Redirect::route('tracks.index');
-	}
+        return Redirect::route('tracks.index');
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$track = Track::findOrFail($id);
-		return View::make('tracks.edit', compact('track'));
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $track = Track::findOrFail($id);
+        return View::make('tracks.edit', compact('track'));
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
 
-	public function delete($id)
-	{
-		$track = Track::findOrFail($id);
-		return View::make('tracks.delete', compact('track'));
-	}
+    public function delete($id)
+    {
+        $track = Track::findOrFail($id);
+        return View::make('tracks.delete', compact('track'));
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$track = Track::findOrFail($id);
-		$track->delete();
-		return $this->index();
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $track = Track::findOrFail($id);
+        $track->delete();
+        return $this->index();
+    }
 
 }
