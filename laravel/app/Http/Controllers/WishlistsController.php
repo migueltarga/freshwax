@@ -5,12 +5,12 @@ use freshwax\Http\Controllers\Controller;
 
 use Request;
 
-use freshwax\Wishlist;
-use freshwax\Item;
+use freshwax\Models\Wishlist; 
+use freshwax\Models\Item; 
 
 use Redirect;
-use Input;
-use View;
+use Input; 
+use View; 
 use Auth;
 
 class WishlistsController extends Controller {
@@ -22,7 +22,7 @@ class WishlistsController extends Controller {
 	 */
 	public function index()
 	{
-		$wishlists = Wishlist::all();
+		$wishlists = Wishlist::all(); 
 		return View::make('wishlists.index', compact('wishlists'));
 	}
 
@@ -36,18 +36,18 @@ class WishlistsController extends Controller {
 		return View::make('wishlists.create');
 	}
 
-	public function additem(){
-		if(!Auth::check()){
+	public function additem(){ 
+		if(!Auth::check()){ 
 			return Redirect::route('login')->withErrors(['Need Account','Please Login or Create an Account']);
-		} else {
-			Auth::user()->wishlist->items()->attach(Input::get('item_id'));
-			return Redirect::route('wishlists.show', Auth::user()->wishlist->id);
+		} else { 
+			Auth::user()->wishlist->items()->attach(Input::get('item_id')); 
+			return Redirect::route('wishlists.show', Auth::user()->wishlist->id); 
 		}
 	}
 
-	public function removeitem(){
-		Auth::user()->wishlist->removeItem(Input::get('item_id'));
-		return Redirect::route('wishlists.show', Auth::user()->wishlist->id);
+	public function removeitem(){ 
+		Auth::user()->wishlist->removeItem(Input::get('item_id')); 
+		return Redirect::route('wishlists.show', Auth::user()->wishlist->id); 
 	}
 
 	/**
@@ -57,7 +57,7 @@ class WishlistsController extends Controller {
 	 */
 	public function store(WishlistCreateFormRequest $request)
 	{
-
+		
 	}
 
 	/**

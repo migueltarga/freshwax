@@ -5,7 +5,7 @@ use freshwax\Http\Controllers\Controller;
 
 use Request;
 
-use freshwax\Item;
+use freshwax\Models\Item; 
 
 use View;
 use Input;
@@ -20,8 +20,8 @@ class ItemsController extends Controller {
 	 */
 	public function index()
 	{
-		$items = Item::all();
-		return View::make('items.index', compact('items'));
+		$items = Item::all(); 
+		return View::make('items.index', compact('items')); 
 	}
 
 	/**
@@ -31,7 +31,7 @@ class ItemsController extends Controller {
 	 */
 	public function create()
 	{
-		return View::make('items.create');
+		return View::make('items.create'); 
 	}
 
 	/**
@@ -41,9 +41,9 @@ class ItemsController extends Controller {
 	 */
 	public function store(ItemCreateFormRequest $request)
 	{
-		$item = Item::create(Input::all());
+		$item = Item::create(Input::all()); 
 
-		return Redirect::route('items.show', $item->id);
+		return Redirect::route('items.show', $item->id);  
 	}
 
 	/**
@@ -54,8 +54,8 @@ class ItemsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$i = Item::findOrFail($id);
-		return View::make('items.show', compact('i'));
+		$i = Item::findOrFail($id); 
+		return View::make('items.show', compact('i')); 
 	}
 
 	/**
@@ -66,8 +66,8 @@ class ItemsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$item = Item::findOrFail($id);
-		return View::make('items.edit', compact('item'));
+		$item = Item::findOrFail($id); 
+		return View::make('items.edit', compact('item')); 
 	}
 
 	/**
@@ -78,19 +78,19 @@ class ItemsController extends Controller {
 	 */
 	public function update($id, ItemCreateFormRequest $request)
 	{
-		$item = Item::findOrFail($id);
+		$item = Item::findOrFail($id); 
 
-		$item->name = Input::get('name');
-		$item->description = Input::get('description');
-		$item->total = Input::get('total');
+		$item->name = Input::get('name'); 
+		$item->description = Input::get('description'); 
+		$item->total = Input::get('total'); 
 
-		$item->save();
+		$item->save(); 
 
-		return Redirect::route('items.show', $item->id);
+		return Redirect::route('items.show', $item->id); 
 	}
 
-	public function delete($id){
-		$item = Item::findOrFail($id);
+	public function delete($id){ 
+		$item = Item::findOrFail($id); 
 		return View::make('items.delete', compact(('item')));
 	}
 
@@ -102,8 +102,8 @@ class ItemsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$item = Item::findOrFail($id);
-		$item->delete();
+		$item = Item::findOrFail($id); 
+		$item->delete(); 
 		return Redirect::route('items.index');
 	}
 

@@ -6,9 +6,9 @@ use freshwax\Http\Requests\EventCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Event;
+use freshwax\Models\Event;
 
-use DateTime;
+use DateTime; 
 use View;
 use Input;
 use Redirect;
@@ -24,12 +24,12 @@ class EventsController extends Controller {
 	public function index()
 	{
 		if(Auth::check() && Auth::user()->isadmin){
-			$events = Event::all();
-		} else {
+			$events = Event::all(); 
+		} else { 
 			$events = Event::where('private', '=', 0)->get();
 		}
 
-		return View::make('events.index', compact('events'));
+		return View::make('events.index', compact('events')); 
 	}
 
 	/**
@@ -39,7 +39,7 @@ class EventsController extends Controller {
 	 */
 	public function create()
 	{
-		return View::make('events.create');
+		return View::make('events.create'); 
 	}
 
 	/**
@@ -49,14 +49,14 @@ class EventsController extends Controller {
 	 */
 	public function store(EventCreateFormRequest $request)
 	{
-		$event = Event::create(Input::all());
-		$time = new DateTime(Input::get('time'));
+		$event = Event::create(Input::all()); 
+		$time = new DateTime(Input::get('time')); 
 		$event->time = $time->format('Y-m-d H:i:s');
 		if(!Input::has('private')){
-			$event->private = false;
+			$event->private = false; 
 		}
 
-		$event->save();
+		$event->save(); 
 
 		return Redirect::route('events.index');
 	}
@@ -69,7 +69,7 @@ class EventsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$e = Event::findOrFail($id);
+		$e = Event::findOrFail($id); 
 
 		return View::make('events.show', compact('e'));
 	}
@@ -82,7 +82,7 @@ class EventsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$event = Event::findOrFail($id);
+		$event = Event::findOrFail($id); 
 
 		return View::make('events.edit', compact('event'));
 	}
@@ -95,22 +95,22 @@ class EventsController extends Controller {
 	 */
 	public function update($id, EventCreateFormRequest $request)
 	{
-		$event = Event::findOrFail($id);
+		$event = Event::findOrFail($id); 
 
-		$event->name = Input::get('name');
-		$event->time = Input::get('time');
-		$event->location = Input::get('location');
-		$event->description = Input::get('description');
-		$event->private = Input::get('private');
+		$event->name = Input::get('name'); 
+		$event->time = Input::get('time'); 
+		$event->location = Input::get('location'); 
+		$event->description = Input::get('description'); 
+		$event->private = Input::get('private'); 
 
-		$event->save();
+		$event->save(); 
 
-		return $this->show($id);
+		return $this->show($id); 
 	}
 
 	public function delete($id)
-	{
-		$event = Event::findOrFail($id);
+	{ 
+		$event = Event::findOrFail($id); 
 
 		return View::make('events.delete', compact('event'));
 	}
@@ -123,9 +123,9 @@ class EventsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$event = Event::findOrFail($id);
+		$event = Event::findOrFail($id); 
 		$event->delete();
-		return $this->index();
+		return $this->index(); 
 	}
 
 }
