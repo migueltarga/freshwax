@@ -5,12 +5,12 @@ use freshwax\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use freshwax\Lyric;
-use freshwax\Track;
+use freshwax\Models\Lyric;
+use freshwax\Models\Track;  
 
 use View;
-use Redirect;
-use Input;
+use Redirect;  
+use Input; 
 
 class LyricsController extends Controller {
 
@@ -21,8 +21,8 @@ class LyricsController extends Controller {
 	 */
 	public function index()
 	{
-		$lyrics = Lyric::all();
-		return View::make('lyrics.index', compact('lyrics'));
+		$lyrics = Lyric::all(); 
+		return View::make('lyrics.index', compact('lyrics')); 
 	}
 
 	/**
@@ -32,11 +32,11 @@ class LyricsController extends Controller {
 	 */
 	public function create()
 	{
-		$tracks = Track::all();
-
-		if($tracks->count() == 0){
+		$tracks = Track::all(); 
+		
+		if($tracks->count() == 0){ 
 			return Redirect::route('tracks.create')->withErrors(['Please create a track before adding lyrics for it.']);
-		}
+		} 
 
 		return View::make('lyrics.create', compact('tracks'));
 	}
@@ -49,8 +49,8 @@ class LyricsController extends Controller {
 	public function store(LyricsCreateFormRequest $request)
 	{
 		$lyric = Lyric::create(Input::all());
-
-		return $this->index();
+		
+		return $this->index(); 
 	}
 
 	/**
@@ -61,7 +61,7 @@ class LyricsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$lyric = Lyric::findOrFail($id);
+		$lyric = Lyric::findOrFail($id); 
 		return View::make('lyrics.show', compact('lyric'));
 	}
 
@@ -87,11 +87,11 @@ class LyricsController extends Controller {
 		//
 	}
 
-	public function delete($id)
-	{
+	public function delete($id) 
+	{ 
 		$lyric = Lyric::findOrFail($id);
-		return View::make('lyrics.delete', compact('lyric'));
-	}
+		return View::make('lyrics.delete', compact('lyric')); 
+	} 
 
 	/**
 	 * Remove the specified resource from storage.
@@ -102,7 +102,7 @@ class LyricsController extends Controller {
 	public function destroy($id)
 	{
 		$lyric = Lyric::findOrFail($id);
-		$lyric->delete();
+		$lyric->delete(); 
 		return $this->index();
 	}
 }

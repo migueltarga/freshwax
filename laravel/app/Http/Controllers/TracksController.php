@@ -6,14 +6,14 @@ use freshwax\Http\Requests\TrackCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Artist;
-use freshwax\Album;
-use freshwax\Track;
+use freshwax\Models\Artist;
+use freshwax\Models\Album;  
+use freshwax\Models\Track; 
 
 use View;
 use Input;
 use Redirect;
-use Auth;
+use Auth; 
 
 class TracksController extends Controller {
 
@@ -25,11 +25,11 @@ class TracksController extends Controller {
 	public function index()
 	{
 		if(Auth::check() && Auth::user()->isadmin){
-			$tracks = Track::all();
-		} else {
-			$tracks = Track::where('private', '=', 0)->get();
+			$tracks = Track::all(); 
+		} else { 
+			$tracks = Track::where('private', '=', 0)->get(); 
 		}
-		return View::make('tracks.index', compact('tracks'));
+		return View::make('tracks.index', compact('tracks')); 
 	}
 
 	/**
@@ -39,8 +39,8 @@ class TracksController extends Controller {
 	 */
 	public function create()
 	{
-		$artists = Artist::all();
-		return View::make('tracks.create', compact('artists'));
+		$artists = Artist::all(); 
+		return View::make('tracks.create', compact('artists')); 
 	}
 
 	/**
@@ -50,30 +50,30 @@ class TracksController extends Controller {
 	 */
 	public function store(TrackCreateFormRequest $request)
 	{
-		if(Input::hasFile('track')){
-			$track = Input::file('track');
+		if(Input::hasFile('track')){ 
+			$track = Input::file('track'); 
 			$track_path = public_path() . '/uploads/';
 			$track_name = Input::get('name') . '.' . $track->getClientOriginalExtension();
 			$track->move($track_path, $track_name);
+			
+			$track = Track::create(Input::except('track')); 
 
-			$track = Track::create(Input::except('track'));
-
-			$track->path = '/uploads/' . Input::get('name');
+			$track->path = '/uploads/' . Input::get('name'); 
 
 			if(!Input::has('private')){
-				$track->private = false;
+				$track->private = false; 
 			}
 
 		} else if (Input::has('soundcloud_embed')){
-
+		
 			$track = Track::create(Input::except('track'));
-
-		} else {
-			return Redirect::back()->withErrors(['Please Supply Me Some Jams']);
+		
+		} else { 
+			Redirect::back()->withErrors(['Please Supply Me Some Jams']);
 		}
 
 		$activeartist = Artist::where('active_profile', '=', 1)->first();
-		$track->save();
+		$track->save(); 
 
 		$track->artists()->attach($activeartist->id);
 
@@ -89,8 +89,8 @@ class TracksController extends Controller {
 	 */
 	public function show($id)
 	{
-		$track = Track::findOrFail($id);
-		return View::make('tracks.edit', compact('track'));
+		$track = Track::findOrFail($id); 
+		return View::make('tracks.edit', compact('track')); 
 	}
 
 	/**
@@ -116,9 +116,9 @@ class TracksController extends Controller {
 	}
 
 	public function delete($id)
-	{
-		$track = Track::findOrFail($id);
-		return View::make('tracks.delete', compact('track'));
+	{ 
+		$track = Track::findOrFail($id); 
+		return View::make('tracks.delete', compact('track')); 
 	}
 
 	/**
@@ -129,9 +129,9 @@ class TracksController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$track = Track::findOrFail($id);
-		$track->delete();
-		return $this->index();
+		$track = Track::findOrFail($id); 
+		$track->delete(); 
+		return $this->index();  
 	}
 
 }

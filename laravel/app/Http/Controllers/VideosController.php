@@ -2,15 +2,15 @@
 
 use freshwax\Http\Requests;
 use freshwax\Http\Controllers\Controller;
-use freshwax\Http\Requests\VideoCreateFormRequest;
+use freshwax\Http\Requests\VideoCreateFormRequest; 
 
-use freshwax\Video;
+use freshwax\Models\Video; 
 
 use Illuminate\Http\Request;
 
-use View;
-use Auth;
-use Input;
+use View; 
+use Auth; 
+use Input; 
 
 class VideosController extends Controller {
 
@@ -21,8 +21,8 @@ class VideosController extends Controller {
 	 */
 	public function index()
 	{
-		$videos = Video::all();
-		return View::make('videos.index', compact('videos'));
+		$videos = Video::all(); 
+		return View::make('videos.index', compact('videos')); 
 	}
 
 	/**
@@ -42,8 +42,8 @@ class VideosController extends Controller {
 	 */
 	public function store(VideoCreateFormRequest $request)
 	{
-		$video = Video::create(Input::all());
-		return $this->index();
+		$video = Video::create(Input::all()); 
+		return $this->index(); 
 	}
 
 	/**
@@ -54,8 +54,8 @@ class VideosController extends Controller {
 	 */
 	public function show($id)
 	{
-		$video = Video::findOrFail($id);
-		return View::make('videos.show', compact('video'));
+		$video = Video::findOrFail($id); 
+		return View::make('videos.show', compact('video')); 
 	}
 
 	/**
@@ -66,8 +66,8 @@ class VideosController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$video = Video::findOrFail($id);
-		return View::make('videos.edit', compact('video'));
+		$video = Video::findOrFail($id); 
+		return View::make('videos.edit', compact('video')); 
 	}
 
 	/**
@@ -89,16 +89,16 @@ class VideosController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$video = Video::findOrFail($id);
-		$video->delete();
-		return $this->index();
+		$video = Video::findOrFail($id); 
+		$video->delete(); 
+		return $this->index(); 
 	}
 
 	public function delete($id)
-	{
-		$video = Video::findOrFail($id);
-		return View::make('videos.delete', compact('video'));
-	}
+	{ 
+		$video = Video::findOrFail($id); 
+		return View::make('videos.delete', compact('video')); 
+	} 
 
 }
 

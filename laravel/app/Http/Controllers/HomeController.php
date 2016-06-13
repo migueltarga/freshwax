@@ -4,10 +4,10 @@ use View;
 use Input;
 use Redirect;
 
-use freshwax\Album;
-use freshwax\Track;
-use freshwax\Post;
-use freshwax\Event;
+use freshwax\Models\Album;
+use freshwax\Models\Track;
+use freshwax\Models\Post;
+use freshwax\Models\Event;
 
 class HomeController extends Controller {
 

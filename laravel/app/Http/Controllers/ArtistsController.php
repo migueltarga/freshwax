@@ -6,13 +6,13 @@ use freshwax\Http\Requests\ArtistCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Artist;
+use freshwax\Models\Artist;
 
 use View;
 use Input;
 use Redirect;
 use Config;
-use Auth;
+use Auth; 
 
 class ArtistsController extends Controller {
 
@@ -23,12 +23,12 @@ class ArtistsController extends Controller {
 	 */
 	public function index()
 	{
-		$artists = Artist::all();
+		$artists = Artist::all(); 
 
-		if($artists->count() == 0){
-			return $this->create()->withErrors(['Please create an artist profile...']);
-		}
-		return View::make('artists.index', compact('artists'));
+		if($artists->count() == 0){ 
+			return $this->create()->withErrors(['Please create an artist profile...']); 
+		}  
+		return View::make('artists.index', compact('artists')); 
 	}
 
 	/**
@@ -38,33 +38,33 @@ class ArtistsController extends Controller {
 	 */
 	public function create()
 	{
-		return View::make('artists.create');
+		return View::make('artists.create'); 
 	}
 
-	public function makeactive($id){
-
+	public function makeactive($id){ 
+		
 		if(Auth::check() && Auth::user()->isadmin){
+			
+			$artists = Artist::all(); 
 
-			$artists = Artist::all();
-
-			foreach($artists as $a){
-				if($a->active_profile){
-					$a->active_profile = false;
-					$a->save();
+			foreach($artists as $a){ 
+				if($a->active_profile){ 
+					$a->active_profile = false; 
+					$a->save();  
 				}
 			}
 
-			$artist = Artist::findOrFail($id);
-			$artist->active_profile = true;
-			$artist->save();
-
-			return Redirect::route('artists.index');
-
-		} else {
-
-			return Redirect::back();
-
-		}
+			$artist = Artist::findOrFail($id); 
+			$artist->active_profile = true; 
+			$artist->save(); 
+			
+			return Redirect::route('artists.index'); 
+		
+		} else { 
+		
+			return Redirect::back(); 
+		
+		} 
 	}
 
 	/**
@@ -74,11 +74,11 @@ class ArtistsController extends Controller {
 	 */
 	public function store(ArtistCreateFormRequest $request)
 	{
-		$artists = Artist::all();
-		$artist = Artist::create(Input::all());
+		$artists = Artist::all(); 
+		$artist = Artist::create(Input::all()); 
 		if($artists->count() == 0){
-			$artist->active_profile = true;
-			$artist->update();
+			$artist->active_profile = true; 
+			$artist->update(); 
 		}
 		return Redirect::route('artists.index');
 	}
@@ -91,7 +91,7 @@ class ArtistsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$a = Artist::findOrFail($id);
+		$a = Artist::findOrFail($id); 
 
 		return View::make('artists.show', compact('a'));
 	}
@@ -104,7 +104,7 @@ class ArtistsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$artist = Artist::findOrFail($id);
+		$artist = Artist::findOrFail($id); 
 
 		return View::make('artists.edit', compact('artist'));
 	}
@@ -117,20 +117,20 @@ class ArtistsController extends Controller {
 	 */
 	public function update($id, ArtistCreateFormRequest $request)
 	{
-		$artist = Artist::findOrFail($id);
+		$artist = Artist::findOrFail($id); 
 
-		$artist->name = Input::get('name');
-		$artist->bio = Input::get('bio');
-		$artist->hometown = Input::get('hometown');
+		$artist->name = Input::get('name'); 
+		$artist->bio = Input::get('bio'); 
+		$artist->hometown = Input::get('hometown'); 
 
-		$artist->save();
+		$artist->save(); 
 
-		return $this->show($artist->id);
+		return $this->show($artist->id); 
 	}
 
 	public function delete($id)
-	{
-		$artist = Artist::findOrFail($id);
+	{ 
+		$artist = Artist::findOrFail($id); 
 		return View::make('artists.delete', compact('artist'));
 	}
 
@@ -142,9 +142,9 @@ class ArtistsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$artist = Artist::findOrFail($id);
-		$artist->delete();
-		return $this->index();
+		$artist = Artist::findOrFail($id); 
+		$artist->delete(); 
+		return $this->index(); 
 	}
 
 }
