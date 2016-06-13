@@ -7,7 +7,7 @@ use freshwax\Http\Requests\UserCreateFormRequest;
 use Illuminate\Support\Facades\Request;
 
 use freshwax\User;
-use freshwax\Artist;
+use freshwax\Models\Artist;
 use freshwax\ShoppingCart;
 use freshwax\Wishlist;
 use freshwax\Order;
