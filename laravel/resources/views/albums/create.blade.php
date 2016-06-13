@@ -7,7 +7,6 @@
 		</header>
 
 		{!!Form::open(['route'=>'albums.store'])!!}
-            @include('layouts.form')
             @include('albums.partials.form')
 			{!!Form::submit('create')!!}
 		{!!Form::close()!!}

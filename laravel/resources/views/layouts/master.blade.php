@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 {!! HTML::style('skeleton/css/normalize.css') !!}
 {!! HTML::style('skeleton/css/skeleton.css') !!}

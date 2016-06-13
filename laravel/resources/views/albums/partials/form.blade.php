@@ -1,4 +1,3 @@
-@include('layouts.partials.form')
 @include('errors.partials.show')
 
 	<p>
