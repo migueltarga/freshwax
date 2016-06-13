@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-	<article> 
+	<article>
 		<h1>Edit Artist</h1>
-		{!!Form::model($artist, array('route' => array('artists.update', $artist->id), 'method' => 'PUT'))!!}
+        {!!Form::model($artist, array('route' => array('artists.update', $artist->id), 'method' => 'PUT'))!!}
 			@include('artists.partials.form')
 			{!!Form::submit('Edit')!!}
 		{!!Form::close()!!}
-	</article> 
+	</article>
 @stop

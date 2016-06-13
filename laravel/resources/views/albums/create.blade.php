@@ -1,15 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms"> 
-		<header> 
+	<article class="forms">
+		<header>
 			<h1>Create Album</h1>
-		</header> 
+		</header>
 
 		{!!Form::open(['route'=>'albums.store'])!!}
-			@include('albums.partials.form')
+            @include('layouts.form')
+            @include('albums.partials.form')
 			{!!Form::submit('create')!!}
 		{!!Form::close()!!}
 
-	</article> 
+	</article>
 @stop

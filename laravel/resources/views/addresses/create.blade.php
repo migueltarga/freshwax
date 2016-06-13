@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms"> 
-		<header> 
+	<article class="forms">
+		<header>
 			<h1>Add Address</h1>
-		</header> 
-		
+		</header>
+
 		{!!Form::open(['route'=>'addresses.store'])!!}
-			
+
 			@include('addresses.partials.form')
-			
+
 			<div class="row">
                 		<div class="six columns">
                         		{!!Form::label('billing', 'Billing:')!!}
@@ -23,7 +23,7 @@
         		</div>
 
 			{!!Form::submit('Create')!!}
-		
+
 		{!!Form::close()!!}
-	</article> 
-@stop 
+	</article>
+@stop
