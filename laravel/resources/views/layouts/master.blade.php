@@ -8,35 +8,40 @@
 {!! HTML::style('styles/css/screen.css') !!}
 
 @if($activeartist->hasBackground())
-	<style>
-		body {background-image: url({!!$activeartist->background()->path!!});
-		}
-		article {
-			background-color: white;
-		}
-	</style>
+    <style>
+        body {background-image: url({!!$activeartist->background()->path!!});
+        }
+        article {
+            background-color: white;
+        }
+    </style>
 @endif
 
 </head>
 <body>
 
-	@include('layouts.partials.header')
+    @include('layouts.partials.header')
 
     @if(Auth::check())
-		@include('layouts.partials.nav')
-	@endif
-	@yield('content')
+        @include('layouts.partials.nav')
+    @endif
+    @yield('content')
 
-	{!! HTML::script('styles/js/jquery-2.1.3.min.js') !!}
-	{!! HTML::script('styles/js/DateTimePicker.js') !!}
+    {!! HTML::script('styles/js/jquery-2.1.3.min.js') !!}
+    {!! HTML::script('styles/js/DateTimePicker.js') !!}
 
-	<script type="text/javascript">
-		$(document).ready(function()
- 		{
-        	$("#dtBox").DateTimePicker();
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#dtBox").DateTimePicker();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
- 		});
-	</script>
+});
+</script>
 
 <footer>
 
