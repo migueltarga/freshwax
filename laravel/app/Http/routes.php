@@ -29,87 +29,102 @@ Route::resource('addresses', 'AddressesController', ['except'=>'create']);
 
 Route::get('/artist/{id}/makeactive', array(
 		'uses' => 'ArtistsController@makeactive',
-		'as' => 'artists.makeactive'
+        'as' => 'artists.makeactive',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('/artist/{id}/addbanner', array(
 		'uses' => 'PhotosController@makeartistbanner',
-		'as' => 'artists.addbanner'
+        'as' => 'artists.addbanner',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('/addresses/{orderid}/order', array(
 		'uses' => 'AddressesController@create',
-		'as' => 'addresses.create'
+        'as' => 'addresses.create',
+        'middleware' => 'auth'
 	));
 
 Route::get('/addresses/{orderid}/order/shipping', array(
 		'uses' => 'AddressesController@createshipping',
-		'as' => 'addresses.createshipping'
+        'as' => 'addresses.createshipping',
+        'middleware' => 'auth'
 	));
 
 Route::get('/addresses/{orderid}/order/billing', array(
 		'uses' => 'AddressesController@createbilling',
-		'as' => 'addresses.createbilling'
+        'as' => 'addresses.createbilling',
+        'middleware' => 'auth'
 	));
 
 Route::get('/videos/delete/{id}', array(
 		'uses' => 'VideosController@delete',
-		'as' => 'videos.delete'
+        'as' => 'videos.delete',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('/lyrics/delete/{id}', array(
 		'uses' => 'LyricsController@delete',
-		'as' => 'lyrics.delete'
+        'as' => 'lyrics.delete',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('/items/delete/{id}', array(
 		'uses' => 'ItemsController@delete',
-		'as' => 'items.delete'
+        'as' => 'items.delete',
+        'middleware' => 'auth:artist',
 	));
 
 Route::get('/orders/delete/{id}', array(
 		'uses' => 'OrdersController@delete',
-		'as' => 'orders.delete'
+        'as' => 'orders.delete',
+        'middleware' => 'auth:admin'
 	));
 
 Route::get('events/delete/{id}', array(
 		'uses' => 'EventsController@delete',
-		'as' => 'events.delete'
+        'as' => 'events.delete',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('albums/delete/{id}', array(
 		'uses' => 'AlbumsController@delete',
-		'as' => 'albums.delete'
+        'as' => 'albums.delete',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('artists/delete/{id}', array(
 		'uses' => 'ArtistsController@delete',
-		'as' => 'artists.delete'
+        'as' => 'artists.delete',
+        'middleware' => 'auth:admin'
 	));
 
 Route::get('photos/delete/{id}', array(
 		'uses' => 'PhotosController@delete',
-		'as' => 'photos.delete'
+        'as' => 'photos.delete',
+        'middleware' => 'auth:artist'
 ));
 
 Route::get('posts/delete/{id}', array(
 		'uses' => 'PostsController@delete',
-		'as' => 'posts.delete'
+        'as' => 'posts.delete',
+        'middleware' => 'auth:artist'
 	));
 
 Route::get('tracks/delete/{id}', array(
 		'uses' => 'TracksController@delete',
-		'as' => 'tracks.delete'
+        'as' => 'tracks.delete',
+        'middleware' => 'auth:artist'
 	));
 
 Route::post('/cart/add/items', array(
 	'uses' => 'ShoppingCartsController@additem',
-	'as' => 'shoppingcarts.additem'
+    'as' => 'shoppingcarts.additem',
 ));
 
 Route::post('/wishlist/items', array(
 	'uses' => 'WishlistsController@additem',
-	'as' => 'wishlists.additem'
+    'as' => 'wishlists.additem',
 ));
 
 Route::post('/cart/remove/items', array(
@@ -145,57 +160,68 @@ Route::get('/logout', array(
 
 Route::get('artists/{id}/photos', array(
 	'uses' => 'PhotosController@artist',
-	'as' => 'photos.artist.create'
+    'as' => 'photos.artist.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('albums/{id}/photos', array(
 	'uses' => 'PhotosController@album',
-	'as' => 'photos.album.create'
+    'as' => 'photos.album.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('tracks/{id}/photos', array(
 	'uses' => 'PhotosController@track',
-	'as' => 'photos.track.create'
+    'as' => 'photos.track.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('events/{id}/photos', array(
 	'uses' => 'PhotosController@event',
-	'as' => 'photos.event.create'
+    'as' => 'photos.event.create',
+     'middleware' => 'auth:artist'
 ));
 
 Route::get('posts/{id}/photos', array(
 	'uses' => 'PhotosController@post',
-	'as' => 'photos.post.create'
+    'as' => 'photos.post.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('items/{id}/photos', array(
 	'uses' => 'PhotosController@item',
-	'as' => 'photos.item.create'
+    'as' => 'photos.item.create',
+     'middleware' => 'auth:artist'
 ));
 
 Route::get('albums/{id}/tags', array(
 	'uses' => 'TagsController@album',
-	'as' => 'tags.album.create'
+    'as' => 'tags.album.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('tracks/{id}/tags', array(
 	'uses' => 'TagsController@track',
-	'as' => 'tags.track.create'
+    'as' => 'tags.track.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('posts/{id}/tags', array(
 	'uses' => 'TagsController@post',
-	'as' => 'tags.post.create'
+    'as' => 'tags.post.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('events/{id}/tags', array(
 	'uses' => 'TagsController@event',
-	'as' => 'tags.event.create'
+    'as' => 'tags.event.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::get('items/{id}/tags', array(
 	'uses' => 'TagsController@item',
-	'as' => 'tags.item.create'
+    'as' => 'tags.item.create',
+    'middleware' => 'auth:artist'
 ));
 
 Route::auth();
