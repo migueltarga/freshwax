@@ -1,3 +1,4 @@
+@include('layouts.partials.form')
 @include('errors.partials.show')
 
 <p>
@@ -15,7 +16,7 @@
 {!!Form::checkbox('banner')!!}
 
 {!!Form::label('background', 'Background:')!!}
-{!!Form::checkbox('background')!!} 
+{!!Form::checkbox('background')!!}
 </p>
 
 <p>

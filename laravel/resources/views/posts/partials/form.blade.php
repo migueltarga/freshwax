@@ -1,17 +1,18 @@
+@include('layouts.partials.form')
 @include('errors.partials.show')
 
 	<p>
 		{!!Form::label('name', 'Name:')!!}
 		{!!Form::text('name')!!}
-	</p> 
-	<p> 
+	</p>
+	<p>
 		{!!Form::label('body', 'Post:')!!}
 		{!!Form::textarea('body')!!}
-	</p> 
+	</p>
 
 	{!!Form::hidden('user_id', Auth::user()->id)!!}
 
-	<p> 
+	<p>
 		{!!Form::label('private', 'Private:')!!}
 		{!!Form::checkbox('private')!!}
-	</p> 
+	</p>

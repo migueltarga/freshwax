@@ -1,7 +1,8 @@
+@include('layouts.partials.form')
 @include('errors.partials.show')
 
 
-<select name="track_id"> 
+<select name="track_id">
 	@foreach($tracks as $t)
 		<option value="{{$t->id}}">{{$t->name}}</option>
 	@endforeach
@@ -15,4 +16,4 @@
 <p>
 	{!!Form::label('credit', 'Credit:')!!}
 	{!!Form::text('credit')!!}
-</p> 
+</p>
