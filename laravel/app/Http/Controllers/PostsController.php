@@ -6,7 +6,7 @@ use freshwax\Http\Requests\PostCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Models\Post; 
+use freshwax\Post;
 
 use View;
 use Input;
@@ -22,14 +22,14 @@ class PostsController extends Controller {
 	 */
 	public function index()
 	{
-		if(Auth::check() && Auth::user()->isadmin){	
-			$posts = Post::all(); 
-		} else { 
-			$posts = Post::where('private', '=', 0)->get(); 
-		} 	
-	
-		return View::make('posts.index', compact('posts')); 
-		
+		if(Auth::check() && Auth::user()->isadmin){
+			$posts = Post::all();
+		} else {
+			$posts = Post::where('private', '=', 0)->get();
+		}
+
+		return View::make('posts.index', compact('posts'));
+
 	}
 
 	/**
@@ -39,7 +39,7 @@ class PostsController extends Controller {
 	 */
 	public function create()
 	{
-		return View::make('posts.create'); 
+		return View::make('posts.create');
 	}
 
 	/**
@@ -49,13 +49,13 @@ class PostsController extends Controller {
 	 */
 	public function store(PostCreateFormRequest $request)
 	{
-		$post = Post::create(Input::all()); 
+		$post = Post::create(Input::all());
 
 		if(!Input::has('private')){
-			$post->private = false; 
+			$post->private = false;
 		}
 
-		$post->save(); 
+		$post->save();
 
 		return Redirect::route('posts.index');
 	}
@@ -68,8 +68,8 @@ class PostsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$p = Post::findOrFail($id); 
-		return View::make('posts.show', compact('p')); 
+		$p = Post::findOrFail($id);
+		return View::make('posts.show', compact('p'));
 	}
 
 	/**
@@ -80,8 +80,8 @@ class PostsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$post = Post::findOrFail($id); 
-		return View::make('posts.edit', compact('post')); 
+		$post = Post::findOrFail($id);
+		return View::make('posts.edit', compact('post'));
 	}
 
 	/**
@@ -92,21 +92,21 @@ class PostsController extends Controller {
 	 */
 	public function update($id, PostCreateFormRequest $request)
 	{
-		$post =  Post::findOrFail($id); 
+		$post =  Post::findOrFail($id);
 
-		$post->name = Input::get('name'); 
-		$post->body = Input::get('body'); 
-		$post->private = Input::get('private'); 
+		$post->name = Input::get('name');
+		$post->body = Input::get('body');
+		$post->private = Input::get('private');
 
-		$post->save(); 
+		$post->save();
 
 		return $this->show($id);
 	}
 
 	public function delete($id)
-	{ 
-		$post = Post::findOrFail($id); 
-		return View::make('posts.delete', compact('post')); 
+	{
+		$post = Post::findOrFail($id);
+		return View::make('posts.delete', compact('post'));
 	}
 
 	/**
@@ -117,9 +117,9 @@ class PostsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$post = Post::findOrFail($id); 
+		$post = Post::findOrFail($id);
 		$post->delete();
-		return $this->index(); 
+		return $this->index();
 	}
 
 }

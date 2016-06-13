@@ -6,14 +6,14 @@ use freshwax\Http\Requests\TagCreateFormRequest;
 
 use Request;
 
-use freshwax\Models\Tag;
-use freshwax\Models\Track;
-use freshwax\Models\Album;
-use freshwax\Models\Event;
-use freshwax\Models\Post;
-use freshwax\Models\Item;
+use freshwax\Tag;
+use freshwax\Track;
+use freshwax\Album;
+use freshwax\Event;
+use freshwax\Post;
+use freshwax\Item;
 
-use View; 
+use View;
 use Input;
 use Redirect;
 
@@ -26,8 +26,8 @@ class TagsController extends Controller {
 	 */
 	public function index()
 	{
-		$tags = Tag::all(); 
-		return View::make('tags.index', compact('tags')); 
+		$tags = Tag::all();
+		return View::make('tags.index', compact('tags'));
 	}
 
 	/**
@@ -37,32 +37,32 @@ class TagsController extends Controller {
 	 */
 	public function create()
 	{
-		return View::make('tags.create'); 
+		return View::make('tags.create');
 	}
 
 	public function album($id)
-	{ 
-		return View::make('tags.create.album', compact('id')); 
+	{
+		return View::make('tags.create.album', compact('id'));
 	}
 
 	public function track($id)
-	{ 
-		return View::make('tags.create.track', compact('id')); 
+	{
+		return View::make('tags.create.track', compact('id'));
 	}
 
 	public function event($id)
-	{ 
-		return View::make('tags.create.event', compact('id')); 
+	{
+		return View::make('tags.create.event', compact('id'));
 	}
 
 	public function post($id)
-	{ 
-		return View::make('tags.create.post', compact('id')); 
+	{
+		return View::make('tags.create.post', compact('id'));
 	}
 
 	public function item($id)
-	{ 
-		return View::make('tags.create.item', compact('id')); 
+	{
+		return View::make('tags.create.item', compact('id'));
 	}
 
 	/**
@@ -74,43 +74,43 @@ class TagsController extends Controller {
 	{
 		$existingtag = Tag::where('tag', '=', Input::get('tag'))->get();
 
-		if(!$existingtag->isempty()){ 
-			$tag = $existingtag; 
-		} else { 
+		if(!$existingtag->isempty()){
+			$tag = $existingtag;
+		} else {
 			$tag = Tag::create(Input::all());
 		}
 
-		$tag=$tag[0]; 
+		$tag=$tag[0];
 
-		if(Request::has('artist')){ 
+		if(Request::has('artist')){
 			$artist = Artist::findOrFail(Input::get('artist'));
 			$artist->tags()->attach($tag->id);
 		}
 
-		if(Request::has('album')){ 
+		if(Request::has('album')){
 			$album = Album::findOrFail(Input::get('album'));
 			$album->tags()->attach($tag->id);
 		}
 
-		if(Request::has('track')){ 
+		if(Request::has('track')){
 			$track = Track::findOrFail(Input::get('track'));
 			$track->tags()->attach($tag->id);
 		}
 
-		if(Request::has('event')){ 
+		if(Request::has('event')){
 			$event = Event::findOrFail(Input::get('event'));
 			$event->tags()->attach($tag->id);
 		}
 
-		if(Request::has('post')){ 
+		if(Request::has('post')){
 			$post = Post::findOrFail(Input::get('post'));
 			$post->tags()->attach($tag->id);
 		}
 
-		if(Request::has('item')){ 
+		if(Request::has('item')){
 			$item = Item::findOrFail(Input::get('item'));
 			$item->tags()->attach($tag->id);
-		}		
+		}
 
 		return Redirect::route('home.landing');
 	}
@@ -123,8 +123,8 @@ class TagsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$tag = Tag::findOrFail($id); 
-		return View::make('tags.show', compact('tag')); 
+		$tag = Tag::findOrFail($id);
+		return View::make('tags.show', compact('tag'));
 	}
 
 	/**
@@ -135,8 +135,8 @@ class TagsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$tag = Tag::findOrFail($id); 
-		return View::make('tags.edit', compact('tag')); 
+		$tag = Tag::findOrFail($id);
+		return View::make('tags.edit', compact('tag'));
 	}
 
 	/**

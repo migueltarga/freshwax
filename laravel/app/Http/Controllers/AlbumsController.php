@@ -6,8 +6,8 @@ use freshwax\Http\Requests\AlbumCreateFormRequest;
 
 use Illuminate\Http\Request;
 
-use freshwax\Models\Album; 
-use freshwax\Models\Artist; 
+use freshwax\Album;
+use freshwax\Artist;
 
 use View;
 use Input;
@@ -23,14 +23,14 @@ class AlbumsController extends Controller {
 	 */
 	public function index()
 	{
-		
+
 		if(Auth::check() && Auth::user()->isadmin){
-			$albums = Album::all(); 
-		} else { 
-			$albums = Album::where('private', '=', 0)->get(); 
+			$albums = Album::all();
+		} else {
+			$albums = Album::where('private', '=', 0)->get();
 		}
 
-		return View::make('albums.index', compact('albums')); 
+		return View::make('albums.index', compact('albums'));
 	}
 
 	/**
@@ -40,8 +40,8 @@ class AlbumsController extends Controller {
 	 */
 	public function create()
 	{
-		$artists = Artist::all();  
-		return View::make('albums.create', compact('artists')); 
+		$artists = Artist::all();
+		return View::make('albums.create', compact('artists'));
 	}
 
 	/**
@@ -51,7 +51,7 @@ class AlbumsController extends Controller {
 	 */
 	public function store(AlbumCreateFormRequest $request)
 	{
-		$album = Album::create(Input::all()); 
+		$album = Album::create(Input::all());
 
 		$album->artists()->attach(Input::get('artist_id'));
 
@@ -66,7 +66,7 @@ class AlbumsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$a = Album::findOrFail($id); 
+		$a = Album::findOrFail($id);
 
 		return View::make('albums.show', compact('a'));
 	}
@@ -79,8 +79,8 @@ class AlbumsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$album = Album::findOrFail($id); 
-		$artists = Artist::all(); 
+		$album = Album::findOrFail($id);
+		$artists = Artist::all();
 
 		return View::make('albums.edit', compact('album', 'artists'));
 	}
@@ -93,22 +93,22 @@ class AlbumsController extends Controller {
 	 */
 	public function update($id, AlbumCreateFormRequest $request)
 	{
-		$album = Album::findOrFail($id); 
+		$album = Album::findOrFail($id);
 
-		$album->name = Input::get('name'); 
-		$album->release_date = Input::get('release_date'); 
-		$album->description = Input::get('description'); 
-		$album->personnel = Input::get('personnel'); 
-		$album->private = Input::get('private'); 
+		$album->name = Input::get('name');
+		$album->release_date = Input::get('release_date');
+		$album->description = Input::get('description');
+		$album->personnel = Input::get('personnel');
+		$album->private = Input::get('private');
 
-		$album->save(); 
+		$album->save();
 
-		return $this->show($album->id); 
+		return $this->show($album->id);
 	}
 
 	public function delete($id)
-	{ 
-		$album = Album::findOrFail($id); 
+	{
+		$album = Album::findOrFail($id);
 
 		return View::make('albums.delete', compact('album'));
 	}
@@ -121,9 +121,9 @@ class AlbumsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$album = Album::findOrFail($id); 
-		$album->delete(); 
-		return $this->index(); 
+		$album = Album::findOrFail($id);
+		$album->delete();
+		return $this->index();
 	}
 
 }

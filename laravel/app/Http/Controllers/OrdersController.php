@@ -5,9 +5,9 @@ use freshwax\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Request;
 
-use Redirect; 
-use freshwax\Models\ShoppingCart; 
-use freshwax\Models\Order; 
+use Redirect;
+use freshwax\ShoppingCart;
+use freshwax\Order;
 use Input;
 
 class OrdersController extends Controller {
@@ -19,12 +19,12 @@ class OrdersController extends Controller {
 	 */
 	public function index()
 	{
-		if(Auth::check() && Auth::user()->isadmin){ 
-			$orders = Order::all(); 
-		} else { 
-			$orders = Auth::user()->orders; 
-		} 
-		return View::make('orders.index', compact('orders')); 
+		if(Auth::check() && Auth::user()->isadmin){
+			$orders = Order::all();
+		} else {
+			$orders = Auth::user()->orders;
+		}
+		return View::make('orders.index', compact('orders'));
 	}
 
 	/**
@@ -44,23 +44,23 @@ class OrdersController extends Controller {
 	 */
 	public function store(OrderCreateFormRequest $request)
 	{
-		$cart = Shoppingcart::findOrFail(Input::get('shopping_cart_id')); 
+		$cart = Shoppingcart::findOrFail(Input::get('shopping_cart_id'));
 
-		if($cart->user == null){ 
+		if($cart->user == null){
 			return Redirect::route('users.create')
 				->withErrors(['Please create an account to continue your order.'])
 				->withCookie(cookie('continue_order', true));
 		}
-		$order = new Order; 
- 
-		$order->user()->associate($cart->user); 
+		$order = new Order;
 
-		$order->total = $cart->total(); 
+		$order->user()->associate($cart->user);
 
-		$order->save(); 
+		$order->total = $cart->total();
+
+		$order->save();
 
 
-		return Redirect::route('addresses.create', $order->id); 
+		return Redirect::route('addresses.create', $order->id);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class OrdersController extends Controller {
 	public function show($id)
 	{
 		$order = Order::findOrFail($id);
-		return View::make("orders.show", compact('order')); 
+		return View::make("orders.show", compact('order'));
 	}
 
 	/**
@@ -83,8 +83,8 @@ class OrdersController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$order = Order::findOrFail($id); 
-		return View::make("orders.edit", compact('order')); 
+		$order = Order::findOrFail($id);
+		return View::make("orders.edit", compact('order'));
 	}
 
 	/**
