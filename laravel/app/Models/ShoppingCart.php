@@ -1,6 +1,6 @@
 <?php
 
-namespace freshwax;
+namespace freshwax\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

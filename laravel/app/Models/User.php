@@ -1,4 +1,4 @@
-<?php namespace freshwax;
+<?php namespace freshwax\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
