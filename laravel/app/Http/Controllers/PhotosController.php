@@ -44,7 +44,7 @@ class PhotosController extends Controller {
 	public function artist($id)
 	{
 		return View::make('photos.create.artist', compact('id'));
-	}
+    }
 
 	public function makeartistbanner($id)
 	{
@@ -169,8 +169,9 @@ class PhotosController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-		//
+    {
+        $photo = Photo::findOrFail($id);
+		return View::make('photos.edit', compact('photo'));
 	}
 
 	/**

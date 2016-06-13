@@ -198,12 +198,6 @@ Route::get('items/{id}/tags', array(
 	'as' => 'tags.item.create'
 ));
 
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
