@@ -1,3 +1,5 @@
 laravel/public/uploads/*
 .env
+.swo
+.swp
 .lock
