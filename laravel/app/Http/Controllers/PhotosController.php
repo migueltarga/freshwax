@@ -86,9 +86,9 @@ class PhotosController extends Controller {
 
 		if($request->hasFile('photo')){
 			$photo = Input::file('photo');
-			$photo_path = '/uploads/';
+			$photo_path = public_path() . '/uploads/';
 			$photo_name = str_random(10) . date('Y-m-d') . '.' . $photo->getClientOriginalExtension();
-			$photo->move(public_path() . $photo_path, $photo_name);
+			$photo->move($photo_path, $photo_name);
             $img = Image::make( $photo_path . $photo_name);
 			$img->save();
 
@@ -106,7 +106,7 @@ class PhotosController extends Controller {
 		if(!Input::has('background')){
 			$photo->background = false;
 		}
-		$photo->path = $photo_path . $photo_name;
+		$photo->path = '/uploads/' . $photo_name;
 
 		if(Request::has('artist')){
 			$artist = Artist::findOrFail(Input::get('artist'));
