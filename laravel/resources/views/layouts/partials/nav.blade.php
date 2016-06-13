@@ -6,7 +6,6 @@
 	@if(Auth::user()->isadmin)
 		@include('layouts.partials.nav.admin')
     @endif
-	{!!link_to_route('logout', 'Logout')!!}
 @endif
 
 @if($albums->count() != 0)
