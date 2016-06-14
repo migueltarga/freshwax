@@ -26,3 +26,4 @@
 		{!!Form::checkbox('private')!!}
 	</p>
 
+    @include('albums.partials.albumselect')

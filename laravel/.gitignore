@@ -1,3 +1,4 @@
+/laravel/public/uploads/
 /vendor
 /node_modules
 *.env

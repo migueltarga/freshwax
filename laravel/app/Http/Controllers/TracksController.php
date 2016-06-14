@@ -45,7 +45,8 @@ class TracksController extends Controller {
     public function create()
     {
         $artists = Artist::all();
-        return View::make('tracks.create', compact('artists'));
+        $albums = Album::all();
+        return View::make('tracks.create', compact('artists','albums'));
     }
 
     /**
@@ -55,23 +56,24 @@ class TracksController extends Controller {
      */
     public function store(TrackCreateFormRequest $request)
     {
-        if(Input::hasFile('track')){
-            $track = Input::file('track');
+        $track = Track::create(Input::except('track'));
+
+        if( Input::hasFile('track') ){
+            $trackfile = Input::file('track');
             $track_path = public_path() . '/uploads/';
-            $track_name = Input::get('name') . '.' . $track->getClientOriginalExtension();
-            $track->move($track_path, $track_name);
-
-            $track = Track::create(Input::except('track'));
-
+            $track_name = Input::get('name') . '.' . $trackfile->getClientOriginalExtension();
+            $trackfile->move($track_path, $track_name);
             $track->path = '/uploads/' . Input::get('name');
-
-            if(!Input::has('private')){
-                $track->private = false;
-            }
-
         }
 
-        $track = Track::create(Input::except('track'));
+        if( !Input::has('private') ){
+            $track->private = false;
+        }
+
+        if( Input::has('album_id') ){
+            $track->album()->associate(Album::findOrFail($request->album_id));
+        }
+
 
         $activeartist = Artist::where('active_profile', '=', 1)->first();
         $track->save();
