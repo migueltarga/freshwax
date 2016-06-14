@@ -1,4 +1,5 @@
-/laravel/public/uploads/
+/laravel/public/uploads
+.sass-cache
 /vendor
 /node_modules
 *.env
