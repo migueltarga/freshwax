@@ -153,7 +153,7 @@ class PhotosController extends Controller {
 
         $photo->save();
 
-        return Redirect::route('home.landing');
+        return Redirect::route('photos.index');
     }
 
     /**
