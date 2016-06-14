@@ -80,44 +80,40 @@ class TagsController extends Controller {
         $existingtag = Tag::where('tag', '=', Input::get('tag'))->get();
 
         if(!$existingtag->isempty()){
-            $tag = $existingtag;
+            $tag = $existingtag[0];
         } else {
             $tag = Tag::create(Input::all());
         }
 
-        $tag=$tag[0];
 
-        if(!is_null($tag->id)){
+        if(Request::has('artist')){
+            $artist = Artist::findOrFail(Input::get('artist'));
+            $artist->tags()->attach($tag->id);
+        }
 
-            if(Request::has('artist')){
-                $artist = Artist::findOrFail(Input::get('artist'));
-                $artist->tags()->attach($tag->id);
-            }
+        if(Request::has('album')){
+            $album = Album::findOrFail(Input::get('album'));
+            $album->tags()->attach($tag->id);
+        }
 
-            if(Request::has('album')){
-                $album = Album::findOrFail(Input::get('album'));
-                $album->tags()->attach($tag->id);
-            }
+        if(Request::has('track')){
+            $track = Track::findOrFail(Input::get('track'));
+            $track->tags()->attach($tag->id);
+        }
 
-            if(Request::has('track')){
-                $track = Track::findOrFail(Input::get('track'));
-                $track->tags()->attach($tag->id);
-            }
+        if(Request::has('event')){
+            $event = Event::findOrFail(Input::get('event'));
+            $event->tags()->attach($tag->id);
+        }
 
-            if(Request::has('event')){
-                $event = Event::findOrFail(Input::get('event'));
-                $event->tags()->attach($tag->id);
-            }
+        if(Request::has('post')){
+            $post = Post::findOrFail(Input::get('post'));
+            $post->tags()->attach($tag->id);
+        }
 
-            if(Request::has('post')){
-                $post = Post::findOrFail(Input::get('post'));
-                $post->tags()->attach($tag->id);
-            }
-
-            if(Request::has('item')){
-                $item = Item::findOrFail(Input::get('item'));
-                $item->tags()->attach($tag->id);
-            }
+        if(Request::has('item')){
+            $item = Item::findOrFail(Input::get('item'));
+            $item->tags()->attach($tag->id);
         }
 
         return Redirect::route('home.landing');
