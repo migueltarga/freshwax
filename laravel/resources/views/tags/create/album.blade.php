@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<article> 
+	<article>
 		<h1>Add Tags to Album</h1>
 		{!!Form::open(['route'=>'tags.store'])!!}
 
@@ -11,5 +11,5 @@
 
 			{!!Form::submit('Add')!!}
 		{!!Form::close()!!}
-	</article> 
+	</article>
 @stop

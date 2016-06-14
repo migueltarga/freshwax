@@ -6,6 +6,7 @@ use freshwax\Http\Requests\AlbumCreateFormRequest;
 
 use Illuminate\Http\Request;
 
+use freshwax\Models\Track;
 use freshwax\Models\Album;
 use freshwax\Models\Artist;
 
@@ -19,6 +20,19 @@ class AlbumsController extends Controller {
     public function __construct()
     {
         $this->middleware('auth:artist');
+    }
+
+    //bet theres a generic way to write this in Controller
+    private function fetch($id)
+    {
+        return Album::findOrFail($id);
+    }
+
+    public function addTrack($id)
+    {
+        $album = $this->fetch($id);
+        $tracks = Track::all();
+        return View::make('tracks.create.album', compact('album','tracks'));
     }
 
     /**
@@ -71,7 +85,7 @@ class AlbumsController extends Controller {
      */
     public function show($id)
     {
-        $a = Album::findOrFail($id);
+        $a = $this->fetch($id);
 
         return View::make('albums.show', compact('a'));
     }

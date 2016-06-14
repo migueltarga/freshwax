@@ -13,10 +13,10 @@ class TrackCreateFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		if(Auth::check()){ 
+		if(Auth::check()){
 			return Auth::user()->isadmin;
-		} else { 
-			return false; 
+		} else {
+			return false;
 		}
 	}
 

@@ -69,13 +69,9 @@ class TracksController extends Controller {
                 $track->private = false;
             }
 
-        } else if (Input::has('soundcloud_embed')){
-
-            $track = Track::create(Input::except('track'));
-
-        } else {
-            return Redirect::back()->withErrors(['Please Supply Me Some Jams']);
         }
+
+        $track = Track::create(Input::except('track'));
 
         $activeartist = Artist::where('active_profile', '=', 1)->first();
         $track->save();
