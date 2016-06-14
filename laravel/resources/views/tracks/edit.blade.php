@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-	<article> 
+	<article>
 		<h1>Fill Me In</h1>
 
-	</article> 
+	</article>
 @stop

@@ -3,6 +3,7 @@
 use freshwax\Http\Requests;
 use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\AlbumCreateFormRequest;
+use freshwax\Http\Requests\AlbumUpdateFormRequest;
 
 use Illuminate\Http\Request;
 
@@ -110,15 +111,19 @@ class AlbumsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id, AlbumCreateFormRequest $request)
+    public function update($id, AlbumUpdateFormRequest $request)
     {
-        $album = Album::findOrFail($id);
+        $album = $this->fetch($id);
 
-        $album->name = Input::get('name');
-        $album->release_date = Input::get('release_date');
-        $album->description = Input::get('description');
-        $album->personnel = Input::get('personnel');
-        $album->private = Input::get('private');
+        if(isset($request->track_id)){
+            $album->tracks()->attach($request->track_id);
+        } else {
+            $album->name = Input::get('name');
+            $album->release_date = Input::get('release_date');
+            $album->description = Input::get('description');
+            $album->personnel = Input::get('personnel');
+            $album->private = Input::get('private');
+        }
 
         $album->save();
 
