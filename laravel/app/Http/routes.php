@@ -85,13 +85,23 @@ Route::get('events/delete/{id}', array(
 		'uses' => 'EventsController@delete',
         'as' => 'events.delete',
         'middleware' => 'auth:artist'
-	));
+    ));
+
+//ALBUMS
+
+Route::get('albums/{id}/track', array(
+        'uses' => 'AlbumsController@addTrack',
+        'as' => 'albums.track.create',
+        'middleware' => 'auth:artist'
+    ));
 
 Route::get('albums/delete/{id}', array(
 		'uses' => 'AlbumsController@delete',
         'as' => 'albums.delete',
         'middleware' => 'auth:artist'
-	));
+    ));
+
+//ENDALBUMS
 
 Route::get('artists/delete/{id}', array(
 		'uses' => 'ArtistsController@delete',
