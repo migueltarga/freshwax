@@ -4,7 +4,7 @@ use freshwax\Http\Requests\Request;
 
 use Auth;
 
-class AlbumCreateFormRequest extends Request {
+class AlbumUpdateFormRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
