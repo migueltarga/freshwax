@@ -12,7 +12,11 @@
 			<img src="{{$p->path}}" />
 		@endforeach
 
-	@endif
+    @endif
+
+    @foreach($a->tracks as $track)
+        <h2>{{$track->name}}</h2>
+    @endforeach
 
 	@foreach($a->artists as $artist)
 		<h2>{{$artist->name}}</h2>
