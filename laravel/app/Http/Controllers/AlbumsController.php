@@ -116,7 +116,8 @@ class AlbumsController extends Controller {
         $album = $this->fetch($id);
 
         if(isset($request->track_id)){
-            $album->tracks()->attach($request->track_id);
+            $track = Track::findOrFail($request->track_id);
+            $album->tracks()->save($track);
         } else {
             $album->name = Input::get('name');
             $album->release_date = Input::get('release_date');
