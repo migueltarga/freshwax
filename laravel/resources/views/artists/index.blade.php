@@ -3,7 +3,7 @@
 @section('content')
 	<article>
 		<header>
-			<h1>Artist Profiles</h1>
+			<h1>Artists</h1>
 		</header>
 
 		<?php $count=0 ?>
