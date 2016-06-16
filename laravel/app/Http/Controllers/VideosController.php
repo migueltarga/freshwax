@@ -19,6 +19,16 @@ class VideosController extends Controller {
         $this->middleware('auth:artist');
     }
 
+    public function fetch($id)
+    {
+        return Video::findOrFail($id);
+    }
+
+    public function tracks()
+    {
+        return Video::all();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +47,8 @@ class VideosController extends Controller {
      */
     public function create()
     {
-        return View::make('videos.create');
+        $tracks = $this->tracks();
+        return View::make('videos.create', compact('tracks'));
     }
 
     /**

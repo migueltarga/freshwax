@@ -22,6 +22,16 @@ class TracksController extends Controller {
         $this->middleware('auth:artist');
     }
 
+    public function fetch($id)
+    {
+        return Track::findOrFail($id);
+    }
+
+    public function albums()
+    {
+        return Album::all();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +55,7 @@ class TracksController extends Controller {
     public function create()
     {
         $artists = Artist::all();
-        $albums = Album::all();
+        $albums = $this->albums();
         return View::make('tracks.create', compact('artists','albums'));
     }
 
@@ -92,8 +102,8 @@ class TracksController extends Controller {
      */
     public function show($id)
     {
-        $track = Track::findOrFail($id);
-        return View::make('tracks.edit', compact('track'));
+        $track = $this->fetch($id);
+        return View::make('tracks.show', compact('track'));
     }
 
     /**
@@ -104,7 +114,9 @@ class TracksController extends Controller {
      */
     public function edit($id)
     {
-        //
+        $track = $this->fetch($id);
+        $albums = $this->albums();
+        return View::make('tracks.edit', compact('track'), compact('albums'));
     }
 
     /**
@@ -115,7 +127,9 @@ class TracksController extends Controller {
      */
     public function update($id)
     {
-        //
+       $track = $this->fetch($id);
+
+       return Redirect::route('tracks.show', compact('track')); //
     }
 
     public function delete($id)
