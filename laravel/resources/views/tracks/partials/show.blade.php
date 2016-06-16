@@ -16,8 +16,8 @@
 
 	<h4>
 		@if($track->tags->count())
-			@foreach($track->tags as $trackag)
-				{{$trackag->tag}}
+			@foreach($track->tags as $tag)
+				{{$tag->tag}}
 			@endforeach
 		@endif
 	</h4>
