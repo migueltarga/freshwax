@@ -1,14 +1,9 @@
 <header>
-    @if($activeartist->hasBanner())
-        <img src="{!!$activeartist->banner()->path!!}" />
-    @else
-		<h1>{!!$activeartist->name!!}</h1>
-		@if(isset($activeartist->id) && Auth::check() && Auth::user()->isadmin)
-			<nav>
-				{!!link_to_route('artists.addbanner', 'Replace with Banner Image', $activeartist->id)!!}
-			</nav>
-		@endif
-	@endif
-
-
+    <section class="site-header">
+        <h1>
+            FRESHWAX
+        </h1>
+        @include('layouts.partials.nav')
+    </section>
+    @include('layouts.partials.header.artist')
 </header>
