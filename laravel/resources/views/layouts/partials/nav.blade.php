@@ -1,11 +1,12 @@
 <nav>
 @if(!Auth::check())
 	{!!link_to_route('users.create', 'Register')!!}
-	{!!link_to_route('login', 'Login')!!}
+	{!!link_to_action('Auth\AuthController@login', 'Login')!!}
 @else
 	@if(Auth::user()->isadmin)
 		@include('layouts.partials.nav.admin')
     @endif
+    {!!link_to_action('Auth\AuthController@logout','Logout')!!}
 @endif
 
 @if($albums->count() != 0)

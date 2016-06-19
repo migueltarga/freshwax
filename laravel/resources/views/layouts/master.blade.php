@@ -18,19 +18,19 @@
 @endif
 
 </head>
+
 <body>
 
     @include('layouts.partials.header')
+    @include('layouts.partials.nav')
 
-    @if(Auth::check())
-        @include('layouts.partials.nav')
-    @endif
     @yield('content')
 
     {!! HTML::script('styles/js/jquery-2.1.3.min.js') !!}
     {!! HTML::script('styles/js/DateTimePicker.js') !!}
 
 <script type="text/javascript">
+
 $(document).ready(function()
 {
     $("#dtBox").DateTimePicker();
@@ -41,10 +41,11 @@ $(document).ready(function()
     });
 
 });
+
 </script>
 
 <footer>
-
+    @include('layouts.partials.footer')
 </footer>
 </body>
 </html>

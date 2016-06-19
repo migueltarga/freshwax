@@ -1,5 +1,8 @@
 <?php namespace freshwax\Http\Controllers\Auth;
 
+use Auth;
+use Session;
+
 use freshwax\Models\User;
 
 use freshwax\Http\Controllers\Controller;
@@ -34,7 +37,7 @@ class AuthController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['logout','getLogout']]);
     }
 
     /**
@@ -65,6 +68,13 @@ class AuthController extends Controller {
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        Session::flush();
+        return redirect('/');
     }
 
     public function showRegistrationForm()

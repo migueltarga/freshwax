@@ -160,17 +160,12 @@ Route::get('/home', array(
 
 Route::get('/login', array(
 	'uses' => 'UsersController@login',
-	'as' => 'login'
+    'as' => 'login'
 ));
 
 Route::get('/register', array(
     'uses' => 'UsersController@create',
     'as' => 'auth.register'
-));
-
-Route::get('/logout', array(
-	'uses' => 'UsersController@destroy',
-	'as' => 'logout'
 ));
 
 Route::get('artists/{id}/photos', array(
