@@ -67,4 +67,9 @@ class AuthController extends Controller {
         ]);
     }
 
+    public function showRegistrationForm()
+    {
+        $users = User::all();
+        return view('users.create', compact('users'));
+    }
 }

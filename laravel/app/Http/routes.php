@@ -163,6 +163,11 @@ Route::get('/login', array(
 	'as' => 'login'
 ));
 
+Route::get('/register', array(
+    'uses' => 'UsersController@create',
+    'as' => 'auth.register'
+));
+
 Route::get('/logout', array(
 	'uses' => 'UsersController@destroy',
 	'as' => 'logout'
