@@ -1,10 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<article class="forms">
+<article id="home">
 	<header>
-        @if(Auth::check())
-            <h1>Welcome</h1>
-        @endif
+        <h1>Built For Your Music</h1>
     </header>
 </article>
 @stop

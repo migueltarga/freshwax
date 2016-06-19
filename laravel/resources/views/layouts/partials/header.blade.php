@@ -5,5 +5,4 @@
         </h1>
         @include('layouts.partials.nav')
     </section>
-    @include('layouts.partials.header.artist')
 </header>
