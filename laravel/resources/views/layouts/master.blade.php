@@ -25,6 +25,8 @@
 
     @yield('content')
 
+    @include('layouts.partials.footer')
+
     {!! HTML::script('styles/js/jquery-2.1.3.min.js') !!}
     {!! HTML::script('styles/js/DateTimePicker.js') !!}
 
@@ -43,8 +45,5 @@ $(document).ready(function()
 
 </script>
 
-<footer>
-    @include('layouts.partials.footer')
-</footer>
 </body>
 </html>

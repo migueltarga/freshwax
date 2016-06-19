@@ -10,7 +10,7 @@
 @endif
 
 @if($albums->count() != 0)
-	{!!link_to_route('albums.index', 'Discography')!!}
+	{!!link_to_route('albums.index', 'Albums')!!}
 @endif
 
 @if($lyrics->count() != 0)
