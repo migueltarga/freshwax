@@ -13,9 +13,7 @@ class ArtistCreateFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		if(Auth::check()){
-			return Auth::user()->isadmin;
-		} else {
+        if(Auth::check()){
 			return true;
 		}
 	}

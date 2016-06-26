@@ -63,7 +63,8 @@ class ViewComposerServiceProvider extends ServiceProvider {
 	public function composeNav()
 	{
 		view()->composer('layouts.partials.nav', function($view){
-			$albums = Album::all();
+            $artists = Artist::all();
+            $albums = Album::all();
 			$tracks = Track::all();
 			$events = Event::all();
 			$lyrics = Lyric::all();
@@ -71,6 +72,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 			$items = Item::all();
 			$videos = Video::all();
 
+            $view->with('artists', $artists);
 			$view->with('albums', $albums);
 			$view->with('tracks', $tracks);
 			$view->with('events', $events);

@@ -85,6 +85,12 @@ class ArtistsController extends Controller {
             $artist->active_profile = true;
             $artist->update();
         }
+        $user = Auth::user();
+        $user->artists->attach($artist);
+        if(!$user->isartist){
+            $user->isartist = true;
+            $user->save();
+        }
         return Redirect::route('artists.index');
     }
 

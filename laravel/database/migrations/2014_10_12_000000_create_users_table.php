@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
 			$table->boolean('isadmin')->default(false);
 			$table->boolean('isartist')->default(false);
-			$table->integer('artist_id')->unsigned()->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});
