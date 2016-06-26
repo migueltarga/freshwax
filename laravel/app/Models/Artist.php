@@ -1,5 +1,7 @@
 <?php namespace freshwax\Models;
 
+use Auth;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model {
@@ -30,7 +32,7 @@ class Artist extends Model {
 
 	public function user(){
 		return $this->belongsTo('freshwax\Models\User');
-	}
+    }
 
 	public function hasBackground(){
 		foreach($this->photos as $p){
