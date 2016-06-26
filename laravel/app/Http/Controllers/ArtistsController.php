@@ -6,6 +6,7 @@ use freshwax\Http\Requests\ArtistCreateFormRequest;
 
 use Illuminate\Http\Request;
 
+use freshwax\Models\User;
 use freshwax\Models\Artist;
 
 use View;
@@ -33,6 +34,12 @@ class ArtistsController extends Controller {
         if($artists->count() == 0){
             return $this->create()->withErrors(['Please create an artist profile...']);
         }
+        return View::make('artists.index', compact('artists'));
+    }
+
+    public function userartists()
+    {
+        $artists = Auth::user()->artists;
         return View::make('artists.index', compact('artists'));
     }
 
@@ -79,14 +86,14 @@ class ArtistsController extends Controller {
      */
     public function store(ArtistCreateFormRequest $request)
     {
+        $user = User::findOrFail(Auth::user()->id);
         $artists = Artist::all();
         $artist = Artist::create(Input::all());
+        $artist->user()->associate($user->id);
         if($artists->count() == 0){
             $artist->active_profile = true;
-            $artist->update();
         }
-        $user = Auth::user();
-        $user->artists->attach($artist);
+        $artist->update();
         if(!$user->isartist){
             $user->isartist = true;
             $user->save();

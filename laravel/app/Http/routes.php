@@ -37,7 +37,13 @@ Route::get('/artist/{id}/addbanner', array(
 		'uses' => 'PhotosController@makeartistbanner',
         'as' => 'artists.addbanner',
         'middleware' => 'auth:artist'
-	));
+    ));
+
+Route::get('/my/artists',array(
+        'uses' => 'ArtistsController@userartists',
+        'as' => 'artists.myartists',
+        'middleware' => 'auth:artist'
+    ));
 
 Route::get('/addresses/{orderid}/order', array(
 		'uses' => 'AddressesController@create',

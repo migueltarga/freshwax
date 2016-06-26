@@ -29,7 +29,7 @@ class Artist extends Model {
 	}
 
 	public function user(){
-		return $this->hasOne('freshwax\Models\User');
+		return $this->belongsTo('freshwax\Models\User');
 	}
 
 	public function hasBackground(){
