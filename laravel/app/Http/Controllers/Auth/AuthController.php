@@ -74,11 +74,9 @@ class AuthController extends Controller {
 
     public function login(LoginRequest $request)
     {
-        if($request->has('remember') && Auth::viaRemember()){
-            return redirect()->intended("/");
-        }
-        $success = Auth::attempt(["email"=>$request->email, "password"=>$request->password], false);
-        if($success){
+        if(($request->has('remember') && Auth::viaRemember()) ||
+           Auth::attempt(["email"=>$request->email, "password"=>$request->password],false)
+        ){
             return redirect()->intended("/");
         }
         return redirect($this->loginPath)
