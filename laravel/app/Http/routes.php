@@ -234,6 +234,8 @@ Route::get('items/{id}/tags', array(
     'middleware' => 'auth:artist'
 ));
 
+Route::get('/home', 'HomeController@index');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

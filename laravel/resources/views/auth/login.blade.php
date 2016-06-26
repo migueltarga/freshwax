@@ -1,12 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+<article class="forms">
+<header>
+<h1>Login</h1>
+</headeR>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -38,15 +36,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        <p> Remember Me {!! Form::checkbox('remember', (1 or true), null) !!}</p>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -58,9 +48,5 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</article>
 @endsection

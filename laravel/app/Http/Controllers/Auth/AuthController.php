@@ -1,10 +1,11 @@
 <?php namespace freshwax\Http\Controllers\Auth;
 
 use Auth;
+use Cookie;
 use Session;
 
 use freshwax\Models\User;
-
+use freshwax\Http\Requests\LoginRequest;
 use freshwax\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
@@ -25,8 +26,9 @@ class AuthController extends Controller {
     |
      */
     protected $redirectTo = '/home';
+    protected $loginPath = '/login';
 
-    use AuthenticatesAndRegistersUsers,ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers;
 
     /**
      * Create a new authentication controller instance.
@@ -70,11 +72,28 @@ class AuthController extends Controller {
         ]);
     }
 
+    public function login(LoginRequest $request)
+    {
+        if($request->has('remember') && Auth::viaRemember()){
+            return redirect()->intended("/");
+        }
+        $success = Auth::attempt(["email"=>$request->email, "password"=>$request->password], false);
+        if($success){
+            return redirect()->intended("/");
+        }
+        return redirect($this->loginPath)
+            ->withInput($request->only('username', 'remember'))
+            ->withErrors([
+                'username' => $this->getFailedLoginMessage(),
+                ]);
+    }
+
     public function logout()
     {
+        $forgetMe = Cookie::forget(Auth::getRecallerName());
         Auth::logout();
         Session::flush();
-        return redirect('/');
+        return redirect('/')->withCookie($forgetMe);
     }
 
     public function showRegistrationForm()
