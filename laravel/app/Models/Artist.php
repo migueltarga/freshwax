@@ -15,7 +15,7 @@ class Artist extends Model {
 	}
 
 	public function albums(){
-		return $this->hasMany('freshwax\Models\Album');
+		return $this->belongsToMany('freshwax\Models\Album');
 	}
 
 	public function tracks(){

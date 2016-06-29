@@ -17,7 +17,8 @@ class CreatePostsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->text('body');
-			$table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('artist_id')->unsigned();
 			$table->boolean('private');
 			$table->timestamps();
 		});
