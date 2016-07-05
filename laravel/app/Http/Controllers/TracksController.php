@@ -69,11 +69,17 @@ class TracksController extends Controller {
         $track = Track::create(Input::except('track'));
 
         if( Input::hasFile('track') ){
-            $trackfile = Input::file('track');
+            $track_file = Input::file('track');
             $track_path = public_path() . '/uploads/';
-            $track_name = Input::get('name') . '.' . $trackfile->getClientOriginalExtension();
-            $trackfile->move($track_path, $track_name);
-            $track->path = '/uploads/' . Input::get('name');
+            $track_name = Input::get('name') . '.' . $track_file->getClientOriginalExtension();
+            $track_file->move($track_path, $track_name);
+            $track->path = realpath('/uploads/' . Input::get('name'));
+        }
+
+        //if it's not an mp3 it needs to be
+        if(strcasecmp($track_file->getClientOriginalExtension(),"mp3") != 0){
+            $convert_command = 'sox ' . $track->path . $track_file->getClientOriginalExtension() . ' ' . $track->path . '.mp3';
+            exec($convert_command);
         }
 
         if( !Input::has('private') ){
@@ -84,12 +90,10 @@ class TracksController extends Controller {
             $track->album()->associate(Album::findOrFail($request->album_id));
         }
 
-
         $activeartist = Artist::where('active_profile', '=', 1)->first();
         $track->save();
 
         $track->artists()->attach($activeartist->id);
-
 
         return Redirect::route('tracks.index');
     }
