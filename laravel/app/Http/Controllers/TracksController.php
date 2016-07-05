@@ -71,16 +71,18 @@ class TracksController extends Controller {
         if( Input::hasFile('track') ){
             $track_file = Input::file('track');
             $track_path = public_path() . '/uploads/';
-            $track_name = Input::get('name') . '.' . $track_file->getClientOriginalExtension();
+            $ext = $track_file->getClientOriginalExtension();
+            $track_name = Input::get('name') . '.' . $ext;
             $track_file->move($track_path, $track_name);
             $track->path = realpath('/uploads/' . Input::get('name'));
+            //if it's not an mp3 it needs to be
+            if(strcasecmp($ext,"mp3") != 0){
+                $convert_command = 'sox ' . $track->path . $ext . ' ' . $track->path . '.mp3';
+                exec($convert_command);
+            }
+
         }
 
-        //if it's not an mp3 it needs to be
-        if(strcasecmp($track_file->getClientOriginalExtension(),"mp3") != 0){
-            $convert_command = 'sox ' . $track->path . $track_file->getClientOriginalExtension() . ' ' . $track->path . '.mp3';
-            exec($convert_command);
-        }
 
         if( !Input::has('private') ){
             $track->private = false;
@@ -131,9 +133,9 @@ class TracksController extends Controller {
      */
     public function update($id)
     {
-       $track = $this->fetch($id);
+        $track = $this->fetch($id);
 
-       return Redirect::route('tracks.show', compact('track')); //
+        return Redirect::route('tracks.show', compact('track')); //
     }
 
     public function delete($id)
