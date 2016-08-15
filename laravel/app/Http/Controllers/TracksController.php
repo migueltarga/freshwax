@@ -3,6 +3,7 @@
 use freshwax\Http\Requests;
 use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\TrackCreateFormRequest;
+use freshwax\Http\Requests\TrackUpdateFormRequest;
 
 use Illuminate\Http\Request;
 
@@ -68,21 +69,7 @@ class TracksController extends Controller {
     {
         $track = Track::create(Input::except('track'));
 
-        if( Input::hasFile('track') ){
-            $track_file = Input::file('track');
-            $track_path = public_path() . '/uploads/';
-            $ext = $track_file->getClientOriginalExtension();
-            $track_name = Input::get('name') . '.' . $ext;
-            $track_file->move($track_path, $track_name);
-            $track->path = realpath('/uploads/' . Input::get('name'));
-            //if it's not an mp3 it needs to be
-            if(strcasecmp($ext,"mp3") != 0){
-                $convert_command = 'sox ' . $track->path . $ext . ' ' . $track->path . '.mp3';
-                exec($convert_command);
-            }
-
-        }
-
+        $track = $this->handleFile($track);
 
         if( !Input::has('private') ){
             $track->private = false;
@@ -100,6 +87,25 @@ class TracksController extends Controller {
         return Redirect::route('tracks.index');
     }
 
+    private function handleFile($track)
+    {
+        if( Input::hasFile('track') ){
+            $track_file = Input::file('track');
+            $track_path = public_path() . '/uploads/';
+            $ext = $track_file->getClientOriginalExtension();
+            $track_name = Input::get('name') . '.' . $ext;
+            $track_file->move($track_path, $track_name);
+            $track->path = realpath('/uploads/' . Input::get('name'));
+            //if it's not an mp3 it needs to be
+            if(strcasecmp($ext,"mp3") != 0){
+                $convert_command = 'sox ' . $track->path . $ext . ' ' . $track->path . '.mp3';
+                echo exec($convert_command);
+            }
+        }
+        return $track;
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -109,6 +115,8 @@ class TracksController extends Controller {
     public function show($id)
     {
         $track = $this->fetch($id);
+
+
         return View::make('tracks.show', compact('track'));
     }
 
@@ -131,10 +139,11 @@ class TracksController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, TrackCreateFormRequest $request)
     {
         $track = $this->fetch($id);
-
+        $track = $this->handleFile($track);
+        $track->save();
         return Redirect::route('tracks.show', compact('track')); //
     }
 

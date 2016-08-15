@@ -1,6 +1,6 @@
 <section class="four columns">
 	<header>
-		<h1>{{$track->name}}</h1>
+		<h1>{!!link_to_route('tracks.show', $track->name, $track->id)!!}</h1>
 
 		<h4>
 			@if($track->lyric != null)
