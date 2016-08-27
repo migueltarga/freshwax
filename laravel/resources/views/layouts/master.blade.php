@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,900|Trocchi" rel="stylesheet">
 {!! HTML::style('skeleton/css/normalize.css') !!}
 {!! HTML::style('skeleton/css/skeleton.css') !!}
 {!! HTML::style('styles/css/DateTimePicker.css') !!}
