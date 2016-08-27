@@ -1,14 +1,26 @@
 nav {
-	background-color: shade(white, 5);
-	padding: 10px 0;
+    background-color: shade(white, 5);
+    padding: 20px 10px;
+    max-width: 2400px;
+    margin: 0 auto; 
+    
+    section {
+        
+        margin-top: 5px;
 
-	a, a:visited { 
-		font-size: 12px; 
-		color: black;
-		padding: 5px;
-	}
+        a, a:visited {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 16px;
+            color: black;
+            line-height: 1.5;
+            padding: 2.5px;
+        }
 
-	a:visited:hover, a:hover { 
-		color: shade(blue, 50); 
-	}
+        a:visited:hover, a:hover { 
+            color: shade(blue, 75); 
+            background-color: white;
+            @include transition-duration(2s);
+        }
+    }
 }

@@ -2,7 +2,13 @@
 	text-align: center;
 }
 
-header { 
+header, footer {
+    background-color: tint(black, 10);
+    color: white;
+}
+
+footer {
+    padding: 20px; 
 } 
 
 article {
@@ -16,7 +22,6 @@ img {
 }
 
 table {
-
 	margin-left: 10px; 
  	tr { 
 		padding: 5px 0;

@@ -3,23 +3,24 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1,h2,h3,h4,h5,h6, p, a, input, textarea, label, li, th, td { 
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300; 
 	letter-spacing: 1px;
 }
 
 h1{ 
-	font-size: 24px; 
-	margin: 6px 0 0; 
+	font-size: 24px;
+	padding: 24px 0;
 }
 
 h2{ 
 	font-size: 18px; 
-	margin: 6px 0 0; 
+    padding: 18px 0;
 }
 
 h3{ 
-	font-size: 18px; 
-	margin: 6px 0 0; 
+	font-size: 18px;
+	padding: 9px 0;
 }
 
 p { 
@@ -29,7 +30,8 @@ p {
 }
 
 a { 
-	text-decoration: none; 
+	text-decoration: none;
+	font-weight: 900;
 }
 
 th { 
@@ -40,10 +42,16 @@ th, td {
 	text-align: center;
 } 
 
-header { 
+label {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+header {
+
 
 	h1 { 
-		font-size: 36px; 
+		font-size: 72px; 
 		text-align: center;
 		font-weight: 700; 
 	}
@@ -55,9 +63,16 @@ header {
 	} 
 }
 
+header, footer {
+    text-align: center; 
+}
+
 article { 
-	header{ 
-		h1 { 
+	header{
+        
+
+		h1 {
+		    font-family: 'Trocchi', serif;
 			font-size: 20px;
 			text-transform: uppercase; 
 			letter-spacing: 2px;

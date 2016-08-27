@@ -1,5 +1,3 @@
-<section class="admin">
-
 	{!!link_to_route('users.create', 'Manual User')!!}
 	{!!link_to_route('users.index', 'Users')!!}
 
@@ -18,5 +16,3 @@
 	{!!link_to_route('events.create', 'Create Event')!!}
 
 	{!!link_to_route('items.create', 'Create Item')!!}
-
-</section>
