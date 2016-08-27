@@ -1,15 +1,14 @@
 nav {
-    background-color: shade(white, 5);
     padding: 20px 10px;
     max-width: 2400px;
-    margin: 0 auto; 
+    margin: 0 auto;
+    background-color:white; 
     
     section {
         
         margin: 10px auto;
         text-align: left; 
         border-bottom: 1px solid black; 
-        max-width: 1200px; 
 
         a, a:visited {
             text-transform: uppercase;

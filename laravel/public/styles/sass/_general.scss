@@ -3,7 +3,9 @@
 }
 
 body {
-    position:relative; 
+    position:relative;
+    max-width: 1400px; 
+    margin: 0 auto; 
 }
 
 header, footer {
@@ -26,7 +28,8 @@ footer {
 } 
 
 article {
-    header { 
+    header {
+        background-color: shade(blue, 85); 
         padding: 20px 0 10px; 
     }
     section {
