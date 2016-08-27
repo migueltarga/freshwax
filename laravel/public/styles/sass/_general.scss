@@ -1,5 +1,9 @@
 .center { 
-	text-align: center;
+    text-align: center;
+}
+
+body {
+    position:relative; 
 }
 
 header, footer {
@@ -7,26 +11,39 @@ header, footer {
     color: white;
 }
 
+header { 
+    padding: 80px 0 20px;
+}
+
 footer {
-    padding: 20px; 
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: tint(black, 10); 
+    text-align: center;
 } 
 
 article {
-	header { 
-		padding: 20px 0 10px; 
-	} 
+    header { 
+        padding: 20px 0 10px; 
+    }
+    section {
+        padding: 40px 0; 
+    } 
 }
 
 img { 
-	width: 100%; 
+    width: 100%; 
 }
 
 table {
-	margin-left: 10px; 
- 	tr { 
-		padding: 5px 0;
-	} 
-	td, th { 
-		min-width: 100px; 
-	} 
+    margin-left: 10px; 
+    tr { 
+        padding: 5px 0;
+    } 
+    td, th { 
+        min-width: 100px; 
+    } 
 }

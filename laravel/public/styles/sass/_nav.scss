@@ -6,12 +6,15 @@ nav {
     
     section {
         
-        margin-top: 5px;
+        margin: 10px auto;
+        text-align: left; 
+        border-bottom: 1px solid black; 
+        max-width: 1200px; 
 
         a, a:visited {
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 16px;
+            letter-spacing: .5px;
+            font-size: 14px;
             color: black;
             line-height: 1.5;
             padding: 2.5px;
@@ -19,8 +22,8 @@ nav {
 
         a:visited:hover, a:hover { 
             color: shade(blue, 75); 
-            background-color: white;
-            @include transition-duration(2s);
+            background-color: shade(white, 5);
+            @include transition-duration(.5s);
         }
     }
 }
