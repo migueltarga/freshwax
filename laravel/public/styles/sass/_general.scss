@@ -6,10 +6,11 @@ body {
     position:relative;
     max-width: 1400px; 
     margin: 0 auto; 
+    background-color: shade(blue, 95); 
 }
 
 header, footer {
-    background-color: tint(black, 10);
+    background-color: shade(blue, 95);
     color: white;
 }
 
@@ -18,22 +19,28 @@ header {
 }
 
 footer {
-    padding: 20px;
+    padding: 20px 0 40px;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: tint(black, 10); 
     text-align: center;
 } 
 
 article {
+    background-color: white;
     header {
-        background-color: shade(blue, 85); 
         padding: 20px 0 10px; 
+        color: white;
     }
     section {
-        padding: 40px 0; 
+        padding: 40px 0;
+        header { 
+            background-color: white; 
+        }
+        nav { 
+            background-color: shade(white, 5); 
+        }
     } 
 }
 
