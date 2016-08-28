@@ -21,7 +21,7 @@ nav {
 
         a:visited:hover, a:hover { 
             color: shade(blue, 75); 
-            background-color: shade(white, 5);
+            background-color: white; 
             @include transition-duration(.5s);
         }
     }
