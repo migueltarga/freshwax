@@ -165,8 +165,8 @@ h3 {
 /* line 23, ../sass/_type.scss */
 p {
   font-size: 12px;
-  padding: 10px 5px;
   letter-spacing: 1px;
+  padding: 9px 0;
 }
 
 /* line 29, ../sass/_type.scss */
