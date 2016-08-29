@@ -96,41 +96,42 @@ article {
 /* line 26, ../sass/_general.scss */
 article header {
   padding: 20px 0 10px;
+  margin-bottom: 40px;
   color: white;
 }
-/* line 30, ../sass/_general.scss */
+/* line 31, ../sass/_general.scss */
 article section {
-  padding: 40px 0;
+  padding: 20px 0;
 }
-/* line 32, ../sass/_general.scss */
+/* line 33, ../sass/_general.scss */
 article section header {
   background-color: white;
 }
-/* line 35, ../sass/_general.scss */
+/* line 36, ../sass/_general.scss */
 article section nav {
   background-color: #f2f2f2;
 }
 
-/* line 41, ../sass/_general.scss */
+/* line 42, ../sass/_general.scss */
 img {
   width: 100%;
 }
 
-/* line 45, ../sass/_general.scss */
+/* line 46, ../sass/_general.scss */
 table {
   margin-left: 10px;
 }
-/* line 47, ../sass/_general.scss */
+/* line 48, ../sass/_general.scss */
 table tr {
   padding: 5px 0;
 }
-/* line 50, ../sass/_general.scss */
+/* line 51, ../sass/_general.scss */
 table td, table th {
   min-width: 100px;
 }
 
 /* line 1, ../sass/_type.scss */
-h1, h2, h3, h4, h5, h6, p, a, input, textarea, label, li, th, td {
+h1, h2, h3, h4, h5, h6, p, a, input, textarea, label, li, th, td, button {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   letter-spacing: 1px;
@@ -189,38 +190,50 @@ a {
 }
 
 /* line 50, ../sass/_type.scss */
+button {
+  border: none;
+  background-color: #000033;
+  color: white;
+  margin: 20px;
+}
+
+/* line 57, ../sass/_type.scss */
 th {
   font-weight: 700;
 }
 
-/* line 54, ../sass/_type.scss */
+/* line 61, ../sass/_type.scss */
 th, td {
   text-align: center;
 }
 
-/* line 58, ../sass/_type.scss */
+/* line 65, ../sass/_type.scss */
 label {
   font-size: 18px;
   font-weight: 900;
 }
 
-/* line 62, ../sass/_type.scss */
+/* line 69, ../sass/_type.scss */
 header, footer {
   text-align: center;
 }
 
-/* line 68, ../sass/_type.scss */
+/* line 75, ../sass/_type.scss */
 article header h1 {
   color: white;
   padding-top: 120px;
 }
+/* line 82, ../sass/_type.scss */
+article section header h1 {
+  text-align: left;
+}
 
-/* line 75, ../sass/_type.scss */
+/* line 89, ../sass/_type.scss */
 h1, h6 {
   font-family: 'Trocchi', serif;
 }
 
-/* line 78, ../sass/_type.scss */
+/* line 92, ../sass/_type.scss */
 h1 .brand {
   font-family: 'Trocchi', serif;
   font-size: 72px;
@@ -230,7 +243,7 @@ h1 .brand {
   border-bottom: 1px solid white;
 }
 
-/* line 86, ../sass/_type.scss */
+/* line 100, ../sass/_type.scss */
 h6 .brand {
   margin-left: 0;
   padding-top: 20px;
