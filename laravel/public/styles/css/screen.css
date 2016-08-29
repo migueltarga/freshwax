@@ -131,109 +131,130 @@ table td, table th {
 }
 
 /* line 1, ../sass/_type.scss */
-h1, h2, h3, h4, h5, h6, p, a, input, textarea, label, li, th, td, button {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+input,
+textarea,
+label,
+li,
+th,
+td,
+button {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   letter-spacing: 1px;
   color: #00000d;
 }
 
-/* line 8, ../sass/_type.scss */
-h1, h2, h3, h4, h5, h6, p {
+/* line 22, ../sass/_type.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-left: 15px;
 }
 
-/* line 12, ../sass/_type.scss */
+/* line 32, ../sass/_type.scss */
 h1 {
   font-size: 24px;
   padding: 24px 0;
 }
 
-/* line 17, ../sass/_type.scss */
+/* line 37, ../sass/_type.scss */
 h2 {
   font-size: 18px;
   padding: 18px 0;
 }
 
-/* line 22, ../sass/_type.scss */
+/* line 42, ../sass/_type.scss */
 h3 {
   font-size: 18px;
   padding: 9px 0;
 }
 
-/* line 27, ../sass/_type.scss */
+/* line 47, ../sass/_type.scss */
 h4 {
   font-size: 16px;
 }
 
-/* line 31, ../sass/_type.scss */
+/* line 51, ../sass/_type.scss */
 h5 {
   font-size: 12px;
 }
 
-/* line 35, ../sass/_type.scss */
+/* line 55, ../sass/_type.scss */
 h6 {
   font-size: 10px;
 }
 
-/* line 39, ../sass/_type.scss */
+/* line 59, ../sass/_type.scss */
 p {
   font-size: 12px;
   letter-spacing: 1px;
   padding: 9px 0;
 }
 
-/* line 45, ../sass/_type.scss */
+/* line 65, ../sass/_type.scss */
 a {
   text-decoration: none;
   font-weight: 900;
 }
 
-/* line 50, ../sass/_type.scss */
-button {
+/* line 70, ../sass/_type.scss */
+button,
+input[type="submit"] {
   border: none;
   background-color: #000033;
   color: white;
   margin: 20px;
 }
 
-/* line 57, ../sass/_type.scss */
+/* line 78, ../sass/_type.scss */
 th {
   font-weight: 700;
 }
 
-/* line 61, ../sass/_type.scss */
+/* line 82, ../sass/_type.scss */
 th, td {
   text-align: center;
 }
 
-/* line 65, ../sass/_type.scss */
+/* line 86, ../sass/_type.scss */
 label {
   font-size: 18px;
   font-weight: 900;
 }
 
-/* line 69, ../sass/_type.scss */
+/* line 90, ../sass/_type.scss */
 header, footer {
   text-align: center;
 }
 
-/* line 75, ../sass/_type.scss */
+/* line 96, ../sass/_type.scss */
 article header h1 {
   color: white;
   padding-top: 120px;
 }
-/* line 82, ../sass/_type.scss */
+/* line 103, ../sass/_type.scss */
 article section header h1 {
   text-align: left;
 }
 
-/* line 89, ../sass/_type.scss */
+/* line 110, ../sass/_type.scss */
 h1, h6 {
   font-family: 'Trocchi', serif;
 }
 
-/* line 92, ../sass/_type.scss */
+/* line 113, ../sass/_type.scss */
 h1 .brand {
   font-family: 'Trocchi', serif;
   font-size: 72px;
@@ -243,7 +264,7 @@ h1 .brand {
   border-bottom: 1px solid white;
 }
 
-/* line 100, ../sass/_type.scss */
+/* line 121, ../sass/_type.scss */
 h6 .brand {
   margin-left: 0;
   padding-top: 20px;

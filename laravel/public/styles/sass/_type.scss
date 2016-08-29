@@ -1,11 +1,31 @@
-h1,h2,h3,h4,h5,h6, p, a, input, textarea, label, li, th, td, button {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6, 
+p, 
+a, 
+input, 
+textarea, 
+label, 
+li, 
+th, 
+td, 
+button {
     font-family: 'Lato', sans-serif;
     font-weight: 300; 
     letter-spacing: 1px;
     color: shade(blue, 95);
 }
 
-h1,h2,h3,h4,h5,h6,p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
     margin-left: 15px;
 }
 
@@ -47,7 +67,8 @@ a {
     font-weight: 900;
 }
 
-button {
+button, 
+input[type="submit"] {
     border: none;
     background-color: $primary; 
     color: white;
