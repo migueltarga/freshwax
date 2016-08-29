@@ -2,11 +2,11 @@
 	<header>
 		<h1>{!!link_to_route('tracks.show', $track->name, $track->id)!!}</h1>
 
-		<h4>
+		<h2>
 			@if($track->lyric != null)
 				{!!link_to_route('lyrics.show', 'Lyrics', $track->lyric->id)!!}
 			@endif
-		</h4>
+		</h2>
 	</header>
 
 	@if(isset($track->soundcloud_embed))
