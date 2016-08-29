@@ -7,7 +7,6 @@
 				{!!link_to_route('lyrics.show', 'Lyrics', $track->lyric->id)!!}
 			@endif
 		</h4>
-
 	</header>
 
 	@if(isset($track->soundcloud_embed))
