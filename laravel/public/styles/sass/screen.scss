@@ -1,8 +1,9 @@
-/**COLORS**/
-
 /**COMPASS**/
 @import "compass/reset";
 @import "compass";
+
+/**COLORS**/
+$primary: shade(blue, 80); 
 
 /**CUSTOM**/
 @import "general"; 

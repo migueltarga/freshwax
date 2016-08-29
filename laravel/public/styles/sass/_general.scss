@@ -3,14 +3,13 @@
 }
 
 body {
-    position:relative;
     max-width: 1400px; 
     margin: 0 auto; 
-    background-color: shade(blue, 95); 
+    background-color: $primary; 
 }
 
 header, footer {
-    background-color: shade(blue, 95);
+    background-color: $primary;
     color: white;
 }
 
@@ -19,8 +18,7 @@ header {
 }
 
 footer {
-    padding: 20px 0 40px;
-    text-align: center;
+        
 } 
 
 article {
