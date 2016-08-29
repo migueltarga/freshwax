@@ -7,13 +7,17 @@
 		</header>
 
 		<?php $count=0 ?>
-		@foreach($tracks as $track)
-			@if($count % 3 == 0)
+
+        @foreach($tracks as $track)
+
+            @if($count % 3 == 0)
 				<div class="row">
 			@endif
-			@include('tracks.partials.show')
-			@if(++$count % 3 == 0)
-				<div class="row">
+
+            @include('tracks.partials.show')
+
+            @if(++$count % 3 == 0)
+				</div>
 			@endif
 		@endforeach
 
