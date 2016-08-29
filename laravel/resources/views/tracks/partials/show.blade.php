@@ -10,7 +10,7 @@
 	</header>
 
 	@if(isset($track->soundcloud_embed))
-		{!!$track->soundcloud_embed!!}
+		<h6>{!!$track->soundcloud_embed!!}</h6>
 	@endif
 
 	<h4>
