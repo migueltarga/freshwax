@@ -11,7 +11,11 @@
 
 	@if(isset($track->soundcloud_embed))
 		<h6>{!!$track->soundcloud_embed!!}</h6>
-	@endif
+    @endif
+
+    @if(isset($track->path))
+        {!! $track->path !!}
+    @endif
 
 	<h4>
 		@if($track->tags->count())
