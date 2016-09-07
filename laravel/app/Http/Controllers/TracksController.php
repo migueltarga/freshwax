@@ -69,7 +69,7 @@ class TracksController extends Controller {
     {
         $track = Track::create(Input::except('track'));
 
-        $track = $this->handleFile($track);
+        $track->path = $this->handleFile($request);
 
         if( !Input::has('private') ){
             $track->private = false;
@@ -80,29 +80,32 @@ class TracksController extends Controller {
         }
 
         $activeartist = Artist::where('active_profile', '=', 1)->first();
-        $track->save();
 
         $track->artists()->attach($activeartist->id);
+        $track->save();
 
         return Redirect::route('tracks.index');
     }
 
-    private function handleFile($track)
+    private function handleFile($request)
     {
-        if( Input::hasFile('track') ){
-            $track_file = Input::file('track');
+        if( isset($request->file('track')) ){
+            $track_file = $request->file('track');
             $track_path = public_path() . '/uploads/';
             $ext = $track_file->getClientOriginalExtension();
-            $track_name = Input::get('name') . '.' . $ext;
+            $name = preg_replace("/[^a-zA-Z]+/", "", $request->name);
+            $track_name = $name . '.' . $ext;
             $track_file->move($track_path, $track_name);
-            $track->path = realpath('/uploads/' . Input::get('name'));
+            $track->path = realpath($track_path);
             //if it's not an mp3 it needs to be
             if(strcasecmp($ext,"mp3") != 0){
                 $convert_command = 'sox ' . $track->path . $ext . ' ' . $track->path . '.mp3';
                 echo exec($convert_command);
             }
+        } else {
+            $track->path = '';
         }
-        return $track;
+        return $track->path;
     }
 
 
