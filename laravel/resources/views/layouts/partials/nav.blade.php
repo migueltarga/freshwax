@@ -1,32 +1,5 @@
-<nav class="twelve columns">
-    @if(!Auth::check())
-
-        <section>
-            {!!link_to_route('users.create', 'Register')!!}
-            {!!link_to_action('Auth\AuthController@login', 'Login')!!}
-        </section>
-
-    @else
-
-        @if(Auth::user()->isadmin)
-            <section class="admin_nav">
-                @include('layouts.partials.nav.admin')
-            </section>
-        @endif
-
-        @if(Auth::user()->isartist && !Auth::user()->isadmin)
-            <section class="artist_nav">
-                @include('layouts.partials.nav.artist')
-            </section>
-        @endif
-
-        <section class="user_nav">
-            @include('layouts.partials.nav.user')
-        </section>
-
-    @endif
-
-    <section>
+<nav class="twelve columns row">
+    <section class="six columns">
 
         @if($artists->count() > 0)
             {!!link_to_route('artists.index', 'Artists')!!}
@@ -61,5 +34,34 @@
         @endif
 
     </section>
+
+    @if(!Auth::check())
+
+        <section class="six columns">
+            {!!link_to_route('users.create', 'Register')!!}
+            {!!link_to_action('Auth\AuthController@login', 'Login')!!}
+        </section>
+
+    @else
+        <div class="row">
+            @if(Auth::user()->isadmin)
+                <section class="three columns">
+                    @include('layouts.partials.nav.admin')
+                </section>
+            @endif
+
+            @if(Auth::user()->isartist && !Auth::user()->isadmin)
+                <section class="artist_nav">
+                    @include('layouts.partials.nav.artist')
+                </section>
+            @endif
+
+            <section class="user_nav">
+                @include('layouts.partials.nav.user')
+            </section>
+        </div>
+
+    @endif
+
 </nav>
 
