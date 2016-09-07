@@ -1,4 +1,4 @@
-<nav>
+<nav class="twelve columns">
     @if(!Auth::check())
 
         <section>

@@ -3,7 +3,6 @@
 }
 
 body {
-    max-width: 1400px; 
     margin: 0 auto; 
     background-color: $primary; 
 }
@@ -23,6 +22,7 @@ footer {
 
 article {
     background-color: white;
+    margin: 40px 10%;
     header {
         padding: 20px 0 10px; 
         margin-bottom: 40px;

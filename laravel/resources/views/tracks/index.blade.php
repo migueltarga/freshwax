@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<article>
+	<article class="twelve columns">
 		<header>
             <h1>Tracks</h1>
 		</header>
