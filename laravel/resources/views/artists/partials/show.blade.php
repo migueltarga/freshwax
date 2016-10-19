@@ -1,4 +1,4 @@
-<section class="four columns">
+<section class="third">
                 <a href="{{route('artists.show', $a->id)}}">
                     <h1>{{$a->name}}</h1>
                     <h2>{{$a->hometown}}</h2>
