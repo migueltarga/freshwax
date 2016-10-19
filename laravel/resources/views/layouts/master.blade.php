@@ -4,6 +4,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,900|Trocchi" rel="stylesheet">
 {!! HTML::style('styles/css/DateTimePicker.css') !!}
 {!! HTML::style('styles/css/screen.css') !!}
+{!! HTML::style('styles/css/grid/output.css')
 
 @if($activeartist->hasBackground())
     <style>
