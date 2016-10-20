@@ -1,5 +1,5 @@
 <header class="row">
-    <section class="twelve columns">
+    <section class="">
         <h1>
             <a href="/">
                 @include('layouts.partials.brand')

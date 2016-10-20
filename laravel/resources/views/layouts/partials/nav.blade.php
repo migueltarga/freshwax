@@ -1,5 +1,5 @@
-<nav class="twelve columns">
-        <section class="eight columns">
+<nav class="l-2c">
+        <section class="c-1">
 
             @if($artists->count() > 0)
                 {!!link_to_route('artists.index', 'Artists')!!}
@@ -37,26 +37,27 @@
 
     @if(!Auth::check())
 
-            <section class="four columns">
+            <section class="c-2">
                 {!!link_to_route('users.create', 'Register')!!}
                 {!!link_to_action('Auth\AuthController@login', 'Login')!!}
             </section>
     @else
-            @if(Auth::user()->isadmin)
-                <section class="twelve columns">
-                    @include('layouts.partials.nav.admin')
-                </section>
-            @endif
+            <section class="c-2">
+                @include('layouts.partials.nav.user')
+            </section>
 
             @if(Auth::user()->isartist && !Auth::user()->isadmin)
-                <section class="six columns">
+                <section class="c-1">
                     @include('layouts.partials.nav.artist')
                 </section>
             @endif
 
-            <section class="six columns">
-                @include('layouts.partials.nav.user')
-            </section>
+
+            @if(Auth::user()->isadmin)
+                <section class="c-1">
+                    @include('layouts.partials.nav.admin')
+                </section>
+            @endif
         </div>
 
     @endif

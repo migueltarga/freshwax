@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="container">
+<body class="container g-all-c">
 
     @include('layouts.partials.header')
 
