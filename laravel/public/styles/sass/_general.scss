@@ -3,12 +3,10 @@
 }
 
 body {
-    margin: 0 auto; 
     background-color: $primary; 
 }
 
 header, footer {
-    grid-column: 6;
     background-color: tint($primary, 20);
     color: white;
 }
@@ -23,7 +21,6 @@ footer {
 
 article {
     background-color: white;
-    width: 100%;
     
     header {
         padding: 20px 0 10px; 
@@ -31,7 +28,6 @@ article {
         color: white;
     }
     section {
-        padding: 20px 0;
         header { 
             background-color: white;
         }
@@ -46,7 +42,6 @@ img {
 }
 
 table {
-    margin-left: 10px; 
     tr { 
         padding: 5px 0;
     } 
