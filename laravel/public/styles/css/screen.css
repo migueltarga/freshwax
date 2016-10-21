@@ -195,7 +195,7 @@ h6 {
 p {
   font-size: 12px;
   letter-spacing: 1px;
-  padding: 9px 0;
+  padding: 8px;
 }
 
 /* line 65, ../sass/_type.scss */
@@ -308,30 +308,44 @@ form {
 }
 
 /* line 6, ../sass/_forms.scss */
+input {
+  padding: 8px;
+  border: 1px solid #404040;
+}
+
+/* line 11, ../sass/_forms.scss */
 form,
 input[type="submit"] {
   display: inline-block;
 }
 
-/* line 11, ../sass/_forms.scss */
+/* line 16, ../sass/_forms.scss */
 input, textarea {
   width: 100%;
   margin-top: 10px;
   margin-left: 10px;
 }
 
-/* line 17, ../sass/_forms.scss */
+/* line 22, ../sass/_forms.scss */
 input[type="checkbox"] {
   width: auto;
 }
 
-/* line 21, ../sass/_forms.scss */
+/* line 26, ../sass/_forms.scss */
+input[type="submit"] {
+  max-width: 300px;
+  margin: 32px;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+
+/* line 33, ../sass/_forms.scss */
 label,
 select {
   margin-left: 10px;
 }
 
-/* line 27, ../sass/_forms.scss */
+/* line 39, ../sass/_forms.scss */
 .errors li {
   margin-left: 10px;
   background-color: red;
@@ -343,7 +357,7 @@ select {
   border-radius: 10px / 10px;
 }
 
-/* line 37, ../sass/_forms.scss */
+/* line 49, ../sass/_forms.scss */
 .forms {
   max-width: 800px;
   margin: 40px auto;

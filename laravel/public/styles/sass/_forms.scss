@@ -1,7 +1,12 @@
 form { 
 	width: 90%;
 	margin: 0 5%;
-} 
+}
+
+input {
+    padding: 8px;
+    border: 1px solid tint(black, 25);
+}
 
 form,
 input[type="submit"]{
@@ -16,6 +21,13 @@ input, textarea {
 
 input[type="checkbox"]{
 	width: auto;
+}
+
+input[type="submit"]{
+    max-width: 300px;
+    margin: 32px;
+    padding: 10px 0;
+    text-transform: uppercase;
 }
 
 label,
