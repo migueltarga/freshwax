@@ -269,27 +269,29 @@ h6 .brand {
 
 /* line 1, ../sass/_nav.scss */
 nav {
-  background-color: white;
+  background-color: #000033;
   padding: 20px 0;
 }
-/* line 9, ../sass/_nav.scss */
-nav section .c-1 a {
-  text-align: left;
+/* line 5, ../sass/_nav.scss */
+nav .c-1 {
+  text-align: left !important;
+}
+/* line 8, ../sass/_nav.scss */
+nav .c-2 {
+  text-align: right !important;
 }
 /* line 12, ../sass/_nav.scss */
-nav section .c-2 a {
-  text-align: right;
+nav section {
+  padding: 10px 0;
 }
-/* line 16, ../sass/_nav.scss */
+/* line 15, ../sass/_nav.scss */
 nav section a, nav section a:visited {
   font-size: 12px;
   letter-spacing: 0px;
-  color: #404040;
-  line-height: 1.5;
-  padding: 8px 0px 2px 8px;
-  margin-top: 12px;
+  color: white;
+  padding: 10px;
 }
-/* line 28, ../sass/_nav.scss */
+/* line 25, ../sass/_nav.scss */
 nav section a:visited:hover, nav section a:hover {
   color: #000040;
   background-color: white;

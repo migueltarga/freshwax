@@ -1,25 +1,22 @@
 nav {
-    background-color:white; 
+    background-color: $primary; 
     padding: 20px 0;
 
+    .c-1 {
+        text-align: left !important; 
+    }
+    .c-2 {
+        text-align: right !important;
+    }
 
     section {
-
-
-        .c-1 a {
-            text-align: left; 
-        }
-        .c-2 a {
-            text-align: right;
-        }
+        padding: 10px 0;
         
         a, a:visited {
             font-size: 12px;
             letter-spacing: 0px;
-            color: tint(black, 25);
-            line-height: 1.5;
-            padding: 8px 0px 2px 8px;
-            margin-top: 12px;
+            color: white;
+            padding: 10px;
         }
 
         a:first-child{ 
