@@ -2,19 +2,28 @@
         <section class="c-1">
 
             @if($artists->count() > 0)
-                {!!link_to_route('artists.index', 'Artists')!!}
+                <a href="{!! route('artists.index') !!}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span> Artists </span>
+                </a>
             @endif
 
             @if($albums->count() > 0)
-                {!!link_to_route('albums.index', 'Albums')!!}
+                <a href="{!! route('albums.index') !!}">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <span> Albums </span>
+                </a>
+            @endif
+
+            @if($tracks->count() > 0)
+                <a href="{!! route('tracks.index') !!}">
+                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                    <span> Tracks </span>
+                </a>
             @endif
 
             @if($lyrics->count() > 0)
                 {!!link_to_route('lyrics.index', 'Lyrics')!!}
-            @endif
-
-            @if($tracks->count() > 0)
-                {!!link_to_route('tracks.index', 'Listen')!!}
             @endif
 
             @if($videos->count() > 0)

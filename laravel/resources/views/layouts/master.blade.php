@@ -2,9 +2,10 @@
 <head>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,900|Trocchi" rel="stylesheet">
+{!! HTML::style('styles/css/font-awesome.min.css') !!}
 {!! HTML::style('styles/css/DateTimePicker.css') !!}
-{!! HTML::style('styles/css/screen.css') !!}
 {!! HTML::style('styles/css/grid/output.css') !!}
+{!! HTML::style('styles/css/screen.css') !!}
 
 @if($activeartist->hasBackground())
     <style>
