@@ -108,15 +108,18 @@ article {
 }
 
 h1,h6 { 
-    font-family: 'Trocchi', serif;
+    font-family: 'Vesper Libre', serif;
 }
+
+.brand { 
+    font-family: 'Vesper Libre', serif;
+}
+
 h1 .brand {
-    font-family: 'Trocchi', serif;
-    font-size: 48px; 
+    font-size: 48px;
     letter-spacing: 10px;
     margin-left: 0;
     color: white;
-    border-bottom: 1px solid white;
 }
 h6 .brand {
     margin-left: 0;

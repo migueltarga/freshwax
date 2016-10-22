@@ -83,39 +83,44 @@ header, footer {
 }
 
 /* line 14, ../sass/_general.scss */
+header {
+  padding: 10px 0 0;
+}
+
+/* line 18, ../sass/_general.scss */
 footer {
   padding: 20px 0;
 }
 
-/* line 18, ../sass/_general.scss */
+/* line 22, ../sass/_general.scss */
 article {
   background-color: white;
 }
-/* line 21, ../sass/_general.scss */
+/* line 25, ../sass/_general.scss */
 article header {
   padding: 20px 0 10px;
   margin-bottom: 40px;
   color: white;
 }
-/* line 27, ../sass/_general.scss */
+/* line 31, ../sass/_general.scss */
 article section header {
   background-color: white;
 }
-/* line 30, ../sass/_general.scss */
+/* line 34, ../sass/_general.scss */
 article section nav {
   background-color: #f2f2f2;
 }
 
-/* line 36, ../sass/_general.scss */
+/* line 40, ../sass/_general.scss */
 img {
   width: 100%;
 }
 
-/* line 41, ../sass/_general.scss */
+/* line 45, ../sass/_general.scss */
 table tr {
   padding: 5px 0;
 }
-/* line 44, ../sass/_general.scss */
+/* line 48, ../sass/_general.scss */
 table td, table th {
   min-width: 100px;
 }
@@ -241,20 +246,23 @@ article section header h1 {
 
 /* line 110, ../sass/_type.scss */
 h1, h6 {
-  font-family: 'Trocchi', serif;
+  font-family: 'Vesper Libre', serif;
 }
 
-/* line 113, ../sass/_type.scss */
+/* line 114, ../sass/_type.scss */
+.brand {
+  font-family: 'Vesper Libre', serif;
+}
+
+/* line 118, ../sass/_type.scss */
 h1 .brand {
-  font-family: 'Trocchi', serif;
   font-size: 48px;
   letter-spacing: 10px;
   margin-left: 0;
   color: white;
-  border-bottom: 1px solid white;
 }
 
-/* line 121, ../sass/_type.scss */
+/* line 124, ../sass/_type.scss */
 h6 .brand {
   margin-left: 0;
   padding-top: 20px;
@@ -372,5 +380,4 @@ select {
   margin-top: 40px;
   line-height: 2;
   font-size: 24px;
-  font-family: 'Trocchi', serif;
 }
