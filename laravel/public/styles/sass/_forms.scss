@@ -5,7 +5,6 @@ form {
 
 input {
     padding: 8px;
-    border: 1px solid tint(black, 25);
 }
 
 form,
@@ -14,7 +13,9 @@ input[type="submit"]{
 }
 
 input, textarea { 
+    border: 1px solid shade(white, 15);
 	width: 100%;
+	font-size: 18px;
 	margin-top: 10px;
 	margin-left: 10px;
 }
@@ -45,8 +46,3 @@ select {
 		@include border-radius(10px, 10px); 
 	}
 }
-
-.forms { 
-	max-width: 800px; 
-	margin: 40px auto; 
-} 
