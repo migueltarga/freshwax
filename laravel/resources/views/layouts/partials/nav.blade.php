@@ -1,4 +1,4 @@
-<nav class="l-2c">
+<nav class="top l-2c">
         <section class="c-1">
 
             @if($artists->count() > 0)
@@ -44,23 +44,27 @@
 
         </section>
 
-    @if(!Auth::check())
+@if(!Auth::check())
 
-            <section class="c-2">
-                <a href="{!! route('users.create') !!}">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span>Register</span>
-                </a>
-                <a href="{!! action('Auth\AuthController@login') !!}">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    <span>Login</span>
-                </a>
-            </section>
-    @else
-            <section class="c-2">
+        <section class="c-2">
+            <a href="{!! route('users.create') !!}">
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                <span>Register</span>
+            </a>
+            <a href="{!! action('Auth\AuthController@login') !!}">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <span>Login</span>
+            </a>
+        </section>
+</nav>
+
+@else
+
+    <section class="c-2">
                 @include('layouts.partials.nav.user')
-            </section>
-
+    </section>
+</nav>
+<nav class="left">
             @if(Auth::user()->isartist && !Auth::user()->isadmin)
                 <section class="c-1">
                     @include('layouts.partials.nav.artist')
@@ -74,8 +78,7 @@
                 </section>
             @endif
         </div>
-
-    @endif
-
 </nav>
+@endif
+
 
