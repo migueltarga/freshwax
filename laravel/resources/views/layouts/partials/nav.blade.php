@@ -47,8 +47,14 @@
     @if(!Auth::check())
 
             <section class="c-2">
-                {!!link_to_route('users.create', 'Register')!!}
-                {!!link_to_action('Auth\AuthController@login', 'Login')!!}
+                <a href="{!! route('users.create') !!}">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <span>Register</span>
+                </a>
+                <a href="{!! action('Auth\AuthController@login') !!}">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    <span>Login</span>
+                </a>
             </section>
     @else
             <section class="c-2">
