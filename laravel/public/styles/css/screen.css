@@ -66,3 +66,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /**COLORS**/
 /**CUSTOM**/
+/* line 1, ../sass/_type.scss */
+h1, h2, h3, h4, h5, h6, p, input, label {
+  font-family: 'Yantramanav', sans-serif;
+}
+
+/* line 5, ../sass/_type.scss */
+a, a:visited {
+  text-decoration: none;
+}
