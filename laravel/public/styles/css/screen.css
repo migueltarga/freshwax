@@ -67,11 +67,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /**COLORS**/
 /**CUSTOM**/
 /* line 1, ../sass/_type.scss */
-h1, h2, h3, h4, h5, h6, p, input, label {
+h1, h2, h3, h4, h5, h6, p, a, input, label {
   font-family: 'Yantramanav', sans-serif;
+  color: black;
 }
 
-/* line 5, ../sass/_type.scss */
+/* line 6, ../sass/_type.scss */
 a, a:visited {
   text-decoration: none;
+}
+
+/* line 11, ../sass/_type.scss */
+h1 a {
+  font-size: 48px;
+}
+
+/* line 1, ../sass/_nav.scss */
+nav {
+  margin: 48px 0;
+}
+/* line 3, ../sass/_nav.scss */
+nav .c-1 {
+  text-align: left;
+}
+/* line 6, ../sass/_nav.scss */
+nav .c-2 {
+  text-align: right;
+}
+/* line 9, ../sass/_nav.scss */
+nav a {
+  margin: 0 3.5px;
 }
