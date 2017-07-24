@@ -1,4 +1,6 @@
-<?php namespace freshwax\Models;
+<?php
+
+namespace freshwax\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +14,7 @@ class Post extends Model {
 		return $this->hasMany('freshwax\Models\Photo');
 	}
 
-	public function user(){
+    public function user(){
 		return $this->belongsTo('freshwax\Models\User');
     }
 
