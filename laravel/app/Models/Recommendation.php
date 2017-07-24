@@ -8,7 +8,7 @@ class Recommendation extends Model
 {
 	protected $table = "recommendations";
 
-	protected $fillable = ["user_id"];
+	protected $fillable = ["user_id, artist_id"];
 
     public function user(){
 		return $this->belongsTo('freshwax\Models\User');
