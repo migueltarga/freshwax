@@ -48,11 +48,15 @@ class User extends Model implements AuthenticatableContract,
 		});
 	}
 
-	public function artists(){
+    public function artists(){
 		return $this->hasMany('freshwax\Models\Artist');
 	}
 
-	public function posts(){
+    public function recommendations(){
+		return $this->hasMany('freshwax\Models\Recommendation');
+	}
+
+    public function posts(){
 		return $this->hasMany('freshwax\Models\Post');
 	}
 
