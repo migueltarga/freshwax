@@ -10,8 +10,12 @@ class Artist extends Model {
 
 	protected $fillable = ['bio', 'hometown', 'name'];
 
-	public function posts(){
+    public function posts(){
 		return $this->hasMany('freshwax\Models\Post');
+	}
+
+    public function recommendations(){
+		return $this->hasMany('freshwax\Models\Recommendation');
 	}
 
 	public function albums(){
