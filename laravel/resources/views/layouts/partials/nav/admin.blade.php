@@ -1,18 +1,44 @@
-	{!!link_to_route('users.create', 'Manual User')!!}
-	{!!link_to_route('users.index', 'Users')!!}
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('users.create')!!}">
+    Create User
+</a>
 
-	{!!link_to_route('photos.index', 'All Photos')!!}
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('users.index', 'Users')!!}">
+    Users
+</a>
 
-	{!!link_to_route('albums.create', 'Create Album')!!}
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('photos.index')!!}">
+    Photos
+</a>
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('albums.create')!!}">
+    Create Album
+</a>
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('tracks.create')!!}">
+    Create Track
+</a>
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('videos.create')!!}">
+    Create Video
+</a>
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('lyrics.create')!!}">
+    Create Lyrics
+</a>
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('posts.create')!!}">
+    Post
+</a>
 
-	{!!link_to_route('tracks.create', 'Create Track')!!}
+<a class="btn btn-sm navbar-btn"
+   href="{!!route('events.create')!!}">
+    Create Event
+</a>
 
-	{!!link_to_route('videos.create', 'Create Video')!!}
-
-	{!!link_to_route('lyrics.create', 'Create Lyric')!!}
-
-	{!!link_to_route('posts.create', 'Create Post')!!}
-
-	{!!link_to_route('events.create', 'Create Event')!!}
-
-	{!!link_to_route('items.create', 'Create Item')!!}
+<a class="btn btn-sm navbar-btn"
+   href="	{!!route('items.create')!!}">
+    Create Merch Item
+</a>
