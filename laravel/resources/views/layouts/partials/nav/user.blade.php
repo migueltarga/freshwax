@@ -1,8 +1,17 @@
-<a class="btn btn-default navbar-btn"
-    href="{!!route('artists.create')!!}">
-        Create Artist Profile
-</a>
-<a class="btn btn-default navbar-btn"
-    href="{!!action('Auth\AuthController@logout')!!}">
-        Logout
-</a>
+<li
+    @if(Request::is('artists/create'))
+        class="active"
+    @endif
+    >
+    <a  class=""
+        href="{!!route('artists.create')!!}">
+        <i class="fa fa-plus"></i>
+        Artist Profile
+    </a>
+</li>
+<li>
+    <a href="{!!action('Auth\AuthController@logout')!!}">
+        <i class="fa fa-sign-out"></i>
+            Logout
+    </a>
+</li>

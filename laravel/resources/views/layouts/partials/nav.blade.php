@@ -122,13 +122,14 @@
 </nav>
 
 @else
-        <div class="col-md-4 navbar-right">
+        <ul class="nav navbar-nav navbar-right">
 
                 @include('layouts.partials.nav.user')
-        </div>
+        </ul>
     </div>
 </nav>
 <nav class="navbar">
+    <div class="container-fluid">
             @if(Auth::user()->isartist && !Auth::user()->isadmin)
                     @include('layouts.partials.nav.artist')
             @endif
@@ -137,6 +138,7 @@
             @if(Auth::user()->isadmin)
                     @include('layouts.partials.nav.admin')
             @endif
+    </div>
 </nav>
 @endif
 
