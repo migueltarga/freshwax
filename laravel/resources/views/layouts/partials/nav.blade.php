@@ -1,6 +1,5 @@
-<nav class="top l-2c">
-        <section class="c-1">
-
+<nav class="navbar navbar-inverse">
+        <div class="navbar-left">
             @if($artists->count() > 0)
                 <a class="btn btn-default navbar-btn"
                     href="{!! route('artists.index') !!}">
@@ -42,12 +41,10 @@
             @if($items->count() > 0)
                 {!!link_to_route('items.index', 'Merch')!!}
             @endif
-
-        </section>
+        </div>
 
 @if(!Auth::check())
-
-        <section class="c-2">
+        <div class="navbar-right">
             <a class="btn btn-default navbar-btn"
                href="{!! route('users.create') !!}">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -58,29 +55,24 @@
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                 <span>Login</span>
             </a>
-        </section>
+        </div>
 </nav>
 
 @else
+        <div class="navbar-right">
 
-    <section class="c-2">
                 @include('layouts.partials.nav.user')
-    </section>
+        </div>
 </nav>
 <nav class="left">
             @if(Auth::user()->isartist && !Auth::user()->isadmin)
-                <section class="c-1">
                     @include('layouts.partials.nav.artist')
-                </section>
             @endif
 
 
             @if(Auth::user()->isadmin)
-                <section class="c-1">
                     @include('layouts.partials.nav.admin')
-                </section>
             @endif
-        </div>
 </nav>
 @endif
 
