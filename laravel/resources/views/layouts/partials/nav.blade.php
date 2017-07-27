@@ -1,70 +1,96 @@
-<nav class="navbar navbar-inverse">
-        <div class="navbar-left">
+<nav class="row navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
             @if($artists->count() > 0)
-                <a class="btn btn-default navbar-btn"
+            <li>
+                <a
+                    @if(Request::is('artists/*'))
+                        class="Active"
+                    @endif
                     href="{!! route('artists.index') !!}">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span> Artists </span>
                 </a>
+            </li>
             @endif
 
             @if($albums->count() > 0)
-                <a class="btn btn-default navbar-btn" href="{!! route('albums.index') !!}">
+            <li>
+                <a class="" href="{!! route('albums.index') !!}">
                     <i class="fa fa-music" aria-hidden="true"></i>
                     <span> Albums </span>
                 </a>
+            </li>
             @endif
 
             @if($tracks->count() > 0)
-                <a class="btn btn-default navbar-btn" href="{!! route('tracks.index') !!}">
+            <li>
+                <a class="" href="{!! route('tracks.index') !!}">
                     <i class="fa fa-headphones" aria-hidden="true"></i>
                     <span> Tracks </span>
                 </a>
+            </li>
             @endif
 
             @if($lyrics->count() > 0)
+            <li>
                 {!!link_to_route('lyrics.index', 'Lyrics')!!}
+            </li>
             @endif
 
             @if($videos->count() > 0)
+            <li>
                 {!!link_to_route('videos.index', 'Videos')!!}
+            </li>
             @endif
 
             @if($events->count() > 0)
+            <li>
                 {!!link_to_route('events.index', 'Events')!!}
+            </li>
             @endif
 
             @if($posts->count() > 0)
+            <li>
                 {!!link_to_route('posts.index', 'News')!!}
+            </li>
             @endif
 
             @if($items->count() > 0)
+            <li>
                 {!!link_to_route('items.index', 'Merch')!!}
+            </li>
             @endif
-        </div>
+        </ul>
 
 @if(!Auth::check())
-        <div class="navbar-right">
-            <a class="btn btn-default navbar-btn"
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+            <a class=""
                href="{!! route('users.create') !!}">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                 <span>Register</span>
             </a>
-            <a class="btn btn-default navbar-btn"
+            </li>
+            <li>
+            <a class=""
                href="{!! action('Auth\AuthController@login') !!}">
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                 <span>Login</span>
             </a>
-        </div>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 @else
-        <div class="navbar-right">
+        <div class="col-md-4 navbar-right">
 
                 @include('layouts.partials.nav.user')
         </div>
+    </div>
 </nav>
-<nav class="left">
+<nav class="navbar">
             @if(Auth::user()->isartist && !Auth::user()->isadmin)
                     @include('layouts.partials.nav.artist')
             @endif

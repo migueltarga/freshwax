@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="container g-all-c">
+<body class="container-fluid">
 
     @include('layouts.partials.header')
 
