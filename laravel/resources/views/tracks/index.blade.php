@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="twelve columns">
-		<header>
+	<article class="container-fluid">
+		<header class="jumbotron">
             <h1>Tracks</h1>
 		</header>
 
@@ -13,9 +13,9 @@
             @if($count % 3 == 0)
 				<div class="row">
 			@endif
-
-            @include('tracks.partials.show')
-
+            <div class="col-md-4">
+                @include('tracks.partials.show')
+            </div>
             @if(++$count % 3 == 0)
 				</div>
 			@endif
