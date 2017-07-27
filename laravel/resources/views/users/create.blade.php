@@ -12,7 +12,7 @@
 
 		{!!Form::open(['route'=>'users.store'])!!}
 			@include('users.partials.form')
-			{!!Form::submit('register')!!}
+			{!!Form::submit('Register',array('class'=>'btn btn-primary'))!!}
 		{!!Form::close()!!}
 	</article>
 @stop

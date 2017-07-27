@@ -1,17 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<article class="forms">
-<header>
+<article class="container-fluid">
+<header class="jumbotron">
 <h1>Login</h1>
-</headeR>
+</header>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="input-group-addon">E-Mail Address</label>
 
-                            <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
@@ -19,13 +18,11 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="input-group-addon">Password</label>
 
-                            <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
@@ -33,18 +30,17 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                            <p class="input-group-addon"> Remember Me {!! Form::checkbox('remember', (1 or true), null) !!}</p>
                         </div>
 
-                        <p> Remember Me {!! Form::checkbox('remember', (1 or true), null) !!}</p>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div>
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                                <a class="btn btn-default" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
                         </div>
                     </form>
