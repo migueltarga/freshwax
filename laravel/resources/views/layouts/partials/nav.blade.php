@@ -2,21 +2,22 @@
         <section class="c-1">
 
             @if($artists->count() > 0)
-                <a href="{!! route('artists.index') !!}">
+                <a class="btn btn-default navbar-btn"
+                    href="{!! route('artists.index') !!}">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span> Artists </span>
                 </a>
             @endif
 
             @if($albums->count() > 0)
-                <a href="{!! route('albums.index') !!}">
+                <a class="btn btn-default navbar-btn" href="{!! route('albums.index') !!}">
                     <i class="fa fa-music" aria-hidden="true"></i>
                     <span> Albums </span>
                 </a>
             @endif
 
             @if($tracks->count() > 0)
-                <a href="{!! route('tracks.index') !!}">
+                <a class="btn btn-default navbar-btn" href="{!! route('tracks.index') !!}">
                     <i class="fa fa-headphones" aria-hidden="true"></i>
                     <span> Tracks </span>
                 </a>
@@ -47,11 +48,13 @@
 @if(!Auth::check())
 
         <section class="c-2">
-            <a href="{!! route('users.create') !!}">
+            <a class="btn btn-default navbar-btn"
+               href="{!! route('users.create') !!}">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                 <span>Register</span>
             </a>
-            <a href="{!! action('Auth\AuthController@login') !!}">
+            <a class="btn btn-default navbar-btn"
+               href="{!! action('Auth\AuthController@login') !!}">
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                 <span>Login</span>
             </a>
