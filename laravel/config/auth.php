@@ -27,7 +27,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Freshwax\User::class,
+            'model' => Freshwax\Models\User::class,
         ],
 
         'users' => [
