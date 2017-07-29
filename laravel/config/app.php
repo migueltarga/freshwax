@@ -114,7 +114,7 @@ return [
 		/*
 		 * Custom Service Providers
 		 */
-		'Illuminate\Html\HtmlServiceProvider',
+        Collective\Html\HtmlServiceProvider::class,
 		'Intervention\Image\ImageServiceProvider',
 
 		/*
@@ -198,8 +198,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Form'      => 'laravelcollective\html\FormFacade',
-		'HTML'      => 'laravelcollective\html\HtmlFacade',
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 		'Image'     => 'Intervention\Image\Facades\Image'
 
 	],
