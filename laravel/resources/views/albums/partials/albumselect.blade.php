@@ -1,8 +1,8 @@
-        <p>
-            <label for="album_id">
+        <div class="form-group col-md-4">
+            <label class="form-label" for="album_id">
                 Album:
             </label>
-            <select name="album_id">
+            <select class="form-control" name="album_id">
                 <option value="">NONE</option>
                 @foreach($albums as $a)
                     <option value="{{$a->id}}">{{$a->name}}</option>

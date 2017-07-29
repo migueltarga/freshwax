@@ -1,5 +1,5 @@
 @include('errors.partials.show')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -22,7 +22,7 @@
             <input class="form-control"  type="text" name="release_date" data-field="datetime">
         <div id="dtBox"></div>
         </div>
-        <div class="form-group col-md-2">
+       <div class="form-group col-md-2">
             <label class="form-label" for="private">Private:</label>
             <input class="form-control" type="checkbox" name="private" />
         </div>
