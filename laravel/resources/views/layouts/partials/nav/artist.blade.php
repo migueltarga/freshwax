@@ -9,6 +9,11 @@
     Track
 </a>
 <a class="btn btn-default navbar-btn"
+   href="{!!route('lyrics.create')!!}">
+    <i class="fa fa-plus"></i>
+    Lyrics
+</a>
+<a class="btn btn-default navbar-btn"
    href="{!!route('posts.create')!!}">
     <i class="fa fa-plus"></i>
     Post
@@ -19,8 +24,12 @@
     Event
 </a>
 <a class="btn btn-default navbar-btn"
-   href="{!!route('items.create')!!}">
+   href="{!!route('videos.create')!!}">
     <i class="fa fa-plus"></i>
-    Item
+    Video
 </a>
-
+<a class="btn btn-default navbar-btn"
+   href="	{!!route('items.create')!!}">
+    <i class="fa fa-plus"></i>
+    Merch Item
+</a>

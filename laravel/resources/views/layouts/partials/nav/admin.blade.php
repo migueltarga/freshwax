@@ -1,44 +1,49 @@
-<a class="btn btn-sm navbar-btn"
-   href="{!!route('users.create')!!}">
-    Create User
-</a>
-
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
    href="{!!route('users.index', 'Users')!!}">
     Users
 </a>
-
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
    href="{!!route('photos.index')!!}">
     Photos
 </a>
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
+   href="{!!route('users.create')!!}">
+    <i class="fa fa-plus"></i>
+    User
+</a>
+
+<a class="btn btn-default navbar-btn"
    href="{!!route('albums.create')!!}">
-    Create Album
+    <i class="fa fa-plus"></i>
+    Album
 </a>
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
    href="{!!route('tracks.create')!!}">
-    Create Track
+    <i class="fa fa-plus"></i>
+    Track
 </a>
-<a class="btn btn-sm navbar-btn"
-   href="{!!route('videos.create')!!}">
-    Create Video
-</a>
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
    href="{!!route('lyrics.create')!!}">
-    Create Lyrics
+    <i class="fa fa-plus"></i>
+    Lyrics
 </a>
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
    href="{!!route('posts.create')!!}">
+    <i class="fa fa-plus"></i>
     Post
 </a>
-
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
    href="{!!route('events.create')!!}">
-    Create Event
+    <i class="fa fa-plus"></i>
+    Event
 </a>
-
-<a class="btn btn-sm navbar-btn"
+<a class="btn btn-default navbar-btn"
+   href="{!!route('videos.create')!!}">
+    <i class="fa fa-plus"></i>
+    Video
+</a>
+<a class="btn btn-default navbar-btn"
    href="	{!!route('items.create')!!}">
-    Create Merch Item
+    <i class="fa fa-plus"></i>
+    Merch Item
 </a>
