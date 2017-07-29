@@ -36,7 +36,9 @@ class ArtistsController extends Controller {
             return $this->create()->withErrors(['Please create an artist profile...']);
         }
 
-        $userArtists = $request->user()->artists;
+        if(isset($request->user())){
+            $userArtists = $request->user()->artists;
+        }
 
         return View::make('artists.index', compact('artists','userArtists'));
     }

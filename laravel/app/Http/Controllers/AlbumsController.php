@@ -41,7 +41,7 @@ class AlbumsController extends Controller {
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         if(Auth::check() && Auth::user()->isadmin){
@@ -50,7 +50,11 @@ class AlbumsController extends Controller {
             $albums = Album::where('private', '=', 0)->get();
         }
 
-        return View::make('albums.index', compact('albums'));
+        if(isset($request->user())){
+            $userAlbums = $request->user()->albums;
+        }
+
+        return View::make('albums.index', compact('albums','userAlbums'));
     }
 
     /**
