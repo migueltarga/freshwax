@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms"> 
-		<header> 
+	<article class="forms container-fluid">
+		<header class="jumbotron">
 			<h1>Create Post</h1>
-		</header> 
+		</header>
 		{!!Form::open(['route'=>'posts.store'])!!}
 			@include('posts.partials.form')
 			{!!Form::submit('create')!!}
 		{!!Form::close()!!}
 
-	</article> 
+	</article>
 @stop

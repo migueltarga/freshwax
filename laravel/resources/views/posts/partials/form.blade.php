@@ -1,18 +1,23 @@
 @include('layouts.partials.form')
 @include('errors.partials.show')
 
-	<p>
-		{!!Form::label('name', 'Name:')!!}
-		{!!Form::text('name')!!}
-	</p>
-	<p>
-		{!!Form::label('body', 'Post:')!!}
-		{!!Form::textarea('body')!!}
-	</p>
+<div class="container-fluid">
+    {!!Form::hidden('user_id', Auth::user()->id)!!}
 
-	{!!Form::hidden('user_id', Auth::user()->id)!!}
-
-	<p>
-		{!!Form::label('private', 'Private:')!!}
-		{!!Form::checkbox('private')!!}
-	</p>
+    <div class="row">
+        <div class="form-group col-md-10">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-control" type="text" name="name" />
+        </div>
+        <div class="form-group col-md-2">
+            <label class="form-label" for="private">Private:</label>
+            <input class="form-control" type="checkbox" name="private" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label class="form-label" for="body">Share Your Thoughts:</label>
+            <textarea class="form-control" name="body"></textarea>
+        </div>
+    </div>
+</div>
