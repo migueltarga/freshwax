@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Auth::routes();
 
 Route::resource('artists', 'ArtistsController');
 Route::resource('lyrics', 'LyricsController');
@@ -239,9 +240,5 @@ Route::get('items/{id}/tags', array(
     'as' => 'tags.item.create',
     'middleware' => 'auth:artist'
 ));
-
-Route::get('/home', 'HomeController@index');
-
-Route::auth();
 
 Route::get('/home', 'HomeController@index');
