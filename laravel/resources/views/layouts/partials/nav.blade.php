@@ -112,7 +112,7 @@
                 @endif
             >
             <a class=""
-               href="{!! action('Auth\AuthController@login') !!}">
+               href="{!! action('Auth\LoginController@login') !!}">
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                 <span>Login</span>
             </a>
