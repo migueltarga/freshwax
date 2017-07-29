@@ -2,7 +2,7 @@
 
 @section('content')
 	<article class="forms">
-		<header>  
+		<header class="jumbotron">
 		<h1>Create Event</h1>
 		</header>
 		{!!Form::open(['route'=>'events.store'])!!}
@@ -10,5 +10,5 @@
 			{!!Form::submit('create')!!}
 		{!!Form::close()!!}
 
-	</article> 
+	</article>
 @stop

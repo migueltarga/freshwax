@@ -2,7 +2,7 @@
 
 @section('content')
 	<article class="forms">
-		<header>
+		<header class="jumbotron">
 			<h1>Create Album</h1>
 		</header>
 
