@@ -1,12 +1,14 @@
 @include('layouts.partials.form')
 @include('errors.partials.show')
 
-<p>
-	{!!Form::label('title', 'Title:')!!}
-	{!!Form::text('title')!!}
-</p>
+<div class="row">
+    <div class="col-md-4">
+        <label for="title" class="form-label">Title: </label>
+        <input type="text" name="title" class="form-control">
+    </div>
 
-<p>
-	{!!Form::label('embed', 'Embed:')!!}
-	{!!Form::textarea('embed')!!}
-</p>
+    <div class="col-md-8">
+        <label for="embed" class="form-label">Embed: </label>
+        <textarea name="embed" class="form-control"></textarea>
+    </div>
+</div>
