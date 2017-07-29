@@ -27,13 +27,14 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Freshwax\Models\User::class,
-        ],
+            'model' => freshwax\Models\User::class,
+        ]
+        /*,
 
         'users' => [
             'driver' => 'database',
             'table' => 'users',
-        ],
+        ],*/
     ],
 
     'passwords' => [
