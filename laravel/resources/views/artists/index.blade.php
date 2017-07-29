@@ -9,6 +9,18 @@
             </header>
 
 
+            <?php $count=0 ?>
+            @foreach($userArtists as $a)
+                @if($count % 3 == 0)
+                    <div class="row">
+                @endif
+                <div class="col-md-4">
+                    @include('artists.partials.show')
+                </div>
+                @if(++$count % 3 == 0)
+                    </div>
+                @endif
+            @endforeach
         </article>
     @endif
 
