@@ -50,10 +50,6 @@ class AlbumsController extends Controller {
             $albums = Album::where('private', '=', 0)->get();
         }
 
-        if(isset($request->user())){
-            $userAlbums = $request->user()->albums;
-        }
-
         return View::make('albums.index', compact('albums','userAlbums'));
     }
 
@@ -78,6 +74,8 @@ class AlbumsController extends Controller {
         $album = Album::create(Input::all());
 
         $album->artists()->attach(Input::get('artist_id'));
+
+
 
         return Redirect::route('albums.index');
     }
