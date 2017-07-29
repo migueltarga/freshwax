@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'name' => 'Freshwax',
+
     'env' => env('APP_ENV', 'production'),
 
 	/*
@@ -140,6 +142,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Broadcasting\BroadcastServiceProvider',
+        'Illuminate\Notifications\NotificationServiceProvider',
 
 		/*
 		 * Application Service Providers...
