@@ -1,1 +1,1 @@
- {{ csrf_field() }}
+<!-- {{ csrf_field() }}-->
