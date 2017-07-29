@@ -1,22 +1,22 @@
 @extends('layouts.master')
 
 @section('content')
-	<article> 
-		<header> 
+	<article class="container-fluid">
+		<header class="jumbotron">
 			<h1>Photos</h1>
-		</header> 
+		</header>
 
-		<?php $count = 0 ?> 
+		<?php $count = 0 ?>
 		@foreach($photos as $p)
 			@if($count % 3 == 0)
 				<div class="row">
 			@endif
-			<section class="four columns"> 
-				@include('photos.partials.show')
-			</section> 	
-			@if(++$count % 3 == 0) 
-				</div> 
-			@endif 
+                    <section class="col-md-4">
+                        @include('photos.partials.show')
+                    </section>
+			@if(++$count % 3 == 0)
+				</div>
+			@endif
 		@endforeach
-	</article> 
+	</article>
 @stop
