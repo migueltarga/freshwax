@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 use freshwax\Models\User;
 use freshwax\Models\Artist;
 
+use Illuminate\Support\Facades\Auth;
+
 use View;
 use Input;
 use Redirect;
 use Config;
-use Auth;
 
 class ArtistsController extends Controller {
 
@@ -27,14 +28,17 @@ class ArtistsController extends Controller {
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $artists = Artist::all();
 
         if($artists->count() == 0){
             return $this->create()->withErrors(['Please create an artist profile...']);
         }
-        return View::make('artists.index', compact('artists'));
+
+        $userArtists = $request->user()->artists;
+
+        return View::make('artists.index', compact('artists','userArtists'));
     }
 
     public function userartists()
