@@ -3,13 +3,13 @@
 @section('content')
 	<article class="container-fluid">
 		<header class="jumbotron">
-			<h1>Create Your Artist Profile</h1>
-			<h2>You Can Have More Than One!</h2>
+			<h1><i class="fa fa-plus"></i> Artist</h1>
 		</header>
 
 		{!!Form::open(['route'=>'artists.store'])!!}
             @include('artists.partials.form')
-			{!!Form::submit('create')!!}
+
+			<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Artist</button>
 		{!!Form::close()!!}
 
 	</article>
