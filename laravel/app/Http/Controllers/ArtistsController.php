@@ -36,7 +36,7 @@ class ArtistsController extends Controller {
             return $this->create()->withErrors(['Please create an artist profile...']);
         }
 
-        if(isset($request->user())){
+        if(null !== $request->user()){
             $userArtists = $request->user()->artists;
         }
 

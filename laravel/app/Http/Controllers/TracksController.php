@@ -89,7 +89,7 @@ class TracksController extends Controller {
 
     private function handleFile($request)
     {
-        if( isset($request->file('track')) ){
+        if( null !== $request->file('track') ){
             $track_file = $request->file('track');
             $track_path = public_path() . '/uploads/';
             $ext = $track_file->getClientOriginalExtension();

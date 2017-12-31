@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace freshwax\Http\Controllers\Auth;
 
 use Freshwax\User;
 use Freshwax\Http\Controllers\Controller;
