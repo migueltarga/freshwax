@@ -1,25 +1,39 @@
 @include('layouts.partials.form')
 @include('errors.partials.show')
 
-<p>
-{!!Form::label('name', 'Name:')!!}
-{!!Form::text('name')!!}
-</p>
-
-<p>
-{!!Form::label('caption', 'Caption:')!!}
-{!!Form::textarea('caption')!!}
-</p>
-
-<p>
-{!!Form::label('banner', 'Banner:')!!}
-{!!Form::checkbox('banner')!!}
-
-{!!Form::label('background', 'Background:')!!}
-{!!Form::checkbox('background')!!}
-</p>
-
-<p>
-{!!Form::label('photo', 'Photo:')!!}
-{!!Form::file('photo')!!}
-</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label class="form-label" for="name">Name:</label>
+                <input class="form-control" type="text" name="name" />
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="form-group">
+				<label class="form-label" for="caption">Caption:</label>
+				<textarea class="form-control" name="caption"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+			<div class="form-group">
+				<label class="form-label" for="banner">Banner:</label>
+				<input class="form-control" type="checkbox" name="banner" />
+			</div>
+		</div>
+		<div class="col-md-1">
+			<div class="form-group">
+				<label class="form-label" for="background">Background:</label>
+				<input class="form-control" type="checkbox" name="background" />
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label class="form-label" for="photo">Photo:</label>
+				{!!Form::file('photo')!!}
+			</div>
+		</div>
+	</div>
+</div>
