@@ -3,23 +3,22 @@
 <article id="home" class="container-fluid">
     <section class="row">
         <header class="row jumbotron">
-            <h1>An Open Source Label</h1>
-            <h2>Built For Your Music</h2>
-        </header>
+			<h1><i class="fa fa-eye"></i> Discover</h1>
+		</header>
         <div class="row">
             <div class="col-md-4">
                 <p>
-                    @include('layouts.partials.brand')  will promote your music, tour, a new video, and even your label. <br />
+                    @include('layouts.partials.brand') is built for labels. <br />
                 </p>
             </div>
             <div class="col-md-4">
                 <p>
-                    @include('layouts.partials.brand') is built for musicians, by a musician. <br />
+                    @include('layouts.partials.brand') is built for musicians. <br />
                 </p>
             </div>
             <div class="col-md-4">
                 <p>
-                    @include('layouts.partials.brand') is about independence. <br />
+                    @include('layouts.partials.brand') is built for listeners. <br />
                 </p>
             </div>
         </div>
