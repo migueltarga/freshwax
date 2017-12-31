@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms">
+	<article class="container-fluid">
 		<header class="jumbotron">
-			<h1>Create Album</h1>
+			<h1><i class="fa fa-plus"></i> Album</h1>
 		</header>
 
 		{!!Form::open(['route'=>'albums.store'])!!}

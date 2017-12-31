@@ -1,5 +1,3 @@
 @if($errors->any())
-  <ul class="errors">
-    {!! implode('', $errors->all('<li>:message</li>'))!!}
-  </ul>
+    {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>'))!!}
 @endif

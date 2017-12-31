@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms container-fluid">
+	<article class="container-fluid">
 		<header class="jumbotron">
-			<h1>Create Tracks</h1>
+			<h1><i class="fa fa-plus"></i> Track</h1>
 		</header>
 
 		{!!Form::open(['route'=>'tracks.store', 'files' => 'true'])!!}
