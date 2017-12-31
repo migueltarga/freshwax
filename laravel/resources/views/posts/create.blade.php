@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms container-fluid">
+	<article class="container-fluid">
 		<header class="jumbotron">
 			<h1>Create Post</h1>
 		</header>

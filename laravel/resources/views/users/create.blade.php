@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="fluid-container">
+	<article class="container-fluid">
 		<header class="jumbotron">
 		@if($users->count() == 0)
 			<h1>Welcome To Your New Site Please Create an Admin Account</h1>
