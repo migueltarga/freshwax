@@ -6,7 +6,7 @@
 
                     @foreach($a->photos as $p)
                         @if(!$p->banner && !$p->background)
-                            <img src="{{$p->path}}" />
+                            <img src="{{$p->path}}" class="img-circle img-responsive" />
                         @endif
                     @endforeach
 

@@ -4,7 +4,8 @@
 		- banner image
 	@endif
 </p>
-<img src="{{$p->path}}" />
+<img src="{{$p->path}}" class="img-responsive"/>
+
 @if(Auth::check() && Auth::user()->isadmin)
 	<nav>
 		{!!link_to_route('photos.edit', 'Edit', $p->id)!!}
