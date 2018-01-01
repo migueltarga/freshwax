@@ -57,7 +57,8 @@ class LabelsController extends Controller
      */
     public function show($id)
     {
-        //
+		$label = Label::findOrFail($id);
+		return view('labels.show', compact('label'));
     }
 
     /**

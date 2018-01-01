@@ -2,13 +2,13 @@
 
 @section('content')
 	<article>
-		<h1>{{$a->name}}</h1>
-		<h2>{{$a->hometown}}</h2>
-	    <p>{{$a->bio}}</p>
+		<header class="row jumbotron">
+			<h1>{{$label->name}}</h1>
+			<h2>{{$label->city}}</h2>
+		</header>
 
-		@foreach($a->photos as $p)
-			<img src="{{$p->path}}" />
-		@endforeach
-        @include('artists.partials.adminnav')
+		<p>{{$label->about}}</p>
+
+        @include('labels.partials.adminnav')
 	</article>
 @stop

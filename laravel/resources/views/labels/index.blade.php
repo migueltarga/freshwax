@@ -6,8 +6,8 @@
 
     @endif
 
-	<article class="col-md-12">
-		<header class="jumbotron">
+	<article>
+		<header class="row jumbotron">
 			<h1>Labels</h1>
 		</header>
 

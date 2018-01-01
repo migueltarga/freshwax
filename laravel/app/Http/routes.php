@@ -65,6 +65,12 @@ Route::get('/addresses/{orderid}/order/billing', array(
         'middleware' => 'auth'
 	));
 
+Route::get('/labels/delete/{id}', array(
+		'uses' => 'LabelsController@delete',
+        'as' => 'labels.delete',
+        'middleware' => 'auth:artist'
+	));
+
 Route::get('/videos/delete/{id}', array(
 		'uses' => 'VideosController@delete',
         'as' => 'videos.delete',
