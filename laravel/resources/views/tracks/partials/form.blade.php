@@ -30,6 +30,7 @@
     </div>
     <div class="row">
         @include('albums.partials.albumselect')
+        @include('artists.partials.artistselect')
     </div>
 </div>
 

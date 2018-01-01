@@ -8,12 +8,16 @@ class Track extends Model {
 
 	protected $fillable = ['name', 'track', 'album_id', 'length', 'path', 'private', 'comment', 'soundcloud_embed'];
 
-	public function album(){
-		return $this->belongsTo('freshwax\Models\Album');
+	public function user(){
+		return $this->belongsTo('freshwax\Models\User');
 	}
 
 	public function artists(){
 		return $this->belongsToMany('freshwax\Models\Artist');
+	}
+
+	public function album(){
+		return $this->belongsTo('freshwax\Models\Album');
 	}
 
 	public function posts(){

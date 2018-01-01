@@ -43,6 +43,10 @@ class User extends Authenticatable {
 		return $this->hasMany('freshwax\Models\Artist');
 	}
 
+	public function tracks(){
+		return $this->hasMany('freshwax\Models\Track');
+	}
+
 	public function labels(){
 		return $this->hasMany('freshwax\Models\Label');
 	}

@@ -79,9 +79,13 @@ class TracksController extends Controller {
             $track->album()->associate(Album::findOrFail($request->album_id));
         }
 
-        $activeartist = Artist::where('active_profile', '=', 1)->first();
+		if($request->has('artist_id')){
+            $track->artists()->attach(Artist::findOrFail($request->artist_id));
+		} else {
+			$activeartist = Artist::where('active_profile', '=', 1)->first();
+			$track->artists()->attach($activeartist->id);
+		}
 
-        $track->artists()->attach($activeartist->id);
         $track->save();
 
         return Redirect::route('tracks.index');
