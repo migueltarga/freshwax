@@ -23,7 +23,7 @@ class Artist extends Model {
 	}
 
 	public function tracks(){
-		return $this->hasMany('freshwax\Models\Track');
+		return $this->belongsToMany('freshwax\Models\Track');
 	}
 
 	public function events(){

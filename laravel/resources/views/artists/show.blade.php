@@ -18,9 +18,9 @@
 		<div class="col-md-4">
 			<h3>Albums:</h3>
 			<ul>
-			@foreach($a->albums as $a)
+			@foreach($a->albums as $album)
 				<li>
-					<a href="{!!route('albums.show', $a->id)!!}">
+					<a href="{!!route('albums.show', $album->id)!!}">
 						{!! $a->name !!}
 					</a>
 				</li>
