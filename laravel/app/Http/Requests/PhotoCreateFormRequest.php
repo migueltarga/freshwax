@@ -13,7 +13,7 @@ class PhotoCreateFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return Auth::check() && Auth::user()->isadmin || Auth::user()->artist;
+		return Auth::check();
 	}
 
 	/**
