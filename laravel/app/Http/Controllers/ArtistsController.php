@@ -170,9 +170,13 @@ class ArtistsController extends Controller {
      */
     public function destroy($id)
     {
-        $artist = Artist::findOrFail($id);
-        $artist->delete();
-        return $this->index();
+		try {
+			$artist = Artist::findOrFail($id);
+			$artist->delete();
+		} catch (Exception $e) {
+			//add message or log it
+		}
+        return Redirect::route('artists.index');
     }
 
 }
