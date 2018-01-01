@@ -2,7 +2,9 @@
 
 @section('content')
 	<article>
-		<h1>Edit Artist</h1>
+		<header class="jumbotron">
+			<h1><i class="fa fa-pencil"></i> {!! $artist->name !!}</h1>
+		</header>
         {!!Form::model($artist, array('route' => array('artists.update', $artist->id), 'method' => 'PUT'))!!}
 			@include('artists.partials.form')
 			{!!Form::submit('Edit')!!}
