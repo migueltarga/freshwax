@@ -1,5 +1,5 @@
 @if(Auth::check() && Auth::user())
-    <nav>
+    <nav class="navbar col-md-12">
         @if(!$a->active_profile)
 			<a href="{!!route('artists.makeactive', $a->id)!!}">
 				<i class="fa fa-star-o" aria-hidden="true"></i>
