@@ -1,7 +1,23 @@
 <nav class="row navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-left">
-            @if($artists->count() > 0)
+
+			@if($labels->count() > 0)
+			<li
+                    @if(Request::is('labels'))
+                        class="active"
+                    @endif
+                >
+                <a
+
+                    href="{!! route('labels.index') !!}">
+                    <i class="fa fa-building-o" aria-hidden="true"></i>
+                    <span> Labels </span>
+                </a>
+            </li>
+			@endif
+
+			@if($artists->count() > 0)
             <li
                     @if(Request::is('artists'))
                         class="active"

@@ -4,6 +4,12 @@ namespace freshwax\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
+use freshwax\Models\User;
+use freshwax\Models\Artist;
+use freshwax\Models\Label;
+
 class LabelsController extends Controller
 {
     /**
@@ -13,7 +19,8 @@ class LabelsController extends Controller
      */
     public function index()
     {
-        //
+		$labels = Label::all();
+        return view('labels.index', compact('labels'));
     }
 
     /**
@@ -34,8 +41,13 @@ class LabelsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $user = User::findOrFail(Auth::user()->id);
+        $label = Label::create($request->all());
+        $label->users()->attach($user->id);
+		$label->update();
+
+		return redirect()->route('labels.index');
+	}
 
     /**
      * Display the specified resource.
@@ -56,7 +68,8 @@ class LabelsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $label = Label::findOrFail($id);
+        return view('labels.edit', compact('label'));
     }
 
     /**

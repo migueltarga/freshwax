@@ -92,8 +92,8 @@ class ArtistsController extends Controller {
      */
     public function store(ArtistCreateFormRequest $request)
     {
-        $user = User::findOrFail(Auth::user()->id);
-        $artists = Artist::all();
+        $user = Auth::user();
+        $artists = $user->artists;
         $artist = Artist::create(Input::all());
         $artist->user()->associate($user->id);
         if($artists->count() == 0){

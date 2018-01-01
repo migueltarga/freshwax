@@ -12,6 +12,10 @@ class Label extends Model {
 		return $this->hasMany('freshwax\Models\Post');
 	}
 
+	public function artists(){
+		return $this->hasMany('freshwax\Models\Artist');
+	}
+
 	public function albums(){
 		return $this->hasMany('freshwax\Models\Album');
 	}
@@ -28,7 +32,7 @@ class Label extends Model {
 		return $this->hasMany('freshwax\Models\Photo');
 	}
 
-	public function user(){
-		return $this->hasOne('freshwax\Models\User');
+	public function users(){
+		return $this->belongsToMany('freshwax\Models\User');
 	}
 }

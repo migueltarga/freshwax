@@ -38,6 +38,10 @@ class Artist extends Model {
 		return $this->belongsTo('freshwax\Models\User');
     }
 
+	public function label(){
+		return $this->belongsTo('freshwax\Models\Label');
+    }
+
 	public function hasBackground(){
 		foreach($this->photos as $p){
 			if($p->background){

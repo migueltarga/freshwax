@@ -5,6 +5,7 @@ use Illuminate\Support\ServiceProvider;
 use freshwax\Models\Artist;
 use freshwax\Models\Album;
 use freshwax\Models\Track;
+use freshwax\Models\Label;
 use freshwax\Models\Lyric;
 use freshwax\Models\Item;
 use freshwax\Models\Post;
@@ -67,6 +68,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
             $albums = Album::all();
 			$tracks = Track::all();
 			$events = Event::all();
+			$labels = Label::all();
 			$lyrics = Lyric::all();
 			$posts = Post::all();
 			$items = Item::all();
@@ -76,6 +78,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 			$view->with('albums', $albums);
 			$view->with('tracks', $tracks);
 			$view->with('events', $events);
+			$view->with('labels', $labels);
 			$view->with('lyrics', $lyrics);
 			$view->with('posts', $posts);
 			$view->with('items', $items);

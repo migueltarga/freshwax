@@ -2,40 +2,22 @@
 
 @section('content')
 
-    @if(isset($userArtists))
-        <article class="container-fluid">
-            <header class="jumbotron">
-                <h1>Your Artists</h1>
-            </header>
+    @if(isset($userLabels))
 
-
-            <?php $count=0 ?>
-            @foreach($userArtists as $a)
-                @if($count % 3 == 0)
-                    <div class="row">
-                @endif
-                <div class="col-md-4">
-                    @include('artists.partials.show')
-                </div>
-                @if(++$count % 3 == 0)
-                    </div>
-                @endif
-            @endforeach
-        </article>
     @endif
 
-	<article class="container-fluid">
+	<article class="col-md-12">
 		<header class="jumbotron">
-			<h1>Artists</h1>
+			<h1>Labels</h1>
 		</header>
 
 		<?php $count=0 ?>
-        @foreach($artists as $a)
+        @foreach($labels as $l)
             @if($count % 3 == 0)
                 <div class="row">
             @endif
             <div class="col-md-4">
-			    @include('artists.partials.show')
+			    @include('labels.partials.show')
             </div>
             @if(++$count % 3 == 0)
                 </div>

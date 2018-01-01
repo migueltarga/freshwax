@@ -19,6 +19,7 @@ class CreateLabels extends Migration {
 			$table->text('city');
 			$table->string('name');
 			$table->boolean('active_profile');
+            $table->integer('user_id')->unsigned();
 			$table->timestamps();
 		});
 	}

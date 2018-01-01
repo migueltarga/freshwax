@@ -11,7 +11,11 @@
     <i class="fa fa-plus"></i>
     User
 </a>
-
+<a class="btn btn-default navbar-btn"
+   href="{!!route('labels.create')!!}">
+    <i class="fa fa-plus"></i>
+	Label
+</a>
 <a class="btn btn-default navbar-btn"
    href="{!!route('albums.create')!!}">
     <i class="fa fa-plus"></i>
