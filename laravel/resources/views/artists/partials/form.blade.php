@@ -5,18 +5,18 @@
         <div class="col-md-4">
             <div class="form-group">
 				<label class="form-label" for="name">Name:</label>
-                <input class="form-control" type="text" name="name" />
+                <input class="form-control" type="text" name="name" value="{!! null !== $artist ? $artist->name : '' !!}" />
 			</div>
 
             <div class="form-group">
 				<label class="form-label" for="hometown">Hometown:</label>
-                <input class="form-control" type="text" name="hometown" />
+                <input class="form-control" type="text" name="hometown" value="{!! null !== $artist ? $artist->hometown : '' !!}"/>
 			</div>
 		</div>
 		<div class="col-md-8">
             <div class="form-group">
 				<label class="form-label" for="bio">Bio:</label>
-				<textarea class="form-control" name="bio"></textarea>
+				<textarea class="form-control" name="bio" >{!! null !== $artist ? $artist->bio : '' !!}</textarea>
 			</div>
 		</div>
 	</div>
