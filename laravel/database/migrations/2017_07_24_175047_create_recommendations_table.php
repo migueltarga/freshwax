@@ -29,6 +29,6 @@ class CreateRecommendationsTable extends Migration
      */
     public function down()
     {
-        //
+		Schema::drop('recommendations');
     }
 }
