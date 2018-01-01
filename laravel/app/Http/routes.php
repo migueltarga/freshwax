@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::resource('artists', 'ArtistsController');
+Route::resource('labels', 'LabelsController');
 Route::resource('lyrics', 'LyricsController');
 Route::resource('videos', 'VideosController');
 Route::resource('albums', 'AlbumsController');
