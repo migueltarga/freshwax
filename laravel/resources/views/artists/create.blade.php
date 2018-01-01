@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="container-fluid">
-		<header class="jumbotron">
+	<article>
+		<header class="row jumbotron">
 			<h1><i class="fa fa-plus"></i> Artist</h1>
 		</header>
 
