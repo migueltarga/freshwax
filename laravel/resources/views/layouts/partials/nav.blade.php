@@ -1,4 +1,4 @@
-<nav class="col-md-12 navbar navbar-inverse">
+<nav class="row navbar navbar-inverse">
 	<ul class="nav navbar-nav navbar-left">
 
 		@if($labels->count() > 0)
@@ -7,9 +7,7 @@
 					class="active"
 				@endif
 			>
-			<a
-
-				href="{!! route('labels.index') !!}">
+			<a href="{!! route('labels.index') !!}">
 				<i class="fa fa-building-o" aria-hidden="true"></i>
 				<span> Labels </span>
 			</a>
@@ -22,9 +20,7 @@
 					class="active"
 				@endif
 			>
-			<a
-
-				href="{!! route('artists.index') !!}">
+			<a href="{!! route('artists.index') !!}">
 				<i class="fa fa-users" aria-hidden="true"></i>
 				<span> Artists </span>
 			</a>

@@ -69,7 +69,7 @@ class TracksController extends Controller {
     {
         $track = Track::create(Input::except('track'));
 
-        $track->path = $this->handleFile($request);
+        $track->path = $this->handleFile($track, $request);
 
         if( !Input::has('private') ){
             $track->private = false;
@@ -87,7 +87,7 @@ class TracksController extends Controller {
         return Redirect::route('tracks.index');
     }
 
-    private function handleFile($request)
+    private function handleFile($track, $request)
     {
         if( null !== $request->file('track') ){
             $track_file = $request->file('track');
@@ -96,8 +96,10 @@ class TracksController extends Controller {
             $name = preg_replace("/[^a-zA-Z]+/", "", $request->name);
             $track_name = $name . '.' . $ext;
             $track_file->move($track_path, $track_name);
-            $track->path = realpath($track_path);
-            //if it's not an mp3 it needs to be
+
+			$track->path = $track_path . $track_name;
+
+			//if it's not an mp3 it needs to be
             if(strcasecmp($ext,"mp3") != 0){
                 $convert_command = 'sox ' . $track->path . $ext . ' ' . $track->path . '.mp3';
                 echo exec($convert_command);

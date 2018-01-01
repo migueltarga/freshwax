@@ -17,6 +17,8 @@ class CreateTracksTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('path');
+			$table->integer('user_id')->unsigned();
+			$table->integer('artist_id')->unsigned();
 			$table->integer('album_id')->unsigned()->nullable();
 			$table->text('soundcloud_embed')->nullable();
 			$table->string('length')->nullable();
