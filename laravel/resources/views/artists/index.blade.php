@@ -3,8 +3,8 @@
 @section('content')
 
     @if(isset($userArtists))
-        <article class="container-fluid">
-            <header class="jumbotron">
+        <article>
+            <header class="row jumbotron">
                 <h1>Your Artists</h1>
             </header>
 
@@ -24,8 +24,8 @@
         </article>
     @endif
 
-	<article class="container-fluid">
-		<header class="jumbotron">
+	<article>
+		<header class="row jumbotron">
 			<h1>Artists</h1>
 		</header>
 

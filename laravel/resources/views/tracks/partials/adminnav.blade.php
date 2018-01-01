@@ -1,9 +1,19 @@
 @if(Auth::check() && Auth::user()->isadmin)
-<nav>
-    {!! link_to_route('lyrics.create', 'Add Lyrics', $track->id) !!}
-    {!!link_to_route('photos.track.create', 'Add Photo', $track->id)!!}
-    {!!link_to_route('tags.track.create', 'Add Tags', $track->id)!!}
-    {!! link_to_route('tracks.edit', 'Edit Track',  $track->id) !!}
-    {!! link_to_route('tracks.delete', 'Delete', $track->id) !!}
-</nav>
+	<nav>
+		<a href="{!! route('photos.track.create', $track->id) !!}">
+			<i class="fa fa-camera-retro"></i>
+		</a>
+		<a href="{!! route('tracks.edit',  $track->id) !!}">
+			<i class="fa fa-pencil"></i>
+		</a>
+		<a href="{!! route('tracks.delete', 'Delete', $track->id) !!}">
+			<i class="fa fa-trash"></i>
+		</a>
+		<a href="{!! route('lyrics.create', $track->id) !!}">
+			<i class="fa fa-plus"></i> Lyrics
+		</a>
+		<a href="{!! route('tags.track.create', $track->id)!!}">
+			<i class="fa fa-plus"></i> Tag
+		</a>
+	</nav>
 @endif
