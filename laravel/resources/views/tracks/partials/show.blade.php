@@ -9,19 +9,26 @@
 		</h2>
 	</header>
 
-	@if(isset($track->soundcloud_embed))
-		<h6>{!!$track->soundcloud_embed!!}</h6>
-    @endif
-
-    @if(isset($track->path))
-        {!! $track->path !!}
-    @endif
+	<section class="row">
+		@foreach($track->photos as $p)
+			@if(!$p->banner && !$p->background)
+				<img src="{{$p->path}}" class="img-responsive" />
+				@break
+			@endif
+		@endforeach
+		<audio controls>
+			<source src="{{ $track->path }}">
+		</audio>
+		{!! $track->soundcloud_embed !!}
+	</section>
 
 	<h4>
 		@if($track->tags->count())
-			@foreach($track->tags as $tag)
-				{{$tag->tag}}
-			@endforeach
+			<ul>
+				@foreach($track->tags as $tag)
+					<li>{{$tag->tag}}</li>
+				@endforeach
+			</ul>
 		@endif
 	</h4>
     @include('tracks.partials.adminnav')
