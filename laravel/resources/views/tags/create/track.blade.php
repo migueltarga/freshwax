@@ -1,15 +1,20 @@
 @extends('layouts.master')
 
 @section('content')
-	<article> 
-		<h1>Add Tags to Track</h1>
+	<article>
+		<header class="row jumbotron">
+			<h1><i class="fa fa-plus"></i> Track Tag</h1>
+		</header>
+
 		{!!Form::open(['route'=>'tags.store'])!!}
 
 			@include('tags.partials.form')
 
 			{!!Form::hidden('track', $id)!!}
 
-			{!!Form::submit('Add')!!}
+			<button type="submit" class="btn btn-primary pull-right">
+				<i class="fa fa-plus"></i> Track Tag
+			</button>
 		{!!Form::close()!!}
-	</article> 
+	</article>
 @stop
