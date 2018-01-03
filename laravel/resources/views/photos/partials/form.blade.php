@@ -17,19 +17,19 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-1">
+		<div class="col-md-2">
 			<div class="form-group">
 				<label class="form-label" for="banner">Banner:</label>
 				<input class="form-control" type="checkbox" name="banner" />
 			</div>
 		</div>
-		<div class="col-md-1">
+		<div class="col-md-2">
 			<div class="form-group">
 				<label class="form-label" for="background">Background:</label>
 				<input class="form-control" type="checkbox" name="background" />
 			</div>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-8">
 			<div class="form-group">
 				<label class="form-label" for="photo">Photo:</label>
 				{!!Form::file('photo')!!}
