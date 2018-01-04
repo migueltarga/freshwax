@@ -6,7 +6,11 @@ class Photo extends Model {
 
 	protected $table = "photos";
 
-	protected $fillable = ['name', 'caption', 'path', 'banner', 'background', 'artist_id', 'album_id', 'track_id', 'event_id', 'post_id', 'item_id'];
+	protected $fillable = ['name', 'caption', 'path', 'banner', 'background', 'artist_id', 'album_id', 'track_id', 'event_id', 'post_id', 'item_id', 'label_id'];
+
+	public function label(){
+		return $this->belongsTo('freshwax\Models\Label');
+	}
 
 	public function artist(){
 		return $this->belongsTo('freshwax\Models\Artist');

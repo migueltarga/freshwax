@@ -15,18 +15,19 @@ class CreatePhotosTable extends Migration {
 		Schema::create('photos', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name'); 
-			$table->text('caption')->nullable(); 
-			$table->string('path'); 
-			$table->integer('artist_id')->nullable()->unsigned(); 
-			$table->integer('album_id')->nullable()->unsigned(); 
-			$table->integer('track_id')->nullable()->unsigned(); 
-			$table->integer('event_id')->nullable()->unsigned(); 
+			$table->string('name');
+			$table->text('caption')->nullable();
+			$table->string('path');
+			$table->integer('label_id')->nullable()->unsigned();
+			$table->integer('artist_id')->nullable()->unsigned();
+			$table->integer('album_id')->nullable()->unsigned();
+			$table->integer('track_id')->nullable()->unsigned();
+			$table->integer('event_id')->nullable()->unsigned();
 			$table->integer('post_id')->nullable()->unsigned();
-			$table->integer('item_id')->nullable()->unsigned(); 
-			$table->boolean('banner'); 
-			$table->boolean('background'); 			
-			$table->timestamps(); 
+			$table->integer('item_id')->nullable()->unsigned();
+			$table->boolean('banner');
+			$table->boolean('background');
+			$table->timestamps();
 		});
 	}
 

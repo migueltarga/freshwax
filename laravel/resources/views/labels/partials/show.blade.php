@@ -5,6 +5,6 @@
 			<p>{{$l->about}}</p>
 		</a>
 		@if(Auth::check() && $l->hasUser(Auth::user()->id))
-			@include('layouts.partials.adminnav')
+			@include('labels.partials.adminnav')
 		@endif
 </section>

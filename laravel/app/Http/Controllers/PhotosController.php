@@ -120,7 +120,7 @@ class PhotosController extends Controller {
         $photo->path = '/uploads/' . $photo_name;
 
 		if( $request->has('label')){
-            $label = Label::findOrFail(Input::get('artist'));
+            $label = Label::findOrFail(Input::get('label'));
             $photo->label()->associate($label);
         }
 

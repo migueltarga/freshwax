@@ -183,7 +183,7 @@ Route::get('/register', array(
 ));
 
 //Begin Photo Endpoints
-Route::get('artists/{id}/photos', array(
+Route::get('labels/{id}/photos', array(
 	'uses' => 'PhotosController@label',
     'as' => 'photos.label.create',
     'middleware' => 'auth:artist'

@@ -37,7 +37,7 @@ class Label extends Model {
 	}
 
 	public function hasUser($id){
-		foreach($this->users() as $u){
+		foreach($this->users as $u){
 			if($u->id == $id){
 				return true;
 			}
