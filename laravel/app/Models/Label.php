@@ -35,4 +35,13 @@ class Label extends Model {
 	public function users(){
 		return $this->belongsToMany('freshwax\Models\User');
 	}
+
+	public function hasUser($id){
+		foreach($this->users() as $u){
+			if($u->id == $id){
+				return true;
+			}
+		}
+		return false;
+	}
 }

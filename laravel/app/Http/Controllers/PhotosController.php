@@ -5,6 +5,7 @@ use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\PhotoCreateFormRequest;
 
 use freshwax\Models\Photo;
+use freshwax\Models\Label;
 use freshwax\Models\Artist;
 use freshwax\Models\Album;
 use freshwax\Models\Track;
@@ -44,6 +45,11 @@ class PhotosController extends Controller {
     public function create()
     {
         return View::make('photos.create');
+    }
+
+	public function label($id)
+    {
+        return View::make('photos.create.label', compact('id'));
     }
 
     public function artist($id)
@@ -113,7 +119,12 @@ class PhotosController extends Controller {
         }
         $photo->path = '/uploads/' . $photo_name;
 
-        if(Request::has('artist')){
+		if( $request->has('label')){
+            $label = Label::findOrFail(Input::get('artist'));
+            $photo->label()->associate($label);
+        }
+
+		if(Request::has('artist')){
             $artist = Artist::findOrFail(Input::get('artist'));
             $photo->artist()->associate($artist);
         }
