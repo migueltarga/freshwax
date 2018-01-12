@@ -41,11 +41,22 @@ class UsersController extends Controller {
      *
      * @return Response
      */
-    public function create()
+    public function createListener()
     {
-        $artists = Artist::all();
         $users = User::all();
-        return View::make('users.create', compact('artists', 'users'));
+        return View::make('users.create', compact('users'));
+    }
+
+	public function createLabel()
+    {
+        $users = User::all();
+        return View::make('users.create', compact('users'));
+    }
+
+	public function createArtist()
+    {
+        $users = User::all();
+        return View::make('users.create', compact('users'));
     }
 
     public function login()

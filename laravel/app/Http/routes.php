@@ -172,14 +172,29 @@ Route::get('/home', array(
 	'as' => 'home.landing'
 ));
 
+Route::get('/register', array(
+	'uses' => 'HomeController@register',
+	'as' => 'home.register'
+));
+
 Route::get('/login', array(
 	'uses' => 'UsersController@login',
     'as' => 'login'
 ));
 
-Route::get('/register', array(
-    'uses' => 'UsersController@create',
-    'as' => 'auth.register'
+Route::get('/register/listener', array(
+    'uses' => 'UsersController@createListener',
+    'as' => 'auth.register.listener'
+));
+
+Route::get('/register/artist', array(
+    'uses' => 'UsersController@createArtist',
+    'as' => 'auth.register.artist'
+));
+
+Route::get('/register/label', array(
+    'uses' => 'UsersController@createLabel',
+    'as' => 'auth.register.label'
 ));
 
 //Begin Photo Endpoints

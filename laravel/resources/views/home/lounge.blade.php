@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<article> 
+	<article>
 		<h1>Lounge</h1>
 
 		<?php $count = 0 ?>
@@ -24,7 +24,7 @@
 				</div>
 			@endif
 		@endforeach
-		
+
 		@foreach($posts as $p)
 			@if($count % 3 == 0)
 				<div class="row">
@@ -34,5 +34,5 @@
 				</div>
 			@endif
 		@endforeach
-	</article> 
+	</article>
 @stop

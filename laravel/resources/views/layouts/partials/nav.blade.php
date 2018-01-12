@@ -112,7 +112,7 @@
 				@endif
 			>
 		<a class=""
-			href="{!! route('users.create') !!}">
+			href="{!! route('home.register') !!}">
 			<i class="fa fa-user-plus" aria-hidden="true"></i>
 			<span>Register</span>
 		</a>
