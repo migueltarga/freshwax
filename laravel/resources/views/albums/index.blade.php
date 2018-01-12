@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <article class="container-fluid">
+    <article>
 		<header class="jumbotron">
 			<h1>Albums</h1>
 		</header>
