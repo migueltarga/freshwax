@@ -47,7 +47,7 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled"
-		,
+		],
 		"post-create-project-cmd": [
 			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
