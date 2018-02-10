@@ -20,7 +20,7 @@ class TracksController extends Controller {
 
     public function __construct()
     {
-        $this->middleware('auth:artist');
+        $this->middleware('auth');
     }
 
     public function fetch($id)
@@ -71,15 +71,15 @@ class TracksController extends Controller {
 
         $track->path = $this->handleFile($track, $request);
 
-        if( !Input::has('private') ){
+        if( !$request->filled('private') ){
             $track->private = false;
         }
 
-        if( Input::has('album_id') ){
+        if( $request->filled('album_id') ){
             $track->album()->associate(Album::findOrFail($request->album_id));
         }
 
-		if($request->has('artist_id')){
+		if($request->filled('artist_id')){
             $track->artists()->attach(Artist::findOrFail($request->artist_id));
 		} else {
 			$activeartist = Artist::where('active_profile', '=', 1)->first();
@@ -87,11 +87,10 @@ class TracksController extends Controller {
 		}
 
         $track->save();
-
-        return Redirect::route('tracks.index');
+        return redirect()->route('tracks.index');
     }
 
-    private function handleFile($track, $request)
+    public function handleFile($track, $request)
     {
         if( null !== $request->file('track') ){
             $track_file = $request->file('track');

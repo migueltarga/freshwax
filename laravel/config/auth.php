@@ -17,7 +17,11 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
+		],
+		'artist' =>[
+            'driver' => 'session',
+            'provider' => 'users',
+		],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',

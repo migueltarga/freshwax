@@ -36,6 +36,11 @@ class UsersController extends Controller {
         return View::make('users.index', compact('users'));
     }
 
+	public function create()
+    {
+        $users = User::all();
+        return View::make('users.create', compact('users'));
+    }
     /**
      * Show the form for creating a new resource.
      *

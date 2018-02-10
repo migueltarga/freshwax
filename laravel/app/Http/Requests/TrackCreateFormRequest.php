@@ -18,7 +18,7 @@ class TrackCreateFormRequest extends Request {
 		} else if (Auth::user()->artists_count > 0){
 			return true;
 		} else {
-			return false;
+			return true;
 		}
 	}
 
