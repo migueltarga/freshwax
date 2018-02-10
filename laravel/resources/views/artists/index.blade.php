@@ -10,7 +10,7 @@
 
 
             <?php $count=0 ?>
-            @foreach($userArtists as $a)
+            @foreach($userArtists as $artist)
                 @if($count % 3 == 0)
                     <div class="row">
                 @endif
@@ -30,7 +30,7 @@
 		</header>
 
 		<?php $count=0 ?>
-        @foreach($artists as $a)
+        @foreach($artists as $artist)
             @if($count % 3 == 0)
                 <div class="row">
             @endif
