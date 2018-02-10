@@ -1,20 +1,20 @@
-<section class="four columns">
+<section>
 
     <header>
-        <h1>{{$a->name}}</h1>
+        <h1>{{$album->name}}</h1>
     </header>
 
-    @if($a->photos->count())
-        @foreach($a->photos as $p)
+    @if($album->photos->count())
+        @foreach($album->photos as $p)
             <img src="{{$p->path}}" class="img-responsive" />
         @endforeach
     @endif
 
-    @foreach($a->tracks as $track)
+    @foreach($album->tracks as $track)
         <h2>{{$track->name}}</h2>
     @endforeach
 
-    @foreach($a->artists as $artist)
+    @foreach($album->artists as $artist)
         <h2>{{$artist->name}}</h2>
     @endforeach
 

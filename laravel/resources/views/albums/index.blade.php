@@ -7,7 +7,7 @@
 			<h1>Albums</h1>
 		</header>
 		<?php $count = 0 ?>
-		@foreach($albums as $a)
+		@foreach($albums as $album)
 			@if($count % 3 == 0)
 				<div class="row">
 			@endif

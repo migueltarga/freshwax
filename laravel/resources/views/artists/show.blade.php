@@ -26,8 +26,8 @@
 
 		<div class="col-md-4">
 			<h1>Albums:</h1>
-			@foreach($artist->albums as $a)
-				<a href="{!!route('albums.show', $a->id)!!}">
+			@foreach($artist->albums as $album)
+				<a href="{!!route('albums.show', $album->id)!!}">
 					@include('albums.partials.show')
 				</a>
 			@endforeach
@@ -35,8 +35,8 @@
 
 		<div class="col-md-4">
 			<h1>Tracks:</h1>
-			@foreach($artist->tracks as $t)
-				<a href="{!!route('tracks.show', $t->id)!!}">
+			@foreach($artist->tracks as $track)
+				<a href="{!!route('tracks.show', $track->id)!!}">
 					@include('tracks.partials.show')
 				</a>
 			@endforeach
