@@ -115,13 +115,13 @@ class ArtistsController extends Controller {
      */
     public function show($id)
     {
-        $a = Artist::findOrFail($id);
-        $albums = $a->albums;
-        $posts = $a->posts;
-        $events = $a->events;
-        $videos = $a->videos;
-        $lyrics = $a->lyrics;
-        return View::make('artists.show', compact('a','albums','posts','events','videos','lyrics'));
+        $artist = Artist::findOrFail($id);
+        $albums = $artist->albums;
+        $posts = $artist->posts;
+        $events = $artist->events;
+        $videos = $artist->videos;
+        $lyrics = $artist->lyrics;
+        return View::make('artists.show', compact('artist','albums','posts','events','videos','lyrics'));
     }
 
     /**
