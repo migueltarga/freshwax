@@ -6,7 +6,7 @@
 
     @if($a->photos->count())
         @foreach($a->photos as $p)
-            <img src="{{$p->path}}" />
+            <img src="{{$p->path}}" class="img-responsive" />
         @endforeach
     @endif
 
