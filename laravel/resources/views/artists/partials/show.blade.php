@@ -1,26 +1,26 @@
 <section class="third">
-                <a href="{{route('artists.show', $a->id)}}">
-                    <h1>{{$a->name}}</h1>
-                    <h2>{{$a->hometown}}</h2>
-                    <p>{{$a->bio}}</p>
+                <a href="{{route('artists.show', $artist->id)}}">
+                    <h1>{{$artist->name}}</h1>
+                    <h2>{{$artist->hometown}}</h2>
+                    <p>{{$artist->bio}}</p>
 
-                    @foreach($a->photos as $p)
+                    @foreach($artist->photos as $p)
                         @if(!$p->banner && !$p->background)
                             <img src="{{$p->path}}" class="img-circle img-responsive" />
                         @endif
                     @endforeach
 
-                    @if($a->hasBanner())
+                    @if($artist->hasBanner())
                         <h3>Banner</h3>
-                        <img src="{{$a->banner()->path}}">
+                        <img src="{{$artist->banner()->path}}">
                     @endif
 
-                    @if($a->hasBackground())
+                    @if($artist->hasBackground())
                         <h3>Background</h3>
-                        <img src="{{$a->background()->path}}">
+                        <img src="{{$artist->background()->path}}">
                     @endif
                 </a>
-                @if(Auth::check() && isset($a->user) && Auth::user()->id == $a->user->id)
+                @if(Auth::check() && isset($artist->user) && Auth::user()->id == $artist->user->id)
                     @include('artists.partials.adminnav')
                 @endif
 </section>

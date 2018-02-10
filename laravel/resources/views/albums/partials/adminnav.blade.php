@@ -1,9 +1,16 @@
-    @if(Auth::check() && Auth::user()->isadmin)
-        <nav class="admin">
-            {!!link_to_route('albums.track.create', 'Add Track', $album->id)!!}
-            {!!link_to_route('photos.album.create', 'Add Photo', $album->id)!!}
-            {!!link_to_route('tags.album.create', 'Add Tags', $album->id)!!}
-            {!!link_to_route('albums.edit', 'Edit', $album->id)!!}
-            {!!link_to_route('albums.delete', 'Delete', $album->id)!!}
-        </nav>
-    @endif
+@if(Auth::check() && Auth::user()->isadmin)
+	<nav>
+		<a href="{!! route('photos.album.create', $album->id) !!}">
+			<i class="fa fa-camera-retro"></i>
+		</a>
+		<a href="{!! route('albums.edit',  $album->id) !!}">
+			<i class="fa fa-pencil"></i>
+		</a>
+		<a href="{!! route('albums.delete', $album->id) !!}">
+			<i class="fa fa-trash"></i>
+		</a>
+		<a href="{!! route('tags.album.create', $album->id)!!}">
+			<i class="fa fa-plus"></i> Tag
+		</a>
+	</nav>
+@endif
