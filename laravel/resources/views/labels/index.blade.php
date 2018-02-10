@@ -12,7 +12,7 @@
 		</header>
 
 		<?php $count=0 ?>
-        @foreach($labels as $l)
+        @foreach($labels as $label)
             @if($count % 3 == 0)
                 <div class="row">
             @endif
