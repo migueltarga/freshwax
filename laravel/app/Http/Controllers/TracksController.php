@@ -95,22 +95,30 @@ class TracksController extends Controller {
     {
         if( null !== $request->file('track') ){
             $track_file = $request->file('track');
-            $track_path = public_path() . '/uploads/';
+			$track_path = '/uploads/';
+			$track_full_path = public_path() . $track_path;
             $ext = $track_file->getClientOriginalExtension();
             $name = preg_replace("/[^a-zA-Z]+/", "", $request->name);
-            $track_name = $name . '.' . $ext;
-            $track_file->move($track_path, $track_name);
+			$track_name = $name;
+			$track_ext = '.' . $ext;
+            $track_file->move($track_full_path, $track_name . $track_ext);
 
 			$track->path = $track_path . $track_name;
 
 			//if it's not an mp3 it needs to be
             if(strcasecmp($ext,"mp3") != 0){
-                $convert_command = 'sox ' . $track->path . $ext . ' ' . $track->path . '.mp3';
-                echo exec($convert_command);
-            }
+				$convert_command = 'sox ' . $track_full_path . $track_name . $track_ext . ' ' . $track_full_path . $track_name . '.mp3';
+				$output = [];
+				exec($convert_command, $output);
+			}
+
+			$track->path = $track->path . '.mp3';
+
         } else {
-            $track->path = '';
-        }
+
+			$track->path = '';
+		}
+
         return $track->path;
     }
 
