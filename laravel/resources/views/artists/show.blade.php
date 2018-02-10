@@ -20,12 +20,12 @@
 		@include('artists.partials.adminnav')
 
 		<div class="col-md-4">
-			<h1>Bio:</h1>
+			<h2>Bio</h2>
 			<p>{{$artist->bio}}</p>
 		</div>
 
 		<div class="col-md-4">
-			<h1>Albums:</h1>
+			<h2>Albums</h2>
 			@foreach($artist->albums as $album)
 				<a href="{!!route('albums.show', $album->id)!!}">
 					@include('albums.partials.show')
@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="col-md-4">
-			<h1>Tracks:</h1>
+			<h2>Tracks</h2>
 			@foreach($artist->tracks as $track)
 				<a href="{!!route('tracks.show', $track->id)!!}">
 					@include('tracks.partials.show')
