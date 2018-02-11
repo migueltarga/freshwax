@@ -24,9 +24,11 @@
 
 	@endif
 
-	<audio controls>
-		<source src="{{ $track->path }}">
-	</audio>
+	@if(Storage::disk('spaces')->exists($track->path))
+		<audio controls>
+			<source src="{{ Storage::disk('spaces')->temporaryUrl($track->path, now()->addMinutes(30)) }}">
+		</audio>
+	@endif
 
 	{!! $track->soundcloud_embed !!}
 

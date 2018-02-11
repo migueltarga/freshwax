@@ -38,8 +38,8 @@ class ProcessTrackUpload implements ShouldQueue
     {
 
 		$file_name = $this->track->file_name . $this->track->ext;
-		$track_full_path = storage_path('app/tracks_to_upload') . '/';
-		$original_file_full_path = $track_full_path . $file_name;
+		$this->track_full_path = storage_path('app/tracks_to_upload') . '/';
+		$original_file_full_path = $this->track_full_path . $file_name;
 
 		Log::channel('spaces')->info('preparing to process file: ' . $file_name);
 
@@ -52,7 +52,7 @@ class ProcessTrackUpload implements ShouldQueue
 				Log::channel('spaces')->info('mp3 conversion necessary: ' . $file_name);
 
 				$mp3_file_name = $this->track->file_name . '.mp3';
-				$mp3_file_full_path = $track_full_path . $mp3_file_name;
+				$mp3_file_full_path = $this->track_full_path . $mp3_file_name;
 
 				Log::channel('spaces')->info('converting with sox: ' . $file_name);
 
@@ -65,10 +65,13 @@ class ProcessTrackUpload implements ShouldQueue
 				$mp3_file = new File($mp3_file_full_path);
 				Storage::disk('spaces')->putFileAs('tracks', $mp3_file, $mp3_file_name);
 				Storage::delete($mp3_file);
+				$this->track->path = 'tracks/' . $mp3_file_name;
 
 				Log::channel('spaces')->info('upload complete: ' . $file_name);
 
 				$this->track->ext = '.mp3';
+			} else {
+				$this->track->path = 'tracks/' . $file_name;
 			}
 
 			Log::channel('spaces')->info('uploading original file' . $file_name);
@@ -78,7 +81,7 @@ class ProcessTrackUpload implements ShouldQueue
 
 			Log::channel('spaces')->info('upload complete... ' . $file_name);
 
-			$track->uploaded = true;
+			$this->track->uploaded = true;
 			$this->track->save();
 
 		} catch (Exception $e) {
@@ -90,7 +93,7 @@ class ProcessTrackUpload implements ShouldQueue
 			$this->track->original_ext = null;
 			$this->track->uploaded = false;
 			$this->track->save();
-			throw($e);
+			//throw($e);
 		}
 	}
 }
