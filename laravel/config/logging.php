@@ -8,7 +8,7 @@ return [
 
 		'stack' => [
 			'driver' => 'stack',
-			'channels' => ['single'],
+			'channels' => ['single','spaces'],
 		],
 
 		'single' => [
