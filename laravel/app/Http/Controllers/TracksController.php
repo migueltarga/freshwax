@@ -5,16 +5,18 @@ use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\TrackCreateFormRequest;
 use freshwax\Http\Requests\TrackUpdateFormRequest;
 
+use \Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use freshwax\Models\Artist;
 use freshwax\Models\Album;
 use freshwax\Models\Track;
 
-use View;
+use Auth;
 use Input;
 use Redirect;
-use Auth;
+use View;
 
 class TracksController extends Controller {
 
@@ -104,11 +106,18 @@ class TracksController extends Controller {
 
 			$track->path = $track_path . $track_name;
 
+			$original_file_full_path=$track_full_path . $track_name . $track_ext;
+
 			//if it's not an mp3 it needs to be
             if(strcasecmp($ext,"mp3") != 0){
-				$convert_command = 'sox ' . $track_full_path . $track_name . $track_ext . ' ' . $track_full_path . $track_name . '.mp3';
+
+				$mp3_file_full_path = $track_full_path . $track_name . '.mp3';
+
+				$convert_command = 'sox ' . $original_file_full_path . ' ' . $mp3_file_full_path;
 				$output = [];
 				exec($convert_command, $output);
+
+				Storage::disk('spaces')->putFileAs('tracks', new File($mp3_file_full_path), $track_name . '.mp3');
 			}
 
 			$track->path = $track->path . '.mp3';
@@ -117,6 +126,8 @@ class TracksController extends Controller {
 
 			$track->path = '';
 		}
+
+		Storage::disk('spaces')->putFileAs('tracks', new File($original_file_full_path), $track_name . $track_ext);
 
         return $track->path;
     }
