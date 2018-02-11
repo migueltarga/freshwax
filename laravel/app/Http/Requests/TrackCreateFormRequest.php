@@ -30,7 +30,8 @@ class TrackCreateFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required'
+			'name' => 'required',
+			'artist_id' => 'required'
 		];
 	}
 

@@ -16,12 +16,16 @@ class CreateTracksTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
+			$table->string('file_name');
 			$table->string('path');
+			$table->string('ext');
+			$table->string('original_ext');
 			$table->integer('user_id')->unsigned();
 			$table->integer('album_id')->unsigned()->nullable();
-			$table->text('soundcloud_embed')->nullable();
+			$table->text('embed')->nullable();
 			$table->string('length')->nullable();
 			$table->text('comment')->nullable();
+			$table->boolean('uploaded');
 			$table->boolean('private');
 			$table->timestamps();
 		});

@@ -5,13 +5,14 @@ use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\TrackCreateFormRequest;
 use freshwax\Http\Requests\TrackUpdateFormRequest;
 
-use \Illuminate\Http\File;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use freshwax\Models\Artist;
 use freshwax\Models\Album;
 use freshwax\Models\Track;
+use freshwax\Jobs\ProcessTrackUpload;
 
 use Auth;
 use Input;
@@ -71,9 +72,22 @@ class TracksController extends Controller {
     {
         $track = Track::create(Input::except('track'));
 
-        $track->path = $this->handleFile($track, $request);
+		$file_provided = null !== $request->file('track');
 
-        if( !$request->filled('private') ){
+        if( $file_provided ){
+
+			$track_file = $request->file('track');
+			$track->file_name = preg_replace("/[^a-zA-Z]+/", "", $request->name);
+
+			$ext = $track_file->getClientOriginalExtension();
+			$track->ext = '.' . $ext;
+			$track->original_ext = '.' . $ext;
+
+			Storage::putFileAs('tracks_to_upload',  $track_file, $track->file_name . $track->ext);
+
+		}
+
+		if( !$request->filled('private') ){
             $track->private = false;
         }
 
@@ -88,48 +102,13 @@ class TracksController extends Controller {
 			$track->artists()->attach($activeartist->id);
 		}
 
-        $track->save();
-        return redirect()->route('tracks.index');
-    }
+		$track->save();
 
-    public function handleFile($track, $request)
-    {
-        if( null !== $request->file('track') ){
-            $track_file = $request->file('track');
-			$track_path = '/uploads/';
-			$track_full_path = public_path() . $track_path;
-            $ext = $track_file->getClientOriginalExtension();
-            $name = preg_replace("/[^a-zA-Z]+/", "", $request->name);
-			$track_name = $name;
-			$track_ext = '.' . $ext;
-            $track_file->move($track_full_path, $track_name . $track_ext);
-
-			$track->path = $track_path . $track_name;
-
-			$original_file_full_path=$track_full_path . $track_name . $track_ext;
-
-			//if it's not an mp3 it needs to be
-            if(strcasecmp($ext,"mp3") != 0){
-
-				$mp3_file_full_path = $track_full_path . $track_name . '.mp3';
-
-				$convert_command = 'sox ' . $original_file_full_path . ' ' . $mp3_file_full_path;
-				$output = [];
-				exec($convert_command, $output);
-
-				Storage::disk('spaces')->putFileAs('tracks', new File($mp3_file_full_path), $track_name . '.mp3');
-			}
-
-			$track->path = $track->path . '.mp3';
-
-        } else {
-
-			$track->path = '';
+        if( $file_provided ){
+			ProcessTrackUpload::dispatch($track);
 		}
 
-		Storage::disk('spaces')->putFileAs('tracks', new File($original_file_full_path), $track_name . $track_ext);
-
-        return $track->path;
+        return redirect()->route('tracks.index');
     }
 
 

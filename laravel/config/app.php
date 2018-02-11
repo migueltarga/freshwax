@@ -142,7 +142,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Broadcasting\BroadcastServiceProvider',
-        'Illuminate\Notifications\NotificationServiceProvider',
+		'Illuminate\Notifications\NotificationServiceProvider',
+		Illuminate\Bus\BusServiceProvider::class,
 
 		/*
 		 * Application Service Providers...

@@ -6,7 +6,7 @@ class Track extends Model {
 
 	protected $table = "tracks";
 
-	protected $fillable = ['name', 'track', 'album_id', 'length', 'path', 'private', 'comment', 'soundcloud_embed'];
+	protected $fillable = ['name', 'album_id', 'length', 'file_name', 'path', 'ext', 'original_ext', 'private', 'uploaded', 'comment', 'embed'];
 
 	public function user(){
 		return $this->belongsTo('freshwax\Models\User');
