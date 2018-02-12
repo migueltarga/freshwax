@@ -3,8 +3,11 @@
 @import "compass";
 
 /**COLORS**/
-$primary: shade(blue, 80); 
+$active: hsl(225°, 41%, 63%);
+$primary: shade($active, 55); 
+$shaded: shade($active, 75); 
 
 /**CUSTOM**/
-@import "type"; 
+@import "general"; 
 @import "nav"; 
+@import "type"; 

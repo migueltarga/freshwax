@@ -4,7 +4,7 @@ h1,h2,h3,h4,h5,h6,p,a,input,label{
 }
 
 a,a:visited{
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 100px; 
     font-size: 24px;
     color: #2D4471;
@@ -22,7 +22,6 @@ h1 {
     margin: 24px 0 12px;
     a {
         font-size: 48px;
-        border-bottom: 1px solid black; 
     }
 }
 
@@ -37,5 +36,12 @@ h2 {
 }
 
 .brand {
-    color: #152B55;
+    color: $primary;
+}
+
+.site-header {
+	h1 {
+		letter-spacing: 3px; 
+		text-align: center; 
+	}
 }

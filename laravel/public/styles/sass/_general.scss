@@ -1,0 +1,13 @@
+a:hover,a:hover:visited {
+	text-decoration: none; 
+}
+.btn, .btn-default, .btn:visited, .btn-default:visited {
+	background-color: $primary; 
+	font-family: sans-serif;
+	text-transform: uppercase; 
+	color: white;
+	border: none;	
+}
+.btn:hover, .btn-default:hover, .btn:visited:hover, .btn-default:visited:hover {
+	background-color: $active; 
+}

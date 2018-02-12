@@ -1,1 +1,25 @@
+.navbar {
+	background-color: white; 
+}
+.navbar-inverse,
+.navbar-inverse .navbar-nav>li{
+	background-color: $primary;
+	border: none;
 
+	
+	a,a:visited {
+		color: white; 
+	}
+
+	a:hover,a:hover:visited {
+		color: $active; 
+	}	
+}
+article {
+	section {
+		nav { 
+			padding: 12px; 
+			
+		}
+	}
+}
