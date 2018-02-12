@@ -10,6 +10,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 use Storage;
 use Log;
 
@@ -57,8 +60,15 @@ class ProcessTrackUpload implements ShouldQueue
 				Log::channel('spaces')->info('converting with sox: ' . $file_name);
 
 				$convert_command = 'sox ' . $original_file_full_path . ' ' . $mp3_file_full_path;
-				$output = [];
-				exec($convert_command, $output);
+				$process = new Process($convert_command);
+
+				$process->run();
+
+				Log::channel('spaces')->info('output from sox:' . $process->getOutput());
+
+				if (!$process->isSuccessful()) {
+					throw new ProcessFailedException($process);
+				}
 
 				Log::channel('spaces')->info('uploading to spaces... ' . $file_name);
 
