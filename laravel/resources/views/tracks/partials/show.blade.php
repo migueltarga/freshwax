@@ -4,8 +4,8 @@
 	@if($track->photos->count())
 
 		@foreach($track->photos as $p)
-			@if(!$p->banner && !$p->background)
-				<img src="{{$p->path}}" class="img-responsive" />
+			@if(!$p->banner && !$p->background && Storage::disk('spaces')->exists($p->path))
+				<img src="{{ Storage::disk('spaces')->url($p->path) }}" class="img-responsive" />
 				@break
 			@endif
 		@endforeach

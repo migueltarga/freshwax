@@ -4,7 +4,10 @@
 		- banner image
 	@endif
 </p>
-<img src="{{$p->path}}" class="img-responsive"/>
+
+@if(Storage::disk('spaces')->exists($p->path))
+	<img src="{{Storage::disk('spaces')->url($p->path)}}" class="img-responsive"/>
+@endif
 
 @if(Auth::check() && Auth::user()->isadmin)
 	<nav>

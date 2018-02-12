@@ -1,8 +1,11 @@
 <?php namespace freshwax\Http\Controllers;
 
+use Illuminate\Http\File;
+
 use freshwax\Http\Requests;
 use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\PhotoCreateFormRequest;
+
 
 use freshwax\Models\Photo;
 use freshwax\Models\Label;
@@ -18,6 +21,7 @@ use Input;
 use Redirect;
 use Image;
 use Request;
+use Storage;
 
 class PhotosController extends Controller {
 
@@ -103,6 +107,9 @@ class PhotosController extends Controller {
             $img = Image::make( $photo_path . $photo_name);
             $img->save();
 
+			Storage::disk('spaces')->putFileAs('photos', new File($photo_path . $photo_name), $photo_name);
+			Storage::disk('spaces')->setVisibility('photos/' . $photo_name, 'public');
+			Storage::delete($photo_path . $photo_name);
         } else {
 
             return Redirect::back()->withErrors(array("Please include an image!"))->withInput();
@@ -117,7 +124,7 @@ class PhotosController extends Controller {
         if(!Input::has('background')){
             $photo->background = false;
         }
-        $photo->path = '/uploads/' . $photo_name;
+        $photo->path = 'photos/' . $photo_name;
 
 		if( $request->has('label')){
             $label = Label::findOrFail(Input::get('label'));
