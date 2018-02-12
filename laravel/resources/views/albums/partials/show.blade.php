@@ -3,7 +3,9 @@
 
     @if($album->photos->count())
         @foreach($album->photos as $p)
-            <img src="{{$p->path}}" class="img-responsive" />
+			@if(!$p->banner && !$p->background && Storage::disk('spaces')->exists($p->path))
+				<img src="{{Storage::disk('spaces')->url($p->path)}}" class="img-responsive" />
+			@endif
 		@endforeach
 	@else
 

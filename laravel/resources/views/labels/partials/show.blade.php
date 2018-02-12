@@ -6,8 +6,8 @@
 		</a>
 
 		@foreach($label->photos as $p)
-			@if(!$p->banner && !$p->background)
-				<img src="{{$p->path}}" class="img-circle img-responsive" />
+			@if(!$p->banner && !$p->background && Storage::disk('spaces')->exists($p->path))
+				<img src="{{Storage::disk('spaces')->url($p->path)}}" class="img-circle img-responsive" />
 			@endif
 		@endforeach
 
