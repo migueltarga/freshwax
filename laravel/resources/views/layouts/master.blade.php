@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css?family=Yantramanav:100,400,900" rel="stylesheet">
 {!! HTML::style('styles/css/font-awesome.min.css') !!}
 {!! HTML::style('styles/css/DateTimePicker.css') !!}
-{!! HTML::style('styles/css/grid/output.css') !!}
 {!! HTML::style('styles/css/screen.css') !!}
 
 @if($activeartist->hasBackground())
@@ -33,7 +32,6 @@
     @include('layouts.partials.footer')
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     {!! HTML::script('styles/js/jquery-2.1.3.min.js') !!}
     {!! HTML::script('styles/js/DateTimePicker.js') !!}
 
