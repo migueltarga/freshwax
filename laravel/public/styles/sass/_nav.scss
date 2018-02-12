@@ -1,6 +1,19 @@
 .navbar {
 	background-color: white; 
 }
+.navbar-form {
+
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 2px;
+
+	.btn {
+		font-size: 18px;
+	}
+	.btn:hover {
+		color: white; 
+	}	
+}
 .navbar-inverse,
 .navbar-inverse .navbar-nav>li{
 	background-color: $primary;

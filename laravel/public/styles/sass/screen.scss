@@ -3,7 +3,9 @@
 @import "compass";
 
 /**COLORS**/
-$active: hsl(225°, 41%, 63%);
+$active: tint(hsl(225°, 41%, 63%), 5);
+$active_shaded: shade($active, 15); 
+$active_shaded_more: shade($active, 35); 
 $primary: shade($active, 55); 
 $shaded: shade($active, 75); 
 

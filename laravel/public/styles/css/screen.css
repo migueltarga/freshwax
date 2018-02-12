@@ -73,7 +73,7 @@ a:hover, a:hover:visited {
 
 /* line 4, ../sass/_general.scss */
 .btn, .btn-default, .btn:visited, .btn-default:visited {
-  background-color: #373f5a;
+  background-color: #3a425b;
   font-family: sans-serif;
   text-transform: uppercase;
   color: white;
@@ -82,7 +82,7 @@ a:hover, a:hover:visited {
 
 /* line 11, ../sass/_general.scss */
 .btn:hover, .btn-default:hover, .btn:visited:hover, .btn-default:visited:hover {
-  background-color: #7a8dc7;
+  background-color: #8193ca;
 }
 
 /* line 1, ../sass/_nav.scss */
@@ -91,78 +91,106 @@ a:hover, a:hover:visited {
 }
 
 /* line 4, ../sass/_nav.scss */
-.navbar-inverse,
-.navbar-inverse .navbar-nav > li {
-  background-color: #373f5a;
-  border: none;
+.navbar-form {
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 2px;
 }
 /* line 10, ../sass/_nav.scss */
+.navbar-form .btn {
+  font-size: 18px;
+}
+/* line 13, ../sass/_nav.scss */
+.navbar-form .btn:hover {
+  color: white;
+}
+
+/* line 17, ../sass/_nav.scss */
+.navbar-inverse,
+.navbar-inverse .navbar-nav > li {
+  background-color: #3a425b;
+  border: none;
+}
+/* line 23, ../sass/_nav.scss */
 .navbar-inverse a, .navbar-inverse a:visited,
 .navbar-inverse .navbar-nav > li a,
 .navbar-inverse .navbar-nav > li a:visited {
   color: white;
 }
-/* line 14, ../sass/_nav.scss */
+/* line 27, ../sass/_nav.scss */
 .navbar-inverse a:hover, .navbar-inverse a:hover:visited,
 .navbar-inverse .navbar-nav > li a:hover,
 .navbar-inverse .navbar-nav > li a:hover:visited {
-  color: #7a8dc7;
+  color: #8193ca;
 }
 
-/* line 20, ../sass/_nav.scss */
+/* line 33, ../sass/_nav.scss */
 article section nav {
   padding: 12px;
 }
 
 /* line 1, ../sass/_type.scss */
-h1, h2, h3, h4, h5, h6, p, a, input, label {
+h1, h2, h3, h4, h5, h6, p, a, input, label, button {
   font-family: 'Yantramanav', sans-serif;
   color: black;
 }
 
 /* line 6, ../sass/_type.scss */
-a, a:visited {
+a, a:visited, button {
   text-decoration: none !important;
-  font-weight: 100px;
-  font-size: 24px;
+  font-size: 18px;
   color: #2D4471;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+/* line 13, ../sass/_type.scss */
+a i, a:visited i, button i {
+  color: #6e7dac;
+}
 
-/* line 15, ../sass/_type.scss */
+/* line 19, ../sass/_type.scss */
+a:hover i, a:visited:hover i {
+  color: #546083;
+}
+
+/* line 24, ../sass/_type.scss */
 p {
   line-height: 2;
   font-size: 18px;
 }
 
-/* line 20, ../sass/_type.scss */
+/* line 29, ../sass/_type.scss */
 h1 {
   font-weight: 900;
   margin: 24px 0 12px;
 }
-/* line 23, ../sass/_type.scss */
+/* line 32, ../sass/_type.scss */
 h1 a {
   font-size: 48px;
 }
 
-/* line 29, ../sass/_type.scss */
+/* line 38, ../sass/_type.scss */
 article h1 {
   font-size: 36px;
 }
 
-/* line 34, ../sass/_type.scss */
+/* line 43, ../sass/_type.scss */
 h2 {
   font-size: 24px;
 }
 
-/* line 38, ../sass/_type.scss */
+/* line 47, ../sass/_type.scss */
 .brand {
-  color: #373f5a;
+  color: #3a425b;
 }
 
-/* line 43, ../sass/_type.scss */
-.site-header h1 {
-  letter-spacing: 3px;
-  text-align: center;
+/* line 52, ../sass/_type.scss */
+nav a {
+  font-weight: 900;
+}
+
+/* line 57, ../sass/_type.scss */
+.btn {
+  font-weight: 900;
+  font-size: 18px;
 }
