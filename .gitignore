@@ -1,5 +1,1 @@
-laravel/public/uploads/*
-*.env
-*.swo
-*.swp
-*:.lock
+laravel/nohup.out
