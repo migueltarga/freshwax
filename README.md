@@ -12,4 +12,4 @@
 - Let me know if you're stuck
 
 ### Contribution
-- [contact me](mailto:jasperboyd@icloud.com)
+- Explore the app, make a pr for what you think would be cool! 
