@@ -12,4 +12,4 @@
 - Let me know if you're stuck
 
 ### Contribution
-- Explore the app, make a pr for what you think would be cool! 
+- Explore freshwax, make a pull request if you have an idea! 
