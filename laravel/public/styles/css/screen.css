@@ -123,8 +123,13 @@ a:hover, a:hover:visited {
 .navbar-inverse .navbar-nav > li a:hover:visited {
   color: #8193ca;
 }
+/* line 31, ../sass/_nav.scss */
+.navbar-inverse a:last-child,
+.navbar-inverse .navbar-nav > li a:last-child {
+  margin: 0 18px;
+}
 
-/* line 33, ../sass/_nav.scss */
+/* line 37, ../sass/_nav.scss */
 article section nav {
   padding: 12px;
 }
