@@ -1,8 +1,6 @@
 # FRESHWAX 
-## AN OPEN SOURCE MUSIC PLATFORM
-### V0
 
-### Setup
+## Setup
 - I would recommend using [laravel homestead](https://laravel.com/docs/5.2/homestead) to serve this 
 - Install [composer](https://getcomposer.org/)
 - `cd laravel`
@@ -11,5 +9,5 @@
 - `php artisan migrate:install`
 - Let me know if you're stuck
 
-### Contribution
+## Contribution
 - Explore freshwax, make a pull request if you have an idea! 
