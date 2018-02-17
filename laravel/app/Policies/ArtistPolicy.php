@@ -10,7 +10,14 @@ class ArtistPolicy
 {
     use HandlesAuthorization;
 
-    /**
+	public function before($user, $ability)
+	{
+		if ($user->isadmin) {
+			return true;
+		}
+	}
+
+	/**
      * Determine whether the user can view the artist.
      *
      * @param  \freshwax\Models\User  $user
