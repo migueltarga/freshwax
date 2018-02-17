@@ -6,8 +6,8 @@
 			<h1>Users</h1>
 		</header>
 
+		<?php $count = 0 ?>
 		@foreach($users as $u)
-			<?php $count = 0 ?>
 				@if($count % 4 == 0)
 					<div class="row">
                 @endif
