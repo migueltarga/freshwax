@@ -1,4 +1,4 @@
-@if(Auth::check() && Auth::user())
+@can('update', $artist)
     <nav class="navbar col-md-12">
         @if(!$artist->active_profile)
 			<a href="{!!route('artists.makeactive', $artist->id)!!}">
@@ -15,4 +15,4 @@
 			<i class="fa fa-trash" aria-hidden="true"></i>
 		</a>
     </nav>
-@endif
+@endcan
