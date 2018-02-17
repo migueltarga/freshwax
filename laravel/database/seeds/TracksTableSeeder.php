@@ -9,7 +9,7 @@ class TracksTableSeeder extends Seeder {
 
     public function run()
     {
-        TestDummy::times(50)->create('freshwax\Models\Track');
-    }
+
+	}
 
 }

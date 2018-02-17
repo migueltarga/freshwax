@@ -9,7 +9,7 @@ class UsersTableSeeder extends Seeder {
 
     public function run()
     {
-        TestDummy::times(20)->create('freshwax\Models\User');
-    }
+
+	}
 
 }
