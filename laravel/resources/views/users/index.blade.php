@@ -7,19 +7,13 @@
 		</header>
 
 		<?php $count = 0 ?>
-		@foreach($users as $u)
+		@foreach($users as $user)
 				@if($count % 4 == 0)
 					<div class="row">
                 @endif
 
 						<div class="col-md-3">
-							<h1>{{$u->name}}</h1>
-							<h2><a href="mailto:{{$u->email}}">{{$u->email}}</a></h2>
-							<ul>
-								@foreach($u->roles as $r)
-									<li>$r->name</li>
-								@endforeach
-							</ul>
+							@include('users.partials.show')
 						</div>
 
 				@if(++$count % 4 == 0)

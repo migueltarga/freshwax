@@ -2,6 +2,9 @@
 
 namespace freshwax\Providers;
 
+use freshwax\Models\User;
+use freshwax\Policies\UserPolicy;
+
 use freshwax\Models\Track;
 use freshwax\Policies\TrackPolicy;
 
@@ -21,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
 {
 
     protected $policies = [
+		User::class => UserPolicy::class,
 		Track::class => TrackPolicy::class,
 		Artist::class => ArtistPolicy::class,
 		Album::class => AlbumPolicy::class,
