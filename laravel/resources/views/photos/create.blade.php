@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<article class="forms">
+	<article>
 		<header class="jumbotron">
 			<h1><i class="fa fa-plus"></i> Photo</h1>
 		</header>

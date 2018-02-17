@@ -7,6 +7,7 @@ use freshwax\Http\Requests\UserCreateFormRequest;
 use Illuminate\Support\Facades\Request;
 
 use freshwax\Models\User;
+use freshwax\Models\Role;
 use freshwax\Models\Artist;
 use freshwax\Models\ShoppingCart;
 use freshwax\Models\Wishlist;
@@ -63,6 +64,13 @@ class UsersController extends Controller {
         $users = User::all();
         return View::make('users.create', compact('users'));
     }
+
+	public function addRole($id)
+	{
+		$user = User::findOrFail($id);
+		$roles = Role::all();
+		return View::make('users.addrole', compact('user', 'roles'));
+	}
 
     public function login()
     {

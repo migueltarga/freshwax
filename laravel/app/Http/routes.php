@@ -68,37 +68,37 @@ Route::get('/addresses/{orderid}/order/billing', array(
 Route::get('/labels/delete/{id}', array(
 		'uses' => 'LabelsController@delete',
         'as' => 'labels.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 	));
 
 Route::get('/videos/delete/{id}', array(
 		'uses' => 'VideosController@delete',
         'as' => 'videos.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 	));
 
 Route::get('/lyrics/delete/{id}', array(
 		'uses' => 'LyricsController@delete',
         'as' => 'lyrics.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 	));
 
 Route::get('/items/delete/{id}', array(
 		'uses' => 'ItemsController@delete',
         'as' => 'items.delete',
-        'middleware' => 'auth:artist',
+        'middleware' => 'auth',
 	));
 
 Route::get('/orders/delete/{id}', array(
 		'uses' => 'OrdersController@delete',
         'as' => 'orders.delete',
-        'middleware' => 'auth:admin'
+        'middleware' => 'auth'
 	));
 
 Route::get('events/delete/{id}', array(
 		'uses' => 'EventsController@delete',
         'as' => 'events.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
     ));
 
 //ALBUMS
@@ -106,13 +106,13 @@ Route::get('events/delete/{id}', array(
 Route::get('albums/{id}/track', array(
         'uses' => 'AlbumsController@addTrack',
         'as' => 'albums.track.create',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
     ));
 
 Route::get('albums/delete/{id}', array(
 		'uses' => 'AlbumsController@delete',
         'as' => 'albums.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
     ));
 
 //ENDALBUMS
@@ -126,19 +126,19 @@ Route::get('artists/delete/{id}', array(
 Route::get('photos/delete/{id}', array(
 		'uses' => 'PhotosController@delete',
         'as' => 'photos.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 ));
 
 Route::get('posts/delete/{id}', array(
 		'uses' => 'PostsController@delete',
         'as' => 'posts.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 	));
 
 Route::get('tracks/delete/{id}', array(
 		'uses' => 'TracksController@delete',
         'as' => 'tracks.delete',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 	));
 
 Route::post('/cart/add/items', array(
@@ -172,6 +172,8 @@ Route::get('/home', array(
 	'as' => 'home.landing'
 ));
 
+
+//Auth, Registration & Permission Routes
 Route::get('/register', array(
 	'uses' => 'HomeController@register',
 	'as' => 'home.register'
@@ -195,6 +197,11 @@ Route::get('/register/artist', array(
 Route::get('/register/label', array(
     'uses' => 'UsersController@createLabel',
     'as' => 'auth.register.label'
+));
+
+Route::get('/users/{id}/roles', array(
+	'uses' => 'UsersController@addRole',
+	'as' => 'users.addrole'
 ));
 
 //Begin Photo Endpoints
