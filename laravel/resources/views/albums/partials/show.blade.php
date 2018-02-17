@@ -22,8 +22,6 @@
         <h2>{{$track->name}}</h2>
     @endforeach
 
-
-
     @include('albums.partials.adminnav')
 
 </section>

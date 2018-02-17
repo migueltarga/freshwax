@@ -73,9 +73,11 @@ class AlbumsController extends Controller {
     {
         $album = Album::create(Input::all());
 
+		$album->user()->associate(Auth::user());
+
         $album->artists()->attach(Input::get('artist_id'));
 
-
+		$album->save();
 
         return Redirect::route('albums.index');
     }

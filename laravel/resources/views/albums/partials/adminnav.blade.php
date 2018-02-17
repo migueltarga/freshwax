@@ -1,4 +1,4 @@
-@if(Auth::check() && Auth::user()->isadmin)
+@can('update', $album)
 	<nav>
 		<a href="{!! route('photos.album.create', $album->id) !!}">
 			<i class="fa fa-camera-retro"></i>
@@ -13,4 +13,4 @@
 			<i class="fa fa-plus"></i> Tag
 		</a>
 	</nav>
-@endif
+@endcan

@@ -12,6 +12,10 @@ class Album extends Model {
 		return $this->belongsToMany('freshwax\Models\Artist');
 	}
 
+	public function user(){
+		return $this->belongsTo('freshwax\Models\User');
+    }
+
 	public function tracks(){
 		return $this->hasMany('freshwax\Models\Track');
 	}
