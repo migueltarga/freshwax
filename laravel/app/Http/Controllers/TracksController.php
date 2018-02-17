@@ -70,7 +70,9 @@ class TracksController extends Controller {
      */
     public function store(TrackCreateFormRequest $request)
     {
-        $track = Track::create(Input::except('track'));
+		$track = Track::create(Input::except('track'));
+
+		$track->user()->associate(Auth::user());
 
 		$file_provided = null !== $request->file('track');
 

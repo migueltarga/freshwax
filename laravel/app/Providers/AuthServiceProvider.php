@@ -1,11 +1,11 @@
 <?php
 
-namespace Freshwax\Providers;
+namespace freshwax\Providers;
 
-use Freshwax\Track;
-use Freshwax\Policies\TrackPolicy;
+use freshwax\Models\Track;
+use freshwax\Policies\TrackPolicy;
 
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -16,8 +16,8 @@ class AuthServiceProvider extends ServiceProvider
     ];
 
 
-    public function boot(GateContract $gate)
-    {
-        $this->registerPolicies($gate);
+    public function boot()
+	{
+        $this->registerPolicies();
     }
 }

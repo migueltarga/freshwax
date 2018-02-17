@@ -1,5 +1,4 @@
-<section>
-
+<section class="track">
 
 	@if($track->photos->count())
 
@@ -29,8 +28,6 @@
 			<source src="{{ Storage::disk('spaces')->temporaryUrl($track->path, now()->addMinutes(30)) }}">
 		</audio>
 	@endif
-
-	{!! $track->soundcloud_embed !!}
 
 	@if($track->tags->count())
 		<ul>

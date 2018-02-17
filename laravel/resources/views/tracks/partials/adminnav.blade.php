@@ -1,4 +1,4 @@
-@if(Auth::check() && Auth::user()->isadmin)
+@can('update', $track)
 	<nav>
 		<a href="{!! route('photos.track.create', $track->id) !!}">
 			<i class="fa fa-camera-retro"></i>
@@ -16,4 +16,4 @@
 			<i class="fa fa-plus"></i> Tag
 		</a>
 	</nav>
-@endif
+@endcan
