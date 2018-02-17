@@ -11,10 +11,17 @@
 				@if($count % 4 == 0)
 					<div class="row">
                 @endif
-                        <div class="col-md-3">
-                            <h1>{{$u->name}}</h1>
-                            <h2><a href="mailto:{{$u->email}}">{{$u->email}}</a></h2>
-                        </div>
+
+						<div class="col-md-3">
+							<h1>{{$u->name}}</h1>
+							<h2><a href="mailto:{{$u->email}}">{{$u->email}}</a></h2>
+							<ul>
+								@foreach($u->roles as $r)
+									<li>$r->name</li>
+								@endforeach
+							</ul>
+						</div>
+
 				@if(++$count % 4 == 0)
 					</div>
 				@endif
