@@ -11,7 +11,5 @@
 			@endif
 		@endforeach
 
-		@if(Auth::check() && $label->hasUser(Auth::user()->id))
-			@include('labels.partials.adminnav')
-		@endif
+		@include('labels.partials.adminnav')
 </section>
