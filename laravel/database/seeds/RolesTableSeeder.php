@@ -1,6 +1,6 @@
 <?php
 
-use freshwax\Models\Role
+use freshwax\Models\Role;
 
 use Illuminate\Database\Seeder;
 
@@ -27,9 +27,9 @@ class RolesTableSeeder extends Seeder
 			$role_artist->name = 'Artist';
 			$role_artist->save();
 
-			$role_listener = new Role();
-			$role_listener->name = "Listener";
-			$role_listener->save();
+			$role_label = new Role();
+			$role_label->name = "Label";
+			$role_label->save();
 
 		}
 	}
