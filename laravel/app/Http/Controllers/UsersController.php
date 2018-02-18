@@ -3,6 +3,7 @@
 use freshwax\Http\Requests;
 use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\UserCreateFormRequest;
+use freshwax\Http\Requests\UserStoreRoleFormRequest;
 
 use Illuminate\Support\Facades\Request;
 
@@ -70,6 +71,17 @@ class UsersController extends Controller {
 		$user = User::findOrFail($id);
 		$roles = Role::all();
 		return View::make('users.addrole', compact('user', 'roles'));
+	}
+
+	public function storeRole(UserStoreRoleFormRequest $request)
+	{
+		$user = User::findOrFail($request->user_id);
+
+		$user->roles()->attach($request->role_id);
+
+		$user->save();
+
+		return Redirect::route('users.index');
 	}
 
     public function login()

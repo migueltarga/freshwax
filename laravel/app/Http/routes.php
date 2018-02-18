@@ -32,19 +32,19 @@ Route::resource('addresses', 'AddressesController', ['except'=>'create']);
 Route::get('/artist/{id}/makeactive', array(
 		'uses' => 'ArtistsController@makeactive',
         'as' => 'artists.makeactive',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
 	));
 
 Route::get('/artist/{id}/addbanner', array(
 		'uses' => 'PhotosController@makeartistbanner',
         'as' => 'artists.addbanner',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
     ));
 
 Route::get('/my/artists',array(
         'uses' => 'ArtistsController@userartists',
         'as' => 'artists.myartists',
-        'middleware' => 'auth:artist'
+        'middleware' => 'auth'
     ));
 
 Route::get('/addresses/{orderid}/order', array(
@@ -201,80 +201,85 @@ Route::get('/register/label', array(
 
 Route::get('/users/{id}/roles', array(
 	'uses' => 'UsersController@addRole',
-	'as' => 'users.addrole'
+	'as' => 'users.role.add'
+));
+
+Route::post('users/roles', array(
+	'uses' => 'UsersController@storeRole',
+	'as' => 'users.role.store'
 ));
 
 //Begin Photo Endpoints
 Route::get('labels/{id}/photos', array(
 	'uses' => 'PhotosController@label',
     'as' => 'photos.label.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('artists/{id}/photos', array(
 	'uses' => 'PhotosController@artist',
     'as' => 'photos.artist.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('albums/{id}/photos', array(
 	'uses' => 'PhotosController@album',
     'as' => 'photos.album.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('tracks/{id}/photos', array(
 	'uses' => 'PhotosController@track',
     'as' => 'photos.track.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('events/{id}/photos', array(
 	'uses' => 'PhotosController@event',
     'as' => 'photos.event.create',
-     'middleware' => 'auth:artist'
+     'middleware' => 'auth'
 ));
 
 Route::get('posts/{id}/photos', array(
 	'uses' => 'PhotosController@post',
     'as' => 'photos.post.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('items/{id}/photos', array(
 	'uses' => 'PhotosController@item',
     'as' => 'photos.item.create',
-     'middleware' => 'auth:artist'
+     'middleware' => 'auth'
 ));
 
 Route::get('albums/{id}/tags', array(
 	'uses' => 'TagsController@album',
     'as' => 'tags.album.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('tracks/{id}/tags', array(
 	'uses' => 'TagsController@track',
     'as' => 'tags.track.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('posts/{id}/tags', array(
 	'uses' => 'TagsController@post',
     'as' => 'tags.post.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('events/{id}/tags', array(
 	'uses' => 'TagsController@event',
     'as' => 'tags.event.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('items/{id}/tags', array(
 	'uses' => 'TagsController@item',
     'as' => 'tags.item.create',
-    'middleware' => 'auth:artist'
+    'middleware' => 'auth'
 ));
 
 Route::get('/home', 'HomeController@index');

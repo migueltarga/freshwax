@@ -9,14 +9,14 @@
 	</header>
 
 	{!!Form::open(['route'=>'users.role.store'])!!}
-
+		{!!Form::hidden('user_id', $user->id)!!}
 		<div class="form-group"
 			<label for="role_id" class="form-label">Role</label>
 
 			<select name="role_id"
 					class="form-control">
 				@foreach($roles as $r)
-					<option>{{$r->name}}</option>
+					<option value="{{$r->id}}">{{$r->name}}</option>
 				@endforeach
 			<select>
 		</div>
