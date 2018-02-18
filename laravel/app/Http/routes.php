@@ -12,6 +12,11 @@
 */
 Auth::routes();
 
+Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
+	Route::post('/short', 'UrlMapperController@store');
+});
+
+
 Route::resource('artists', 'ArtistsController');
 Route::resource('labels', 'LabelsController');
 Route::resource('lyrics', 'LyricsController');

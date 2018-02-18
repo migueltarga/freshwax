@@ -101,7 +101,7 @@ return [
 		/*
 		 * Custom Service Providers
 		 */
-        Collective\Html\HtmlServiceProvider::class,
+		Collective\Html\HtmlServiceProvider::class,
 		'Intervention\Image\ImageServiceProvider',
 
 		/*
@@ -187,9 +187,11 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-        'Form' => Collective\Html\FormFacade::class,
-        'HTML' => Collective\Html\HtmlFacade::class,
-		'Image'     => 'Intervention\Image\Facades\Image'
+        'Form'		=> Collective\Html\FormFacade::class,
+        'HTML'		=> Collective\Html\HtmlFacade::class,
+		'Image'		=> Intervention\Image\Facades\Image::class,
+		'JWTAuth'	=> Tymon\JWTAuth\Facades\JWTAuth::class,
+		'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
 	],
 

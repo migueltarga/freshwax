@@ -1,10 +1,13 @@
 <?php namespace freshwax\Models;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Hash;
 
 class User extends Authenticatable {
+
+	use HasApiTokens, Notifiable;
 
     /**
 	 * The database table used by the model.
@@ -25,7 +28,7 @@ class User extends Authenticatable {
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['password', 'remember_token', 'admin', 'artist'];
+	protected $hidden = ['password', 'api_token', 'remember_token', 'admin', 'artist'];
 
 	public static function boot()
 	{

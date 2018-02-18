@@ -1,3 +1,4 @@
+*.key
 /laravel/public/uploads
 .sass-cache
 /vendor
