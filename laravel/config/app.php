@@ -189,9 +189,7 @@ return [
 
         'Form'		=> Collective\Html\FormFacade::class,
         'HTML'		=> Collective\Html\HtmlFacade::class,
-		'Image'		=> Intervention\Image\Facades\Image::class,
-		'JWTAuth'	=> Tymon\JWTAuth\Facades\JWTAuth::class,
-		'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
+		'Image'		=> Intervention\Image\Facades\Image::class
 
 	],
 

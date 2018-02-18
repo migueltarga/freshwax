@@ -18,8 +18,7 @@
 		"laravelcollective/html": "5.6.*",
 		"league/flysystem-aws-s3-v3": "^1.0",
 		"phpseclib/phpseclib": "^2.0",
-		"symfony/process": "^4.0",
-		"tymon/jwt-auth": "1.0.0-rc.2"
+		"symfony/process": "^4.0"
 	},
 	"require-dev": {
 		"laracasts/testdummy": "~2.0",
