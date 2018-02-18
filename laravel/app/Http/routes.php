@@ -13,7 +13,7 @@
 Auth::routes();
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
-	Route::post('/short', 'UrlMapperController@store');
+
 });
 
 
