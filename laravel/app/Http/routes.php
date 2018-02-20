@@ -12,10 +12,19 @@
 */
 Auth::routes();
 
+
+//API Routes
+
+//public register
+Route::post('api/v1/register',array(
+	'uses' => 'API\AuthController@register',
+	'as' => 'api.register'
+));
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
 
-});
 
+});
+//END API Routes
 
 Route::resource('artists', 'ArtistsController');
 Route::resource('labels', 'LabelsController');
