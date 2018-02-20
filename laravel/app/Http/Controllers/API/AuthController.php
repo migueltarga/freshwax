@@ -5,7 +5,7 @@ use freshwax\Http\Controllers\Controller;
 use freshwax\Http\Requests\UserCreateFormRequest;
 use freshwax\Http\Requests\UserStoreRoleFormRequest;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 use freshwax\Models\User;
 use freshwax\Models\Role;
@@ -13,6 +13,8 @@ use freshwax\Models\Artist;
 use freshwax\Models\ShoppingCart;
 use freshwax\Models\Wishlist;
 use freshwax\Models\Order;
+
+use freshwax\Resources\UserResource;
 
 use Input;
 use Redirect;
@@ -41,12 +43,17 @@ class AuthController extends Controller {
      *
      * @return Response
      */
-    public function register(UserCreateFormRequest $request)
+    public function register(Request $request)
     {
-        $user = User::create(Input::all());
+		$user = User::create([
+			'name' => $request->input('name'),
+			'email' => $request->input('email'),
+			'password' => bcrypt($request->input('password')),
+		]);
 
+		//return a token
 
-		return $user;
+		return response()->json($user);
     }
 
 
