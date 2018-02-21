@@ -24,19 +24,23 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 class AuthServiceProvider extends ServiceProvider
 {
 
-    protected $policies = [
+	protected $policies = [
 		User::class => UserPolicy::class,
 		Track::class => TrackPolicy::class,
 		Artist::class => ArtistPolicy::class,
 		Album::class => AlbumPolicy::class,
 		Label::class => LabelPolicy::class
-    ];
+	];
 
 
-    public function boot()
+	public function boot()
 	{
 		$this->registerPolicies();
 
 		Passport::routes();
-    }
+
+		Passport::tokensExpireIn(now()->addDays(15));
+
+		Passport::refreshTokensExpireIn(now()->addDays(30));
+	}
 }
