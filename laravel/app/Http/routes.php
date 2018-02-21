@@ -18,8 +18,10 @@ Auth::routes();
 //public register
 Route::post('api/v1/register',array(
 	'uses' => 'API\AuthController@register',
-	'as' => 'api.register'
+	'as' => 'api.register',
+	'middleware' => 'cors'
 ));
+
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
 
 
