@@ -1,6 +1,7 @@
 <?php namespace freshwax\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Laravel\Passport\Http\Middleware\CheckClientCredentials;
 use \Barryvdh\Cors\HandleCors as HandleCors;
 
 class Kernel extends HttpKernel {
@@ -28,6 +29,7 @@ class Kernel extends HttpKernel {
 		'auth' => 'freshwax\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'freshwax\Http\Middleware\RedirectIfAuthenticated',
+		'client' => CheckClientCredentials::class,
 		'cors' => HandleCors::class
 	];
 
