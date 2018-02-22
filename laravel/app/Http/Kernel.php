@@ -29,6 +29,7 @@ class Kernel extends HttpKernel {
 		'auth' => 'freshwax\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'freshwax\Http\Middleware\RedirectIfAuthenticated',
+		'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		'client' => CheckClientCredentials::class,
 		'cors' => HandleCors::class
 	];
